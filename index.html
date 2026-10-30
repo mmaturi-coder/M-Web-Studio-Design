@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M — Web Design Studio</title>
+  <meta name="description"
+    content="M is a one-person web design studio crafting cinematic websites and interactive experiences with agency-level care." />
+  <link rel="icon" type="image/png" href="assets/logoicona%20pagina.png" />
+
+  <!-- Fonts: AllRound Gothic (if installed locally) → Poppins (bundled) → system-ui -->
+  <link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <noscript>
+    <style>
+      .loader,
+      .cursor-dot,
+      .cursor-ring {
+        display: none;
+      }
+    </style>
+  </noscript>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════
+       LOADER — brand logo reveal
+  ═══════════════════════════════════════════ -->
+  <div class="loader" aria-hidden="true">
+    <img class="loader__logo" src="assets/logo.png" alt="" width="333" height="155" />
+    <div class="loader__counter"><span class="loader__num">00</span></div>
+    <div class="loader__bar"><span class="loader__bar-fill"></span></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CUSTOM CURSOR
+  ═══════════════════════════════════════════ -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"><span class="cursor-label">View</span></div>
+
+  <!-- film-scrubber: page progress as a hairline timeline -->
+  <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
+
+  <!-- ══════════════════════════════════════════
+       HEADER — logo + custom trigger (top state)
+  ═══════════════════════════════════════════ -->
+  <header class="site-head">
+    <a href="#top" class="brand magnetic" aria-label="M — back to top">
+      <img class="brand__img" src="assets/logo.png" alt="M — Web Design Studio" width="333" height="155" />
+    </a>
+    <button class="trigger magnetic menu-trigger" aria-label="Open menu" aria-expanded="false">
+      <span class="trigger__ring"></span>
+      <span class="trigger__bar trigger__bar--a"></span>
+      <span class="trigger__bar trigger__bar--b"></span>
+    </button>
+  </header>
+
+  <!-- ══════════════════════════════════════════
+       FLOATING PILL NAV — appears on scroll
+  ═══════════════════════════════════════════ -->
+  <nav class="nav-pill" aria-label="Quick navigation">
+    <a href="#top" class="nav-pill__brand" aria-label="M — back to top">
+      <img src="assets/logo.png" alt="" width="333" height="155" />
+    </a>
+    <span class="nav-pill__sep"></span>
+    <button class="nav-pill__trigger menu-trigger" aria-label="Open menu" aria-expanded="false">
+      Menu <span class="nav-pill__dot"></span>
+    </button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       FULLSCREEN MENU OVERLAY
+  ═══════════════════════════════════════════ -->
+  <div class="menu" aria-hidden="true">
+    <nav class="menu__nav" aria-label="Main navigation">
+      <a class="menu__link" href="#top"><span class="menu__index">01</span><span class="menu__word">Home</span></a>
+      <a class="menu__link" href="#work"><span class="menu__index">02</span><span
+          class="menu__word">Portfolio</span></a>
+      <a class="menu__link" href="#studio"><span class="menu__index">03</span><span class="menu__word">Studio</span></a>
+      <a class="menu__link" href="#contact"><span class="menu__index">04</span><span
+          class="menu__word">Contact</span></a>
+    </nav>
+    <div class="menu__foot">
+      <a class="menu__mail" href="mailto:Mstudio_web@gmail.com">Mstudio_web@gmail.com</a>
+      <p class="menu__loc">Italy — working worldwide</p>
+    </div>
+  </div>
+
+  <!-- ScrollSmoother structure: overlays (header, menu, cursor, pill)
+       live outside; only the page flow is smoothed -->
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <main id="top">
+
+        <!-- ══════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════ -->
+        <section class="hero" data-section>
+          <!-- Parallax layers (slow → fast) -->
+          <div class="hero__watermark" data-speed="0.35" aria-hidden="true">M</div>
+          <div class="hero__inner" data-speed="1.12">
+
+            <h1 class="hero__title">
+              <span class="hero__line">Design</span>
+              <span class="hero__line hero__line--outline">in&nbsp;motion</span>
+            </h1>
+            <p class="hero__claim">Cinematic websites &amp; interactive experiences —<br />
+              crafted by one designer, with agency-level care.</p>
+          </div>
+
+          <div class="hero__foot">
+            <div class="hero__scroll">
+              <span>Scroll</span>
+              <span class="hero__scroll-line"></span>
+            </div>
+            <p class="hero__meta">Minimal — Motion — Digital Precision</p>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+         01 · MANIFESTO / STUDIO
+    ═══════════════════════════════════════ -->
+        <section class="manifesto" id="studio" data-section>
+          <div class="manifesto__bg" data-speed="0.5" aria-hidden="true">
+            <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 14 88 L 14 14 L 60 66 L 106 14 L 106 88" stroke="currentColor" stroke-width="1"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <header class="section-head">
+            <span class="section-head__num">01</span>
+            <span class="section-head__rule" data-rule></span>
+            <span class="section-head__name">Studio</span>
+          </header>
+
+          <div class="manifesto__body" data-skew>
+            <p class="manifesto__text" data-lines>
+              Motion is meaning. Precision is trust. I design and build websites
+              the way films are directed — <em>frame by frame</em>, with intent.
+              No noise, no templates. Just craft.
+            </p>
+            <p class="manifesto__aside" data-lines>
+              M is a studio of one. Every decision — each pixel, spacing and
+              timing curve — passes through a single pair of eyes. That is the
+              point.
+            </p>
+          </div>
+        </section>
+
+        <!-- kinetic ticker — speed reacts to scroll velocity -->
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker__track">
+            <span class="ticker__item">Minimal — Motion — Cinematic — Interactive — Premium — Clean&nbsp;—&nbsp;</span>
+            <span class="ticker__item">Minimal — Motion — Cinematic — Interactive — Premium — Clean&nbsp;—&nbsp;</span>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+         02 · PORTFOLIO — showreel, zoom parallax
+         The frame scales up while pinned; the video
+         starts the moment the zoom reaches full screen.
+    ═══════════════════════════════════════ -->
+        <section class="reel" id="work" data-section>
+          <header class="section-head">
+            <span class="section-head__num">02</span>
+            <span class="section-head__rule" data-rule></span>
+            <span class="section-head__name">Portfolio</span>
+          </header>
+
+          <div class="reel__stage">
+            <!-- context around the frame — fades as the zoom takes over -->
+            <h3 class="reel__bigtitle" aria-hidden="true">SHOWREEL</h3>
+            <p class="reel__side reel__side--l">Maria Maturi</p>
+            <p class="reel__side reel__side--r">Portfolio ©2026</p>
+            <p class="reel__hint">Scroll to play</p>
+
+            <div class="reel__frame">
+              <video class="reel__video" src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" muted playsinline
+                loop preload="metadata"></video>
+              <div class="reel__shade" aria-hidden="true"></div>
+              <div class="reel__caption">
+                <span class="reel__cap-title">Portfolio — Maria Maturi</span>
+                <span class="reel__cap-tag">Design · Motion · Digital Precision</span>
+              </div>
+              <button class="reel__sound" aria-label="Attiva l'audio" aria-pressed="false">
+                <span class="reel__sound-dot"></span>Sound
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+         03 · PROCESS / SERVICES
+    ═══════════════════════════════════════ -->
+        <section class="services" id="process" data-section>
+          <header class="section-head">
+            <span class="section-head__num">03</span>
+            <span class="section-head__rule" data-rule></span>
+            <span class="section-head__name">Process</span>
+          </header>
+
+          <ul class="services__list" data-skew>
+            <li class="service" data-count="01">
+              <span class="service__fill" aria-hidden="true"></span>
+              <span class="service__index">/&nbsp;<b data-num>00</b> — Phase</span>
+              <h3 class="service__name">Design</h3>
+              <p class="service__desc">Art direction, identity and interfaces with editorial clarity.</p>
+              <span class="service__rule" data-rule></span>
+            </li>
+            <li class="service" data-count="02">
+              <span class="service__fill" aria-hidden="true"></span>
+              <span class="service__index">/&nbsp;<b data-num>00</b> — Phase</span>
+              <h3 class="service__name">Development</h3>
+              <p class="service__desc">Hand-built front-ends. Clean code, 60fps, zero bloat.</p>
+              <span class="service__rule" data-rule></span>
+            </li>
+            <li class="service" data-count="03">
+              <span class="service__fill" aria-hidden="true"></span>
+              <span class="service__index">/&nbsp;<b data-num>00</b> — Phase</span>
+              <h3 class="service__name">Motion</h3>
+              <p class="service__desc">GSAP choreography — scroll, hover and cuts that feel directed.</p>
+              <span class="service__rule" data-rule></span>
+            </li>
+            <li class="service" data-count="04">
+              <span class="service__fill" aria-hidden="true"></span>
+              <span class="service__index">/&nbsp;<b data-num>00</b> — Phase</span>
+              <h3 class="service__name">Strategy</h3>
+              <p class="service__desc">Positioning, structure and content that build trust.</p>
+              <span class="service__rule" data-rule></span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ══════════════════════════════════════
+         04 · CONTACT (dark, interactive)
+    ═══════════════════════════════════════ -->
+        <section class="cta" id="contact" data-section>
+          <!-- parallax electric halo behind the headline -->
+          <div class="cta__glow" data-speed="0.55" aria-hidden="true"></div>
+
+          <header class="section-head section-head--dark">
+            <span class="section-head__num">04</span>
+            <span class="section-head__rule" data-rule></span>
+            <span class="section-head__name">Contact</span>
+          </header>
+
+          <div class="cta__body">
+            <p class="cta__eyebrow"><span class="cta__pulse"></span>Available for select projects — 2026</p>
+
+            <h2 class="cta__title" data-fill>
+              <span class="cta__line">Let’s make</span>
+              <span class="cta__line">something</span>
+              <span class="cta__line cta__line--em">worth watching</span>
+            </h2>
+
+            <div class="cta__panel">
+              <a class="cta__mail magnetic" href="mailto:Mstudio_web@gmail.com" data-cursor="link">
+                <span class="cta__mail-top">Start a project</span>
+                <span class="cta__mail-addr">
+                  <span class="cta__mail-text">Mstudio_web@gmail.com</span>
+                  <span class="cta__mail-arrow" aria-hidden="true">→</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+         FOOTER (dark)
+    ═══════════════════════════════════════ -->
+        <footer class="footer" data-section>
+          <div class="footer__watermark" data-speed="0.68" aria-hidden="true">
+            <img src="assets/logo.png" alt="" width="333" height="155" />
+          </div>
+
+          <a class="footer__lead" href="mailto:Mstudio_web@gmail.com" data-fill data-cursor="link">
+            <span class="footer__lead-line">Let’s talk</span>
+          </a>
+
+          <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+              <a href="#top" class="footer__brand magnetic" aria-label="M — back to top">
+                <img src="assets/logo.png" alt="M — Web Design Studio" width="333" height="155" />
+              </a>
+              <p class="footer__blurb">One-person studio, agency-level care. Cinematic websites &amp; interactive
+                experiences, designed and built end to end.</p>
+            </div>
+
+            <nav class="footer__col" aria-label="Sitemap">
+              <span class="footer__label">Sitemap</span>
+              <a class="footer__link u-line" href="#top">Home</a>
+              <a class="footer__link u-line" href="#work">Portfolio</a>
+              <a class="footer__link u-line" href="#studio">Studio</a>
+              <a class="footer__link u-line" href="#process">Process</a>
+              <a class="footer__link u-line" href="#contact">Contact</a>
+            </nav>
+
+            <nav class="footer__col" aria-label="Social">
+              <span class="footer__label">Elsewhere</span>
+              <a class="footer__link u-line" href="#" rel="noopener">Instagram</a>
+              <a class="footer__link u-line" href="#" rel="noopener">LinkedIn</a>
+              <a class="footer__link u-line" href="#" rel="noopener">Behance</a>
+              <a class="footer__link u-line" href="mailto:Mstudio_web@gmail.com">Email</a>
+            </nav>
+
+            <div class="footer__col footer__col--say">
+              <span class="footer__label">Say hello</span>
+              <a class="footer__mail u-line" href="mailto:Mstudio_web@gmail.com">Mstudio_web@gmail.com</a>
+              <button class="footer__top magnetic" type="button" data-top>
+                <span>Back to top</span>
+                <span class="footer__top-arrow" aria-hidden="true">↑</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="footer__base">
+            <p class="footer__credit">©&nbsp;<span data-year>2026</span> M — Designed &amp; built by Maria Maturi</p>
+            <p class="footer__credit footer__credit--r">Italy · <span class="cta__clock" data-clock>—</span> local</p>
+          </div>
+        </footer>
+
+      </main>
+    </div><!-- /smooth-content -->
+  </div><!-- /smooth-wrapper -->
+
+  <!-- GSAP core + plugins (local, no CDN) -->
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/ScrollSmoother.min.js"></script>
+  <script src="vendor/SplitText.min.js"></script>
+  <script src="vendor/DrawSVGPlugin.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
