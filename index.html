@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PAWAY — Segnala. Aiuta. Proteggi.</title>
-  <meta name="description" content="PAWAY è il servizio per chi trova un animale in difficoltà: segnali la situazione, sai a chi rivolgerti e segui gli aggiornamenti." />
+  <meta name="description" content="PAWAY è il servizio per chi trova un animale in difficoltà: lo rendi visibile, sai come aiutarlo e resti aggiornato su quello che succede." />
   <meta name="theme-color" content="#F2F5EF" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
@@ -33,10 +33,10 @@
     <nav class="nav" id="nav" aria-label="Sezioni">
       <a href="#servizio">Servizio</a>
       <a href="#percorso">Percorso</a>
-      <a href="#strumenti">Strumenti</a>
+      <a href="#aiuto">Aiuto</a>
       <a href="#contatti">Contatti</a>
     </nav>
-    <a class="btn btn--ink head__cta" href="#prova">Prova il percorso</a>
+    <a class="btn btn--ink head__cta" href="#servizio">Scopri il servizio</a>
   </header>
 
   <main id="contenuto">
@@ -49,69 +49,64 @@
           <span class="c-green">Proteggi.</span>
         </h1>
         <p class="lead">
-          PAWAY è il servizio che rende visibile un animale in difficoltà.
-          Ti dice cosa fare, a chi rivolgerti e come seguire quello che succede dopo.
+          PAWAY rende visibile un animale che ha bisogno di aiuto.
+          Ti dice cosa fare subito, a chi rivolgerti e come sapere se poi è al sicuro.
         </p>
         <div class="hero__actions">
-          <a class="btn btn--coral" href="#prova">Prova il percorso <span aria-hidden="true">→</span></a>
-          <a class="btn btn--ghost" href="#servizio">Come funziona</a>
+          <a class="btn btn--coral" href="#servizio">Come funziona <span aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#contatti">Numeri utili</a>
         </div>
-        <ul class="pills" aria-label="I tre momenti del servizio">
-          <li><i class="dot dot--coral"></i> Segnalazione</li>
-          <li><i class="dot dot--blue"></i> Protezione</li>
-          <li><i class="dot dot--green"></i> Cura</li>
-        </ul>
       </div>
-      <figure class="device hero__device">
-        <img src="assets/screens/home.png" alt="Home di PAWAY: saluto, banner Segnala Aiuta Proteggi e le schede Mappa, Contatti e Guida." width="402" height="874" />
-      </figure>
+      <ul class="promises" aria-label="Cosa fa il servizio">
+        <li data-reveal>
+          <span class="promises__n c-coral">01</span>
+          <h2>Lo rendi visibile</h2>
+          <p>Una segnalazione semplice, con la situazione e l’animale, così chi può intervenire sa che c’è qualcuno da aiutare.</p>
+        </li>
+        <li data-reveal>
+          <span class="promises__n c-blue">02</span>
+          <h2>Sai come muoverti</h2>
+          <p>Prima di agire hai indicazioni pratiche, i punti vicini a te e i numeri da chiamare.</p>
+        </li>
+        <li data-reveal>
+          <span class="promises__n c-green">03</span>
+          <h2>Resti nel filo</h2>
+          <p>Dopo la segnalazione puoi sapere se l’animale è in cura, in valutazione o già al sicuro.</p>
+        </li>
+      </ul>
     </section>
 
     <section class="band band--coral" id="servizio">
-      <div class="band__inner">
-        <div class="band__copy" data-reveal>
-          <p class="kicker kicker--coral">01 — Segnalazione</p>
-          <h2>Hai trovato un animale in difficoltà?</h2>
-          <p>
-            Invia una segnalazione in modo semplice e aiuta a rendere visibile chi ha bisogno.
-            Scegli la situazione — abbandonato, ferito, maltrattato o randagio — e l’animale, cane o gatto.
-          </p>
-        </div>
-        <figure class="device" data-reveal>
-          <img src="assets/screens/on1.png" alt="Onboarding Segnalazione: una persona segnala dal telefono un cane e un gatto." width="402" height="874" />
-        </figure>
+      <div class="band__inner" data-reveal>
+        <p class="kicker kicker--coral">Segnalazione</p>
+        <h2>Hai trovato un animale in difficoltà?</h2>
+        <p>
+          Invia una segnalazione in modo semplice e aiuta a rendere visibile chi ha bisogno.
+          Indichi la situazione — abbandonato, ferito, maltrattato o randagio — e se si tratta di un cane o di un gatto.
+        </p>
       </div>
     </section>
 
     <section class="band band--blue">
-      <div class="band__inner">
-        <div class="band__copy" data-reveal>
-          <p class="kicker kicker--blue">02 — Protezione</p>
-          <h2>Ogni segnalazione può muovere un intervento.</h2>
-          <p>
-            Ogni segnalazione può contribuire a individuare situazioni di rischio
-            e favorire un intervento a tutela degli animali.
-          </p>
-        </div>
-        <figure class="device" data-reveal>
-          <img src="assets/screens/on2.png" alt="Onboarding Protezione: una persona abbraccia un cane con una zampa fasciata." width="402" height="874" />
-        </figure>
+      <div class="band__inner" data-reveal>
+        <p class="kicker kicker--blue">Protezione</p>
+        <h2>Ogni segnalazione può muovere un intervento.</h2>
+        <p>
+          Ogni segnalazione può contribuire a individuare situazioni di rischio
+          e favorire un intervento a tutela degli animali.
+          Il servizio ti avvicina a chi, in zona, può prendersene carico.
+        </p>
       </div>
     </section>
 
     <section class="band band--green">
-      <div class="band__inner">
-        <div class="band__copy" data-reveal>
-          <p class="kicker kicker--green">03 — Cura</p>
-          <h2>Prendersi cura inizia da un piccolo gesto.</h2>
-          <p>
-            Con PAWAY puoi contribuire al benessere degli animali che hanno bisogno di aiuto,
-            e sapere dopo se sono in cura, in valutazione o già al sicuro.
-          </p>
-        </div>
-        <figure class="device" data-reveal>
-          <img src="assets/screens/on3.png" alt="Onboarding Cura: una persona medica la zampa di un cane, con borsa del pronto soccorso e ciotola." width="402" height="874" />
-        </figure>
+      <div class="band__inner" data-reveal>
+        <p class="kicker kicker--green">Cura</p>
+        <h2>Prendersi cura inizia da un piccolo gesto.</h2>
+        <p>
+          Con PAWAY puoi contribuire al benessere degli animali che hanno bisogno di aiuto,
+          e sapere dopo se sono in cura, in valutazione o già salvati.
+        </p>
       </div>
     </section>
 
@@ -126,152 +121,70 @@
       <header class="section__head" data-reveal>
         <p class="kicker">Il percorso</p>
         <h2>Quattro passi, sempre nello stesso ordine.</h2>
-        <p class="section__lead">Così sai sempre dove sei. Helpaw è l’assistente che, nell’app, prepara scansione e modulo. Qui sotto puoi provare la struttura, senza inviare nulla.</p>
+        <p class="section__lead">Così sai sempre dove sei. Non devi improvvisare: il servizio tiene insieme il gesto, le persone da chiamare e quello che succede dopo.</p>
       </header>
       <ol class="steps">
         <li data-reveal>
           <span class="steps__n">01</span>
-          <h3>Scegli la situazione</h3>
-          <p>Abbandonato, ferito, maltrattato o randagio.</p>
+          <h3>Descrivi la situazione</h3>
+          <p>Abbandonato, ferito, maltrattato o randagio. È il primo dato che rende la segnalazione utile.</p>
         </li>
         <li data-reveal>
           <span class="steps__n">02</span>
           <h3>Indica l’animale</h3>
-          <p>Cane o gatto. La guida e gli aggiornamenti seguono questa scelta.</p>
+          <p>Cane o gatto. Da questa scelta dipendono i consigli e il modo di avvicinarsi.</p>
         </li>
         <li data-reveal>
           <span class="steps__n">03</span>
-          <h3>Helpaw completa il modulo</h3>
-          <p>Nell’app, l’assistente AI prepara scansione e anteprima. Tu controlli prima di inviare.</p>
+          <h3>Completa la segnalazione</h3>
+          <p>Helpaw, l’assistente del servizio, prepara scansione e modulo. Tu controlli prima che parta.</p>
         </li>
         <li data-reveal>
           <span class="steps__n">04</span>
-          <h3>Resti aggiornato</h3>
-          <p>Puoi chiedere una notifica quando cambia lo stato dell’animale.</p>
+          <h3>Chiedi gli aggiornamenti</h3>
+          <p>Puoi ricevere una notifica quando cambia lo stato dell’animale che hai segnalato.</p>
         </li>
       </ol>
     </section>
 
-    <section class="section section--tight" id="prova">
-      <div class="demo-layout">
-        <div class="demo-copy" data-reveal>
-          <p class="kicker kicker--coral">Anteprima</p>
-          <h2>Prova il percorso di segnalazione.</h2>
-          <p>
-            È la stessa sequenza dell’app: situazione, animale, riepilogo.
-            Non parte una chiamata e non viene salvata nessuna segnalazione.
-          </p>
-          <figure class="device device--small">
-            <img src="assets/screens/sos.png" alt="Schermata SOS dell’app, con le quattro opzioni Abbandonato, Ferito, Maltrattato e Randagio." width="402" height="874" />
-          </figure>
-        </div>
-
-        <div class="demo" data-demo>
-          <div class="demo__dots" aria-hidden="true">
-            <span class="is-on"></span><span></span><span></span>
-          </div>
-          <p class="demo__live visually-hidden" aria-live="polite"></p>
-
-          <div class="demo__panel is-on" data-panel="0">
-            <h3>SOS</h3>
-            <p class="demo__hint">Seleziona una delle opzioni</p>
-            <fieldset class="choices">
-              <legend class="visually-hidden">Situazione da segnalare</legend>
-              <label class="choice"><input type="radio" name="situazione" value="Abbandonato" /> Abbandonato</label>
-              <label class="choice"><input type="radio" name="situazione" value="Ferito" /> Ferito</label>
-              <label class="choice"><input type="radio" name="situazione" value="Maltrattato" /> Maltrattato</label>
-              <label class="choice"><input type="radio" name="situazione" value="Randagio" /> Randagio</label>
-            </fieldset>
-            <p class="demo__error" hidden>Scegli una situazione per continuare.</p>
-            <button class="btn btn--line" type="button" data-next>Avanti</button>
-          </div>
-
-          <div class="demo__panel" data-panel="1" hidden>
-            <h3>Animale</h3>
-            <p class="demo__hint">Quale animale vuoi segnalare?</p>
-            <fieldset class="choices choices--two">
-              <legend class="visually-hidden">Animale</legend>
-              <label class="choice"><input type="radio" name="animale" value="Cane" /> Cane</label>
-              <label class="choice"><input type="radio" name="animale" value="Gatto" /> Gatto</label>
-            </fieldset>
-            <p class="demo__error" hidden>Scegli cane o gatto per continuare.</p>
-            <div class="demo__row">
-              <button class="btn btn--ghost" type="button" data-back>Indietro</button>
-              <button class="btn btn--line" type="button" data-next>Avanti</button>
-            </div>
-          </div>
-
-          <div class="demo__panel" data-panel="2" hidden>
-            <h3>Riepilogo</h3>
-            <p class="demo__done">Anteprima pronta</p>
-            <p class="demo__recap"><strong data-recap-what>—</strong> · <span data-recap-who>—</span></p>
-            <ul class="demo__checks">
-              <li>Situazione scelta</li>
-              <li>Animale indicato</li>
-              <li>Nell’app: scansione e modulo Helpaw</li>
-            </ul>
-            <p class="demo__note">Qui non viene inviato nulla. Nell’app, dopo il riepilogo, puoi chiedere gli aggiornamenti.</p>
-            <div class="demo__row">
-              <button class="btn btn--ghost" type="button" data-reset>Ricomincia</button>
-              <a class="btn btn--coral" href="#aggiornamenti">Vedi gli esiti</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="strumenti">
+    <section class="section" id="aiuto">
       <header class="section__head" data-reveal>
-        <p class="kicker">Dentro l’app</p>
-        <h2>Tre strumenti, sempre a portata di mano.</h2>
+        <p class="kicker">Mentre aiuti</p>
+        <h2>Tre sostegni, sempre insieme alla segnalazione.</h2>
       </header>
       <div class="widgets">
         <article class="widget" data-reveal>
+          <p class="kicker kicker--blue">Vicino a te</p>
           <h3>Mappa</h3>
-          <p>Trova veterinari, rifugi, enti e segnalazioni intorno a te.</p>
-          <a class="btn btn--ink btn--sm" href="#mappa">Esplora <span aria-hidden="true">→</span></a>
+          <p>Trova veterinari, rifugi, enti e segnalazioni intorno a te. Vedi chi può intervenire, a che distanza, e da lì parti verso il punto giusto.</p>
         </article>
         <article class="widget" data-reveal>
+          <p class="kicker kicker--green">Quando serve subito</p>
           <h3>Contatti</h3>
-          <p>Numeri utili da chiamare quando serve, in modo rapido.</p>
-          <a class="btn btn--ink btn--sm" href="#contatti">Esplora <span aria-hidden="true">→</span></a>
+          <p>Numeri utili da chiamare in modo rapido: associazioni, pronto soccorso veterinario, vigili del fuoco e forze dell’ordine.</p>
+          <a class="btn btn--ink btn--sm" href="#contatti">Vedi i numeri <span aria-hidden="true">→</span></a>
         </article>
         <article class="widget" data-reveal>
+          <p class="kicker kicker--coral">Prima di agire</p>
           <h3>Guida</h3>
-          <p>Consigli e indicazioni pratiche per aiutare un animale in difficoltà.</p>
-          <a class="btn btn--ink btn--sm" href="#guida">Esplora <span aria-hidden="true">→</span></a>
+          <p>Consigli pratici per aiutare un animale in difficoltà senza mettere a rischio né te né lui.</p>
+          <a class="btn btn--ink btn--sm" href="#guida">Apri la guida <span aria-hidden="true">→</span></a>
         </article>
       </div>
-    </section>
-
-    <section class="section split" id="mappa">
-      <div data-reveal>
-        <p class="kicker kicker--blue">Mappa</p>
-        <h2>Chi può intervenire, vicino a te.</h2>
-        <p class="section__lead">L’app mostra la tua posizione e i punti utili in zona: enti, rifugi, veterinari, forze dell’ordine. Da una scheda leggi tempo e distanza, poi avvii la navigazione.</p>
-        <ul class="plain">
-          <li>Posizione e punti sulla mappa, per esempio LNDC a Roma.</li>
-          <li>Tempo e distanza, come «35 min · 5,0 km».</li>
-          <li>Un pulsante Naviga per partire verso il punto scelto.</li>
-        </ul>
-      </div>
-      <figure class="device" data-reveal>
-        <img src="assets/screens/map.png" alt="Mappa di PAWAY su Roma, con la posizione, il punto LNDC e il pulsante Naviga." width="402" height="874" />
-      </figure>
     </section>
 
     <section class="section" id="guida">
       <header class="section__head" data-reveal>
         <p class="kicker kicker--green">Guida</p>
         <h2>Prima di agire, capisci come aiutare.</h2>
-        <p class="section__lead">Manuale pratico per ogni esigenza. Cerca una situazione o passa da cane a gatto. L’esempio completo, così com’è disegnato nell’app, è quello del gatto abbandonato.</p>
+        <p class="section__lead">Un manuale breve per ogni esigenza. Cerca la situazione o scegli se si tratta di un gatto o di un cane. L’esempio completo è quello di un gatto abbandonato.</p>
       </header>
       <div class="guide-tools" data-reveal>
         <label class="search">
           <span class="visually-hidden">Cerca nella guida</span>
-          <input type="search" placeholder="Cerca nella guida" data-search />
+          <input type="search" placeholder="Cerca: abbandono, ferita, randagio…" data-search />
         </label>
-        <div class="species" role="group" aria-label="Animale della guida">
+        <div class="species" role="group" aria-label="Animale">
           <button type="button" class="species__btn is-on" data-species="gatto" aria-pressed="true">Gatto</button>
           <button type="button" class="species__btn" data-species="cane" aria-pressed="false">Cane</button>
         </div>
@@ -281,87 +194,78 @@
       <p class="guide-empty" data-empty hidden>Nessuna indicazione con queste parole. Prova con abbandono, ferita, maltrattamento o randagio.</p>
     </section>
 
-    <section class="section" id="aggiornamenti">
+    <section class="section" id="dopo">
       <header class="section__head" data-reveal>
         <p class="kicker">Dopo la segnalazione</p>
         <h2>Puoi sapere come è finita.</h2>
-        <p class="section__lead">Gli animali vengono aggiunti automaticamente. Nell’app trovi età, salute e stato attuale: in cura, in valutazione, in adozione o già salvato.</p>
+        <p class="section__lead">Gli animali che hai seguito restano nel servizio e si aggiornano da soli. Vedi età, salute e stato: in cura, in valutazione, in adozione o già salvato.</p>
       </header>
-      <div class="updates">
-        <div class="pets" data-reveal>
-          <article class="pet">
-            <div>
-              <h3>Luna</h3>
-              <p class="pet__tag pet__tag--green">Salvato</p>
-            </div>
-            <dl>
-              <div><dt>Età</dt><dd>7 anni</dd></div>
-              <div><dt>Salute</dt><dd>Ottima</dd></div>
-              <div><dt>Stato</dt><dd>Adottato</dd></div>
-            </dl>
-          </article>
-          <article class="pet">
-            <div>
-              <h3>Romeo</h3>
-              <p class="pet__tag pet__tag--coral">In cura</p>
-            </div>
-            <dl>
-              <div><dt>Età</dt><dd>4 anni</dd></div>
-              <div><dt>Salute</dt><dd>In valutazione</dd></div>
-              <div><dt>Stato</dt><dd>In valutazione</dd></div>
-            </dl>
-          </article>
-        </div>
-        <figure class="device" data-reveal>
-          <img src="assets/screens/updates.png" alt="Schermata Aggiornamenti con le schede di Luna, gatto adottato, e Romeo, gatto in cura." width="402" height="874" />
-        </figure>
+      <div class="pets">
+        <article class="pet" data-reveal>
+          <div>
+            <h3>Luna</h3>
+            <p class="pet__tag pet__tag--green">Salvato</p>
+          </div>
+          <dl>
+            <div><dt>Età</dt><dd>7 anni</dd></div>
+            <div><dt>Salute</dt><dd>Ottima</dd></div>
+            <div><dt>Stato</dt><dd>Adottato</dd></div>
+          </dl>
+        </article>
+        <article class="pet" data-reveal>
+          <div>
+            <h3>Romeo</h3>
+            <p class="pet__tag pet__tag--coral">In cura</p>
+          </div>
+          <dl>
+            <div><dt>Età</dt><dd>4 anni</dd></div>
+            <div><dt>Salute</dt><dd>In valutazione</dd></div>
+            <div><dt>Stato</dt><dd>In valutazione</dd></div>
+          </dl>
+        </article>
       </div>
+      <p class="note" data-reveal>Due esempi di come il servizio racconta l’esito: uno è già al sicuro, l’altro è ancora in cura.</p>
     </section>
 
     <section class="section" id="contatti">
-      <div class="split">
-        <div data-reveal>
-          <p class="kicker kicker--green">Contatti</p>
-          <h2>Numeri utili di emergenza da chiamare.</h2>
-          <p class="section__lead">Sono i numeri raccolti nell’interfaccia, con riferimento a Roma. In un’emergenza reale usa il numero adatto alla situazione.</p>
-          <ul class="phones">
-            <li>
-              <span>LNDC</span>
-              <a href="tel:+393927015986">+39 392 701 5986 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
-            </li>
-            <li>
-              <span>ENPA</span>
-              <a href="tel:+390670307099">06 7030 7099 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
-            </li>
-            <li>
-              <span>Policlinico Roma Sud</span>
-              <a href="tel:+39067236171">06 7236171 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
-            </li>
-            <li>
-              <span>Vigili del fuoco</span>
-              <a href="tel:115">115 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
-            </li>
-            <li>
-              <span>Polizia locale</span>
-              <a href="tel:112">112 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
-            </li>
-            <li>
-              <span>Numero verde regionale</span>
-              <a href="tel:800178400">800 178 400 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
-            </li>
-          </ul>
-        </div>
-        <figure class="device" data-reveal>
-          <img src="assets/screens/contacts.png" alt="Elenco contatti di PAWAY: LNDC, ENPA, Policlinico Roma Sud, Vigili del fuoco e Polizia locale." width="402" height="874" />
-        </figure>
-      </div>
+      <header class="section__head" data-reveal>
+        <p class="kicker kicker--green">Contatti</p>
+        <h2>Numeri utili di emergenza da chiamare.</h2>
+        <p class="section__lead">Sono i riferimenti del servizio per Roma. In un’emergenza reale usa il numero adatto alla situazione.</p>
+      </header>
+      <ul class="phones" data-reveal>
+        <li>
+          <span>LNDC</span>
+          <a href="tel:+393927015986">+39 392 701 5986 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
+        </li>
+        <li>
+          <span>ENPA</span>
+          <a href="tel:+390670307099">06 7030 7099 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
+        </li>
+        <li>
+          <span>Policlinico Roma Sud</span>
+          <a href="tel:+39067236171">06 7236171 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
+        </li>
+        <li>
+          <span>Vigili del fuoco</span>
+          <a href="tel:115">115 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
+        </li>
+        <li>
+          <span>Polizia locale</span>
+          <a href="tel:112">112 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
+        </li>
+        <li>
+          <span>Numero verde regionale</span>
+          <a href="tel:800178400">800 178 400 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
+        </li>
+      </ul>
     </section>
 
     <section class="close">
       <p class="kicker">PAWAY</p>
       <h2>Un gesto chiaro, <em>fino in fondo.</em></h2>
       <p>Segnali. Sai come aiutare. Resta un filo con quello che succede dopo.</p>
-      <a class="btn btn--ink" href="#prova">Torna al percorso <span aria-hidden="true">→</span></a>
+      <a class="btn btn--line" href="#servizio">Torna al servizio <span aria-hidden="true">→</span></a>
     </section>
   </main>
 
@@ -369,7 +273,7 @@
     <a class="brand" href="#top" aria-label="PAWAY, torna all'inizio">
       <img src="assets/paway-logo.svg" alt="" width="159" height="198" />
     </a>
-    <p>Segnala. Aiuta. Proteggi. Presentazione del servizio, sui colori e i caratteri dell’interfaccia.</p>
+    <p>Segnala. Aiuta. Proteggi. Il servizio per rendere visibile un animale in difficoltà.</p>
     <p class="footer__meta">Roma · <span data-year>2026</span></p>
   </footer>
 

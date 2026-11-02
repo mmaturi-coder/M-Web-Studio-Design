@@ -15,8 +15,7 @@ Apri `http://localhost:4173`.
 ## Cosa si può fare
 
 - Leggere il servizio nei tre momenti: segnalazione, protezione, cura.
-- Provare il percorso (situazione, animale, riepilogo). Non viene inviato nulla.
+- Capire il percorso, la mappa, i contatti e la guida.
 - Cercare nella guida e passare da gatto a cane.
-- Vedere mappa, contatti e aggiornamenti così come sono nell’app.
 
 Il movimento è fatto con GSAP: ingresso del marchio, titoli, comparsa allo scorrimento e nastro «Segnala — Aiuta — Proteggi». Con `prefers-reduced-motion` le animazioni restano ferme e i contenuti sono subito visibili.
