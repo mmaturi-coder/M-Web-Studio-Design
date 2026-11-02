@@ -1,339 +1,380 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>M — Web Design Studio</title>
-  <meta name="description"
-    content="M is a one-person web design studio crafting cinematic websites and interactive experiences with agency-level care." />
-  <link rel="icon" type="image/png" href="assets/logoicona%20pagina.png" />
-
-  <!-- Fonts: AllRound Gothic (if installed locally) → Poppins (bundled) → system-ui -->
-  <link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <title>PAWAY — Segnala. Aiuta. Proteggi.</title>
+  <meta name="description" content="PAWAY è il servizio per chi trova un animale in difficoltà: segnali la situazione, sai a chi rivolgerti e segui gli aggiornamenti." />
+  <meta name="theme-color" content="#F2F5EF" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
   <noscript>
-    <style>
-      .loader,
-      .cursor-dot,
-      .cursor-ring {
-        display: none;
-      }
-    </style>
+    <style>.loader { display: none !important; }</style>
   </noscript>
 </head>
-
 <body>
+  <a class="skip" href="#contenuto">Vai al contenuto</a>
 
-  <!-- ══════════════════════════════════════════
-       LOADER — brand logo reveal
-  ═══════════════════════════════════════════ -->
   <div class="loader" aria-hidden="true">
-    <img class="loader__logo" src="assets/logo.png" alt="" width="333" height="155" />
-    <div class="loader__counter"><span class="loader__num">00</span></div>
-    <div class="loader__bar"><span class="loader__bar-fill"></span></div>
+    <img class="loader__logo" src="assets/paway-logo.svg" alt="" width="159" height="198" />
   </div>
-
-  <!-- ══════════════════════════════════════════
-       CUSTOM CURSOR
-  ═══════════════════════════════════════════ -->
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div class="cursor-ring" aria-hidden="true"><span class="cursor-label">View</span></div>
-
-  <!-- film-scrubber: page progress as a hairline timeline -->
   <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
 
-  <!-- ══════════════════════════════════════════
-       HEADER — logo + custom trigger (top state)
-  ═══════════════════════════════════════════ -->
   <header class="site-head">
-    <a href="#top" class="brand magnetic" aria-label="M — back to top">
-      <img class="brand__img" src="assets/logo.png" alt="M — Web Design Studio" width="333" height="155" />
+    <a class="brand" href="#top" aria-label="PAWAY, torna all'inizio">
+      <img src="assets/paway-logo.svg" alt="" width="159" height="198" />
     </a>
-    <button class="trigger magnetic menu-trigger" aria-label="Open menu" aria-expanded="false">
-      <span class="trigger__ring"></span>
-      <span class="trigger__bar trigger__bar--a"></span>
-      <span class="trigger__bar trigger__bar--b"></span>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Apri il menu</span>
     </button>
+    <nav class="nav" id="nav" aria-label="Sezioni">
+      <a href="#servizio">Servizio</a>
+      <a href="#percorso">Percorso</a>
+      <a href="#strumenti">Strumenti</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+    <a class="btn btn--ink head__cta" href="#prova">Prova il percorso</a>
   </header>
 
-  <!-- ══════════════════════════════════════════
-       FLOATING PILL NAV — appears on scroll
-  ═══════════════════════════════════════════ -->
-  <nav class="nav-pill" aria-label="Quick navigation">
-    <a href="#top" class="nav-pill__brand" aria-label="M — back to top">
-      <img src="assets/logo.png" alt="" width="333" height="155" />
-    </a>
-    <span class="nav-pill__sep"></span>
-    <button class="nav-pill__trigger menu-trigger" aria-label="Open menu" aria-expanded="false">
-      Menu <span class="nav-pill__dot"></span>
-    </button>
-  </nav>
+  <main id="contenuto">
+    <section class="hero" id="top">
+      <div class="hero__copy">
+        <p class="kicker">Per chi trova un animale in difficoltà</p>
+        <h1 class="hero__title">
+          <span class="c-coral">Segnala.</span>
+          <span class="c-blue">Aiuta.</span>
+          <span class="c-green">Proteggi.</span>
+        </h1>
+        <p class="lead">
+          PAWAY è il servizio che rende visibile un animale in difficoltà.
+          Ti dice cosa fare, a chi rivolgerti e come seguire quello che succede dopo.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--coral" href="#prova">Prova il percorso <span aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#servizio">Come funziona</a>
+        </div>
+        <ul class="pills" aria-label="I tre momenti del servizio">
+          <li><i class="dot dot--coral"></i> Segnalazione</li>
+          <li><i class="dot dot--blue"></i> Protezione</li>
+          <li><i class="dot dot--green"></i> Cura</li>
+        </ul>
+      </div>
+      <figure class="device hero__device">
+        <img src="assets/screens/home.png" alt="Home di PAWAY: saluto, banner Segnala Aiuta Proteggi e le schede Mappa, Contatti e Guida." width="402" height="874" />
+      </figure>
+    </section>
 
-  <!-- ══════════════════════════════════════════
-       FULLSCREEN MENU OVERLAY
-  ═══════════════════════════════════════════ -->
-  <div class="menu" aria-hidden="true">
-    <nav class="menu__nav" aria-label="Main navigation">
-      <a class="menu__link" href="#top"><span class="menu__index">01</span><span class="menu__word">Home</span></a>
-      <a class="menu__link" href="#work"><span class="menu__index">02</span><span
-          class="menu__word">Portfolio</span></a>
-      <a class="menu__link" href="#studio"><span class="menu__index">03</span><span class="menu__word">Studio</span></a>
-      <a class="menu__link" href="#contact"><span class="menu__index">04</span><span
-          class="menu__word">Contact</span></a>
-    </nav>
-    <div class="menu__foot">
-      <a class="menu__mail" href="mailto:Mstudio_web@gmail.com">Mstudio_web@gmail.com</a>
-      <p class="menu__loc">Italy — working worldwide</p>
+    <section class="band band--coral" id="servizio">
+      <div class="band__inner">
+        <div class="band__copy" data-reveal>
+          <p class="kicker kicker--coral">01 — Segnalazione</p>
+          <h2>Hai trovato un animale in difficoltà?</h2>
+          <p>
+            Invia una segnalazione in modo semplice e aiuta a rendere visibile chi ha bisogno.
+            Scegli la situazione — abbandonato, ferito, maltrattato o randagio — e l’animale, cane o gatto.
+          </p>
+        </div>
+        <figure class="device" data-reveal>
+          <img src="assets/screens/on1.png" alt="Onboarding Segnalazione: una persona segnala dal telefono un cane e un gatto." width="402" height="874" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="band band--blue">
+      <div class="band__inner">
+        <div class="band__copy" data-reveal>
+          <p class="kicker kicker--blue">02 — Protezione</p>
+          <h2>Ogni segnalazione può muovere un intervento.</h2>
+          <p>
+            Ogni segnalazione può contribuire a individuare situazioni di rischio
+            e favorire un intervento a tutela degli animali.
+          </p>
+        </div>
+        <figure class="device" data-reveal>
+          <img src="assets/screens/on2.png" alt="Onboarding Protezione: una persona abbraccia un cane con una zampa fasciata." width="402" height="874" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="band band--green">
+      <div class="band__inner">
+        <div class="band__copy" data-reveal>
+          <p class="kicker kicker--green">03 — Cura</p>
+          <h2>Prendersi cura inizia da un piccolo gesto.</h2>
+          <p>
+            Con PAWAY puoi contribuire al benessere degli animali che hanno bisogno di aiuto,
+            e sapere dopo se sono in cura, in valutazione o già al sicuro.
+          </p>
+        </div>
+        <figure class="device" data-reveal>
+          <img src="assets/screens/on3.png" alt="Onboarding Cura: una persona medica la zampa di un cane, con borsa del pronto soccorso e ciotola." width="402" height="874" />
+        </figure>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Segnala — Aiuta — Proteggi —&nbsp;</span>
+        <span>Segnala — Aiuta — Proteggi —&nbsp;</span>
+      </div>
     </div>
-  </div>
 
-  <!-- ScrollSmoother structure: overlays (header, menu, cursor, pill)
-       live outside; only the page flow is smoothed -->
-  <div id="smooth-wrapper">
-    <div id="smooth-content">
-      <main id="top">
+    <section class="section" id="percorso">
+      <header class="section__head" data-reveal>
+        <p class="kicker">Il percorso</p>
+        <h2>Quattro passi, sempre nello stesso ordine.</h2>
+        <p class="section__lead">Così sai sempre dove sei. Helpaw è l’assistente che, nell’app, prepara scansione e modulo. Qui sotto puoi provare la struttura, senza inviare nulla.</p>
+      </header>
+      <ol class="steps">
+        <li data-reveal>
+          <span class="steps__n">01</span>
+          <h3>Scegli la situazione</h3>
+          <p>Abbandonato, ferito, maltrattato o randagio.</p>
+        </li>
+        <li data-reveal>
+          <span class="steps__n">02</span>
+          <h3>Indica l’animale</h3>
+          <p>Cane o gatto. La guida e gli aggiornamenti seguono questa scelta.</p>
+        </li>
+        <li data-reveal>
+          <span class="steps__n">03</span>
+          <h3>Helpaw completa il modulo</h3>
+          <p>Nell’app, l’assistente AI prepara scansione e anteprima. Tu controlli prima di inviare.</p>
+        </li>
+        <li data-reveal>
+          <span class="steps__n">04</span>
+          <h3>Resti aggiornato</h3>
+          <p>Puoi chiedere una notifica quando cambia lo stato dell’animale.</p>
+        </li>
+      </ol>
+    </section>
 
-        <!-- ══════════════════════════════════════
-         HERO
-    ═══════════════════════════════════════ -->
-        <section class="hero" data-section>
-          <!-- Parallax layers (slow → fast) -->
-          <div class="hero__watermark" data-speed="0.35" aria-hidden="true">M</div>
-          <div class="hero__inner" data-speed="1.12">
-
-            <h1 class="hero__title">
-              <span class="hero__line">Design</span>
-              <span class="hero__line hero__line--outline">in&nbsp;motion</span>
-            </h1>
-            <p class="hero__claim">Cinematic websites &amp; interactive experiences —<br />
-              crafted by one designer, with agency-level care.</p>
-          </div>
-
-          <div class="hero__foot">
-            <div class="hero__scroll">
-              <span>Scroll</span>
-              <span class="hero__scroll-line"></span>
-            </div>
-            <p class="hero__meta">Minimal — Motion — Digital Precision</p>
-          </div>
-        </section>
-
-        <!-- ══════════════════════════════════════
-         01 · MANIFESTO / STUDIO
-    ═══════════════════════════════════════ -->
-        <section class="manifesto" id="studio" data-section>
-          <div class="manifesto__bg" data-speed="0.5" aria-hidden="true">
-            <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M 14 88 L 14 14 L 60 66 L 106 14 L 106 88" stroke="currentColor" stroke-width="1"
-                stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-
-          <header class="section-head">
-            <span class="section-head__num">01</span>
-            <span class="section-head__rule" data-rule></span>
-            <span class="section-head__name">Studio</span>
-          </header>
-
-          <div class="manifesto__body" data-skew>
-            <p class="manifesto__text" data-lines>
-              Motion is meaning. Precision is trust. I design and build websites
-              the way films are directed — <em>frame by frame</em>, with intent.
-              No noise, no templates. Just craft.
-            </p>
-            <p class="manifesto__aside" data-lines>
-              M is a studio of one. Every decision — each pixel, spacing and
-              timing curve — passes through a single pair of eyes. That is the
-              point.
-            </p>
-          </div>
-        </section>
-
-        <!-- kinetic ticker — speed reacts to scroll velocity -->
-        <div class="ticker" aria-hidden="true">
-          <div class="ticker__track">
-            <span class="ticker__item">Minimal — Motion — Cinematic — Interactive — Premium — Clean&nbsp;—&nbsp;</span>
-            <span class="ticker__item">Minimal — Motion — Cinematic — Interactive — Premium — Clean&nbsp;—&nbsp;</span>
-          </div>
+    <section class="section section--tight" id="prova">
+      <div class="demo-layout">
+        <div class="demo-copy" data-reveal>
+          <p class="kicker kicker--coral">Anteprima</p>
+          <h2>Prova il percorso di segnalazione.</h2>
+          <p>
+            È la stessa sequenza dell’app: situazione, animale, riepilogo.
+            Non parte una chiamata e non viene salvata nessuna segnalazione.
+          </p>
+          <figure class="device device--small">
+            <img src="assets/screens/sos.png" alt="Schermata SOS dell’app, con le quattro opzioni Abbandonato, Ferito, Maltrattato e Randagio." width="402" height="874" />
+          </figure>
         </div>
 
-        <!-- ══════════════════════════════════════
-         02 · PORTFOLIO — showreel, zoom parallax
-         The frame scales up while pinned; the video
-         starts the moment the zoom reaches full screen.
-    ═══════════════════════════════════════ -->
-        <section class="reel" id="work" data-section>
-          <header class="section-head">
-            <span class="section-head__num">02</span>
-            <span class="section-head__rule" data-rule></span>
-            <span class="section-head__name">Portfolio</span>
-          </header>
+        <div class="demo" data-demo>
+          <div class="demo__dots" aria-hidden="true">
+            <span class="is-on"></span><span></span><span></span>
+          </div>
+          <p class="demo__live visually-hidden" aria-live="polite"></p>
 
-          <div class="reel__stage">
-            <!-- context around the frame — fades as the zoom takes over -->
-            <h3 class="reel__bigtitle" aria-hidden="true">SHOWREEL</h3>
-            <p class="reel__side reel__side--l">Maria Maturi</p>
-            <p class="reel__side reel__side--r">Portfolio ©2026</p>
-            <p class="reel__hint">Scroll to play</p>
+          <div class="demo__panel is-on" data-panel="0">
+            <h3>SOS</h3>
+            <p class="demo__hint">Seleziona una delle opzioni</p>
+            <fieldset class="choices">
+              <legend class="visually-hidden">Situazione da segnalare</legend>
+              <label class="choice"><input type="radio" name="situazione" value="Abbandonato" /> Abbandonato</label>
+              <label class="choice"><input type="radio" name="situazione" value="Ferito" /> Ferito</label>
+              <label class="choice"><input type="radio" name="situazione" value="Maltrattato" /> Maltrattato</label>
+              <label class="choice"><input type="radio" name="situazione" value="Randagio" /> Randagio</label>
+            </fieldset>
+            <p class="demo__error" hidden>Scegli una situazione per continuare.</p>
+            <button class="btn btn--line" type="button" data-next>Avanti</button>
+          </div>
 
-            <div class="reel__frame">
-              <video class="reel__video" src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" muted playsinline
-                loop preload="metadata"></video>
-              <div class="reel__shade" aria-hidden="true"></div>
-              <div class="reel__caption">
-                <span class="reel__cap-title">Portfolio — Maria Maturi</span>
-                <span class="reel__cap-tag">Design · Motion · Digital Precision</span>
-              </div>
-              <button class="reel__sound" aria-label="Attiva l'audio" aria-pressed="false">
-                <span class="reel__sound-dot"></span>Sound
-              </button>
+          <div class="demo__panel" data-panel="1" hidden>
+            <h3>Animale</h3>
+            <p class="demo__hint">Quale animale vuoi segnalare?</p>
+            <fieldset class="choices choices--two">
+              <legend class="visually-hidden">Animale</legend>
+              <label class="choice"><input type="radio" name="animale" value="Cane" /> Cane</label>
+              <label class="choice"><input type="radio" name="animale" value="Gatto" /> Gatto</label>
+            </fieldset>
+            <p class="demo__error" hidden>Scegli cane o gatto per continuare.</p>
+            <div class="demo__row">
+              <button class="btn btn--ghost" type="button" data-back>Indietro</button>
+              <button class="btn btn--line" type="button" data-next>Avanti</button>
             </div>
           </div>
-        </section>
 
-        <!-- ══════════════════════════════════════
-         03 · PROCESS / SERVICES
-    ═══════════════════════════════════════ -->
-        <section class="services" id="process" data-section>
-          <header class="section-head">
-            <span class="section-head__num">03</span>
-            <span class="section-head__rule" data-rule></span>
-            <span class="section-head__name">Process</span>
-          </header>
+          <div class="demo__panel" data-panel="2" hidden>
+            <h3>Riepilogo</h3>
+            <p class="demo__done">Anteprima pronta</p>
+            <p class="demo__recap"><strong data-recap-what>—</strong> · <span data-recap-who>—</span></p>
+            <ul class="demo__checks">
+              <li>Situazione scelta</li>
+              <li>Animale indicato</li>
+              <li>Nell’app: scansione e modulo Helpaw</li>
+            </ul>
+            <p class="demo__note">Qui non viene inviato nulla. Nell’app, dopo il riepilogo, puoi chiedere gli aggiornamenti.</p>
+            <div class="demo__row">
+              <button class="btn btn--ghost" type="button" data-reset>Ricomincia</button>
+              <a class="btn btn--coral" href="#aggiornamenti">Vedi gli esiti</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <ul class="services__list" data-skew>
-            <li class="service" data-count="01">
-              <span class="service__fill" aria-hidden="true"></span>
-              <span class="service__index">/&nbsp;<b data-num>00</b> — Phase</span>
-              <h3 class="service__name">Design</h3>
-              <p class="service__desc">Art direction, identity and interfaces with editorial clarity.</p>
-              <span class="service__rule" data-rule></span>
+    <section class="section" id="strumenti">
+      <header class="section__head" data-reveal>
+        <p class="kicker">Dentro l’app</p>
+        <h2>Tre strumenti, sempre a portata di mano.</h2>
+      </header>
+      <div class="widgets">
+        <article class="widget" data-reveal>
+          <h3>Mappa</h3>
+          <p>Trova veterinari, rifugi, enti e segnalazioni intorno a te.</p>
+          <a class="btn btn--ink btn--sm" href="#mappa">Esplora <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="widget" data-reveal>
+          <h3>Contatti</h3>
+          <p>Numeri utili da chiamare quando serve, in modo rapido.</p>
+          <a class="btn btn--ink btn--sm" href="#contatti">Esplora <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="widget" data-reveal>
+          <h3>Guida</h3>
+          <p>Consigli e indicazioni pratiche per aiutare un animale in difficoltà.</p>
+          <a class="btn btn--ink btn--sm" href="#guida">Esplora <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split" id="mappa">
+      <div data-reveal>
+        <p class="kicker kicker--blue">Mappa</p>
+        <h2>Chi può intervenire, vicino a te.</h2>
+        <p class="section__lead">L’app mostra la tua posizione e i punti utili in zona: enti, rifugi, veterinari, forze dell’ordine. Da una scheda leggi tempo e distanza, poi avvii la navigazione.</p>
+        <ul class="plain">
+          <li>Posizione e punti sulla mappa, per esempio LNDC a Roma.</li>
+          <li>Tempo e distanza, come «35 min · 5,0 km».</li>
+          <li>Un pulsante Naviga per partire verso il punto scelto.</li>
+        </ul>
+      </div>
+      <figure class="device" data-reveal>
+        <img src="assets/screens/map.png" alt="Mappa di PAWAY su Roma, con la posizione, il punto LNDC e il pulsante Naviga." width="402" height="874" />
+      </figure>
+    </section>
+
+    <section class="section" id="guida">
+      <header class="section__head" data-reveal>
+        <p class="kicker kicker--green">Guida</p>
+        <h2>Prima di agire, capisci come aiutare.</h2>
+        <p class="section__lead">Manuale pratico per ogni esigenza. Cerca una situazione o passa da cane a gatto. L’esempio completo, così com’è disegnato nell’app, è quello del gatto abbandonato.</p>
+      </header>
+      <div class="guide-tools" data-reveal>
+        <label class="search">
+          <span class="visually-hidden">Cerca nella guida</span>
+          <input type="search" placeholder="Cerca nella guida" data-search />
+        </label>
+        <div class="species" role="group" aria-label="Animale della guida">
+          <button type="button" class="species__btn is-on" data-species="gatto" aria-pressed="true">Gatto</button>
+          <button type="button" class="species__btn" data-species="cane" aria-pressed="false">Cane</button>
+        </div>
+      </div>
+      <p class="guide-count" data-count aria-live="polite">4 indicazioni</p>
+      <div class="guide" data-guide></div>
+      <p class="guide-empty" data-empty hidden>Nessuna indicazione con queste parole. Prova con abbandono, ferita, maltrattamento o randagio.</p>
+    </section>
+
+    <section class="section" id="aggiornamenti">
+      <header class="section__head" data-reveal>
+        <p class="kicker">Dopo la segnalazione</p>
+        <h2>Puoi sapere come è finita.</h2>
+        <p class="section__lead">Gli animali vengono aggiunti automaticamente. Nell’app trovi età, salute e stato attuale: in cura, in valutazione, in adozione o già salvato.</p>
+      </header>
+      <div class="updates">
+        <div class="pets" data-reveal>
+          <article class="pet">
+            <div>
+              <h3>Luna</h3>
+              <p class="pet__tag pet__tag--green">Salvato</p>
+            </div>
+            <dl>
+              <div><dt>Età</dt><dd>7 anni</dd></div>
+              <div><dt>Salute</dt><dd>Ottima</dd></div>
+              <div><dt>Stato</dt><dd>Adottato</dd></div>
+            </dl>
+          </article>
+          <article class="pet">
+            <div>
+              <h3>Romeo</h3>
+              <p class="pet__tag pet__tag--coral">In cura</p>
+            </div>
+            <dl>
+              <div><dt>Età</dt><dd>4 anni</dd></div>
+              <div><dt>Salute</dt><dd>In valutazione</dd></div>
+              <div><dt>Stato</dt><dd>In valutazione</dd></div>
+            </dl>
+          </article>
+        </div>
+        <figure class="device" data-reveal>
+          <img src="assets/screens/updates.png" alt="Schermata Aggiornamenti con le schede di Luna, gatto adottato, e Romeo, gatto in cura." width="402" height="874" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="contatti">
+      <div class="split">
+        <div data-reveal>
+          <p class="kicker kicker--green">Contatti</p>
+          <h2>Numeri utili di emergenza da chiamare.</h2>
+          <p class="section__lead">Sono i numeri raccolti nell’interfaccia, con riferimento a Roma. In un’emergenza reale usa il numero adatto alla situazione.</p>
+          <ul class="phones">
+            <li>
+              <span>LNDC</span>
+              <a href="tel:+393927015986">+39 392 701 5986 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
             </li>
-            <li class="service" data-count="02">
-              <span class="service__fill" aria-hidden="true"></span>
-              <span class="service__index">/&nbsp;<b data-num>00</b> — Phase</span>
-              <h3 class="service__name">Development</h3>
-              <p class="service__desc">Hand-built front-ends. Clean code, 60fps, zero bloat.</p>
-              <span class="service__rule" data-rule></span>
+            <li>
+              <span>ENPA</span>
+              <a href="tel:+390670307099">06 7030 7099 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
             </li>
-            <li class="service" data-count="03">
-              <span class="service__fill" aria-hidden="true"></span>
-              <span class="service__index">/&nbsp;<b data-num>00</b> — Phase</span>
-              <h3 class="service__name">Motion</h3>
-              <p class="service__desc">GSAP choreography — scroll, hover and cuts that feel directed.</p>
-              <span class="service__rule" data-rule></span>
+            <li>
+              <span>Policlinico Roma Sud</span>
+              <a href="tel:+39067236171">06 7236171 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
             </li>
-            <li class="service" data-count="04">
-              <span class="service__fill" aria-hidden="true"></span>
-              <span class="service__index">/&nbsp;<b data-num>00</b> — Phase</span>
-              <h3 class="service__name">Strategy</h3>
-              <p class="service__desc">Positioning, structure and content that build trust.</p>
-              <span class="service__rule" data-rule></span>
+            <li>
+              <span>Vigili del fuoco</span>
+              <a href="tel:115">115 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
+            </li>
+            <li>
+              <span>Polizia locale</span>
+              <a href="tel:112">112 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
+            </li>
+            <li>
+              <span>Numero verde regionale</span>
+              <a href="tel:800178400">800 178 400 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#171717" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 3.5-2 1.2a12 12 0 0 0 5.8 5.8l1.2-2 3.5 1.5v3A2 2 0 0 1 17.5 18 14.5 14.5 0 0 1 6 6.5a2 2 0 0 1 .5-3z"/></svg></a>
             </li>
           </ul>
-        </section>
+        </div>
+        <figure class="device" data-reveal>
+          <img src="assets/screens/contacts.png" alt="Elenco contatti di PAWAY: LNDC, ENPA, Policlinico Roma Sud, Vigili del fuoco e Polizia locale." width="402" height="874" />
+        </figure>
+      </div>
+    </section>
 
-        <!-- ══════════════════════════════════════
-         04 · CONTACT (dark, interactive)
-    ═══════════════════════════════════════ -->
-        <section class="cta" id="contact" data-section>
-          <!-- parallax electric halo behind the headline -->
-          <div class="cta__glow" data-speed="0.55" aria-hidden="true"></div>
+    <section class="close">
+      <p class="kicker">PAWAY</p>
+      <h2>Un gesto chiaro, <em>fino in fondo.</em></h2>
+      <p>Segnali. Sai come aiutare. Resta un filo con quello che succede dopo.</p>
+      <a class="btn btn--ink" href="#prova">Torna al percorso <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
 
-          <header class="section-head section-head--dark">
-            <span class="section-head__num">04</span>
-            <span class="section-head__rule" data-rule></span>
-            <span class="section-head__name">Contact</span>
-          </header>
+  <footer class="footer">
+    <a class="brand" href="#top" aria-label="PAWAY, torna all'inizio">
+      <img src="assets/paway-logo.svg" alt="" width="159" height="198" />
+    </a>
+    <p>Segnala. Aiuta. Proteggi. Presentazione del servizio, sui colori e i caratteri dell’interfaccia.</p>
+    <p class="footer__meta">Roma · <span data-year>2026</span></p>
+  </footer>
 
-          <div class="cta__body">
-            <p class="cta__eyebrow"><span class="cta__pulse"></span>Available for select projects — 2026</p>
-
-            <h2 class="cta__title" data-fill>
-              <span class="cta__line">Let’s make</span>
-              <span class="cta__line">something</span>
-              <span class="cta__line cta__line--em">worth watching</span>
-            </h2>
-
-            <div class="cta__panel">
-              <a class="cta__mail magnetic" href="mailto:Mstudio_web@gmail.com" data-cursor="link">
-                <span class="cta__mail-top">Start a project</span>
-                <span class="cta__mail-addr">
-                  <span class="cta__mail-text">Mstudio_web@gmail.com</span>
-                  <span class="cta__mail-arrow" aria-hidden="true">→</span>
-                </span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <!-- ══════════════════════════════════════
-         FOOTER (dark)
-    ═══════════════════════════════════════ -->
-        <footer class="footer" data-section>
-          <div class="footer__watermark" data-speed="0.68" aria-hidden="true">
-            <img src="assets/logo.png" alt="" width="333" height="155" />
-          </div>
-
-          <a class="footer__lead" href="mailto:Mstudio_web@gmail.com" data-fill data-cursor="link">
-            <span class="footer__lead-line">Let’s talk</span>
-          </a>
-
-          <div class="footer__grid">
-            <div class="footer__col footer__col--brand">
-              <a href="#top" class="footer__brand magnetic" aria-label="M — back to top">
-                <img src="assets/logo.png" alt="M — Web Design Studio" width="333" height="155" />
-              </a>
-              <p class="footer__blurb">One-person studio, agency-level care. Cinematic websites &amp; interactive
-                experiences, designed and built end to end.</p>
-            </div>
-
-            <nav class="footer__col" aria-label="Sitemap">
-              <span class="footer__label">Sitemap</span>
-              <a class="footer__link u-line" href="#top">Home</a>
-              <a class="footer__link u-line" href="#work">Portfolio</a>
-              <a class="footer__link u-line" href="#studio">Studio</a>
-              <a class="footer__link u-line" href="#process">Process</a>
-              <a class="footer__link u-line" href="#contact">Contact</a>
-            </nav>
-
-            <nav class="footer__col" aria-label="Social">
-              <span class="footer__label">Elsewhere</span>
-              <a class="footer__link u-line" href="#" rel="noopener">Instagram</a>
-              <a class="footer__link u-line" href="#" rel="noopener">LinkedIn</a>
-              <a class="footer__link u-line" href="#" rel="noopener">Behance</a>
-              <a class="footer__link u-line" href="mailto:Mstudio_web@gmail.com">Email</a>
-            </nav>
-
-            <div class="footer__col footer__col--say">
-              <span class="footer__label">Say hello</span>
-              <a class="footer__mail u-line" href="mailto:Mstudio_web@gmail.com">Mstudio_web@gmail.com</a>
-              <button class="footer__top magnetic" type="button" data-top>
-                <span>Back to top</span>
-                <span class="footer__top-arrow" aria-hidden="true">↑</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="footer__base">
-            <p class="footer__credit">©&nbsp;<span data-year>2026</span> M — Designed &amp; built by Maria Maturi</p>
-            <p class="footer__credit footer__credit--r">Italy · <span class="cta__clock" data-clock>—</span> local</p>
-          </div>
-        </footer>
-
-      </main>
-    </div><!-- /smooth-content -->
-  </div><!-- /smooth-wrapper -->
-
-  <!-- GSAP core + plugins (local, no CDN) -->
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
-  <script src="vendor/ScrollSmoother.min.js"></script>
-  <script src="vendor/SplitText.min.js"></script>
-  <script src="vendor/DrawSVGPlugin.min.js"></script>
   <script src="js/main.js"></script>
 </body>
-
 </html>
