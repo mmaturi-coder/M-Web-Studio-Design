@@ -9,7 +9,6 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/img/gatto.webp" as="image" type="image/webp" media="(min-width: 761px)" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -25,7 +24,7 @@
   <main id="contenuto">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero__copy">
-        <h1 class="hero__title" id="hero-title">Il primo gesto, <span class="accent">a portata di mano.</span></h1>
+        <h1 class="hero__title" id="hero-title"><span class="hero__line">Il primo gesto,</span> <span class="hero__line">a portata di&nbsp;mano.</span></h1>
         <p class="hero__text">Hai trovato un cane o un gatto in difficoltà? Con PAWAY puoi capire cosa fare e inviare una segnalazione.</p>
         <a class="btn" href="#download">
           Scarica l’app
@@ -34,16 +33,16 @@
       </div>
 
       <div class="hero__art" aria-hidden="true">
-        <img class="hero__dog" data-depth="dog"
+        <img class="hero__dog"
           src="assets/img/boxer.webp"
           srcset="assets/img/boxer-sm.webp 371w, assets/img/boxer.webp 743w"
-          sizes="(min-width: 761px) 40vw, 80vw"
-          width="743" height="979" alt="" decoding="async" />
-        <img class="hero__cat" data-depth="cat"
+          sizes="(min-width: 761px) 62vw, 66vw"
+          width="743" height="979" alt="" decoding="async" fetchpriority="high" />
+        <img class="hero__cat"
           src="assets/img/gatto.webp"
           srcset="assets/img/gatto-sm.webp 405w, assets/img/gatto.webp 810w"
-          sizes="(min-width: 761px) 26vw, 52vw"
-          width="810" height="1314" alt="" decoding="async" fetchpriority="high" />
+          sizes="(min-width: 761px) 34vw, 42vw"
+          width="810" height="1314" alt="" decoding="async" />
       </div>
     </section>
 

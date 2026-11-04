@@ -46,6 +46,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
+main { overflow-x: clip; }
 img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3, p { margin: 0; }
 a { color: inherit; }
@@ -98,77 +99,79 @@ a { color: inherit; }
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  min-height: 60px;
-  padding: 0 12px 0 28px;
+  gap: 12px;
+  min-height: 50px;
+  padding: 7px 8px 7px 22px;
   border-radius: var(--radius-pill);
   background: var(--ink);
   color: var(--bg);
-  font-weight: 800;
-  font-size: 19px;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1;
   text-decoration: none;
   transition: background-color 0.25s ease;
 }
 .btn:hover { background: #2c2c2c; }
-.btn__icon { width: 36px; height: 36px; flex: none; transition: transform 0.3s ease; }
+.btn__icon { width: 34px; height: 34px; flex: none; transition: transform 0.3s ease; }
 .btn:hover .btn__icon { transform: translateX(3px); }
 
-/* ── 1. Apertura ────────────────────────────────────────── */
+/* ── 1. Apertura: colonna di testo e ritratto dei due animali ─ */
 .hero {
+  --art-h: clamp(480px, calc(100svh - var(--head-h)), 900px);
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(24px, 4vw, 64px);
-  min-height: min(calc(100svh - var(--head-h)), 860px);
-  padding-bottom: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: start;
+  column-gap: clamp(24px, 3.4vw, 56px);
 }
 .hero__copy {
   position: relative;
   z-index: 2;
-  padding-block: clamp(32px, 6vw, 96px);
+  padding-top: clamp(20px, 5svh, 64px);
 }
 .hero__title {
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(46px, 5.6vw, 82px);
-  line-height: 1.04;
-  letter-spacing: -0.01em;
-  max-width: 11ch;
+  font-size: clamp(38px, 4.15vw, 66px);
+  line-height: 1.12;
+  letter-spacing: -0.005em;
 }
-.accent { color: var(--coral-text); }
+.hero__line { display: block; white-space: nowrap; }
 .hero__text {
-  margin-top: clamp(20px, 2.4vw, 32px);
-  max-width: 30ch;
-  font-size: clamp(19px, 1.6vw, 23px);
-  line-height: 1.4;
-  font-weight: 600;
+  margin-top: clamp(16px, 1.8vw, 26px);
+  max-width: 32ch;
+  font-size: clamp(18px, 1.45vw, 22px);
+  line-height: 1.45;
+  font-weight: 400;
 }
-.hero .btn { margin-top: clamp(28px, 3vw, 40px); }
+.hero .btn { margin-top: clamp(24px, 2.6vw, 36px); }
 
+/* Un solo ritratto, misurato sull’altezza dell’apertura come nella tavola «Cani e gatti»:
+   il cane dietro, in alto, esce a destra; il gatto davanti, più in basso.
+   Entrambi sono ancorati al bordo inferiore, che taglia i corpi. */
 .hero__art {
   position: relative;
-  align-self: stretch;
-  min-height: clamp(520px, 52vw, 760px);
+  height: var(--art-h);
   overflow-x: visible;
   overflow-y: clip;
 }
 .hero__dog,
 .hero__cat {
   position: absolute;
+  max-width: none;
   will-change: transform;
 }
 .hero__dog {
-  width: 76%;
-  right: -4%;
-  top: 4%;
-  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.16));
+  width: calc(var(--art-h) * 0.944);
+  left: calc(var(--art-h) * 0.048);
+  bottom: calc(var(--art-h) * -0.294);
+  filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.16));
 }
 .hero__cat {
-  width: 50%;
-  left: 2%;
-  bottom: -40px;
-  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.12));
+  width: calc(var(--art-h) * 0.512);
+  left: calc(var(--art-h) * 0.104);
+  bottom: calc(var(--art-h) * -0.31);
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.14));
 }
 
 /* ── 2. Come funziona ───────────────────────────────────── */
@@ -194,7 +197,7 @@ a { color: inherit; }
 }
 .steps__name {
   font-family: var(--text);
-  font-weight: 800;
+  font-weight: 700;
   font-size: clamp(28px, 2.6vw, 36px);
   line-height: 1.1;
   color: var(--coral-text);
@@ -203,7 +206,7 @@ a { color: inherit; }
   margin-top: 6px;
   max-width: 32ch;
   font-size: clamp(18px, 1.4vw, 21px);
-  font-weight: 600;
+  font-weight: 400;
 }
 .how__screen {
   margin: 0;
@@ -211,10 +214,13 @@ a { color: inherit; }
   width: 320px;
   max-width: 100%;
 }
+/* cornice scura dell’iPhone, come nella tavola «Il prodotto» */
 .how__screen img {
   width: 100%;
-  border-radius: 40px;
-  box-shadow: 0 30px 60px rgba(23, 23, 23, 0.14), 0 0 0 1px rgba(23, 23, 23, 0.06);
+  border: 9px solid var(--ink);
+  border-radius: 48px;
+  background: var(--ink);
+  box-shadow: 0 30px 60px rgba(23, 23, 23, 0.16);
 }
 
 /* ── 3. Download ────────────────────────────────────────── */
@@ -231,8 +237,8 @@ a { color: inherit; }
 }
 .download__text {
   margin-top: 16px;
-  font-size: clamp(19px, 1.5vw, 22px);
-  font-weight: 600;
+  font-size: clamp(18px, 1.45vw, 22px);
+  font-weight: 400;
   max-width: 40ch;
 }
 .stores {
@@ -281,24 +287,28 @@ a { color: inherit; }
   font-weight: 600;
 }
 
-/* ── Mobile: testo, pulsante, poi l’immagine ────────────── */
+/* Sotto i 1024 px la seconda riga può andare a capo; «di mano.» resta unito */
+@media (max-width: 1023px) {
+  .hero__line { white-space: normal; }
+}
+
+/* ── Mobile: testo e pulsante, poi un’inquadratura bassa e larga ─ */
 @media (max-width: 760px) {
   .hero,
   .how {
     grid-template-columns: minmax(0, 1fr);
   }
-  .hero { min-height: 0; gap: 0; overflow-x: clip; }
-  .hero__copy { padding-block: 12px 36px; }
-  .hero__title { font-size: clamp(40px, 11.4vw, 54px); }
-  .hero__text { font-size: 19px; }
-  .hero .btn { width: 100%; justify-content: space-between; }
+  .hero { overflow-x: clip; }
+  .hero__copy { padding-top: 8px; padding-bottom: 28px; }
+  .hero__title { font-size: clamp(38px, 10.6vw, 54px); }
+  .hero__text { font-size: 18px; }
   .hero__art {
-    min-height: 0;
-    aspect-ratio: 1 / 1.08;
+    height: auto;
+    aspect-ratio: 5 / 4;
     margin-inline: calc(var(--gutter) * -1);
   }
-  .hero__dog { width: 70%; right: -2%; top: 0; }
-  .hero__cat { width: 46%; left: 8%; bottom: -24px; }
+  .hero__dog { width: 78%; left: auto; right: -6%; bottom: -32%; }
+  .hero__cat { width: 46%; left: 22%; bottom: -42%; }
 
   .how { padding-block: 72px; }
   .how__screen { width: 260px; }

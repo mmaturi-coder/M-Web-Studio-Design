@@ -44,13 +44,14 @@ function initMotion() {
     },
     (ctx) => {
       const { desktop } = ctx.conditions;
-      const travel = desktop ? { cat: -28, dog: -16 } : { cat: -10, dog: -6 };
+      const travel = desktop ? { cat: -20, dog: -12 } : { cat: -10, dog: -6 };
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "bottom top",
+          end: () => `+=${Math.round(window.innerHeight * 0.6)}`,
+          invalidateOnRefresh: true,
           scrub: 0.6,
         },
       });
