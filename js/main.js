@@ -1,191 +1,86 @@
-/* PAWAY — presentazione del servizio.
-   GSAP: ingresso del marchio, comparsa allo scorrimento, nastro.
-   prefers-reduced-motion: tutto fermo e già visibile. */
-
-gsap.registerPlugin(ScrollTrigger);
+/* PAWAY — parallax di cane e gatto nell’apertura, una dissolvenza per sezione.
+   Senza JavaScript o con movimento ridotto tutto resta visibile e fermo. */
 
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
-const REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const GUIDES = [
+const STORES = [
   {
-    title: "Abbandonati",
-    text: "Come aiutare e segnalare un ritrovamento.",
-    keys: "abbandono abbandonati ritrovamento solo",
-    detail: {
-      lead: "Un gatto è considerato abbandonato se è solo, senza proprietario, in difficoltà e senza cure, cibo e riparo.",
-      signals: ["Sembra solo", "Sembra spaesato", "Affamato", "Disidratato", "Ferito", "Malato", "Luogo insolito", "Luogo pericoloso"],
-      steps: ["Mantenere la calma", "Mettilo in sicurezza", "Usa un asciugamano", "Idratalo", "Chiama i numeri di emergenza", "Segnala la posizione"],
-    },
+    key: "appStore",
+    small: "Scarica su",
+    label: "App Store",
+    icon: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.3.8c1.4 0 2.2-1.2 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1-2.8-4.3zM14 5.3c.7-.8 1.2-2 1-3.2-1 .1-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3.1 1.1.1 2.2-.6 2.9-1.4z"/></svg>',
   },
   {
-    title: "Maltrattati",
-    text: "A chi rivolgerti per segnalare la situazione.",
-    keys: "maltrattamento maltrattati segnalare",
-  },
-  {
-    title: "Feriti",
-    text: "Chi chiamare e cosa fare prima dei soccorsi.",
-    keys: "ferita feriti soccorso",
-  },
-  {
-    title: "Randagi",
-    text: "Come avvicinarli e capire se serve aiuto.",
-    keys: "randagio randagi avvicinare",
+    key: "googlePlay",
+    small: "Disponibile su",
+    label: "Google Play",
+    icon: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4 2.6c-.3.3-.4.7-.4 1.2v16.4c0 .5.1.9.4 1.2l9.2-9.4L4 2.6zm10.6 10.8 2.6 2.6-11.6 6.6c-.3.2-.7.2-1 .1l10-9.3zm0-2.8L4.6 1.3c.3-.1.7-.1 1 .1l11.6 6.6-2.6 2.6zm3.9 1.3 2.6 1.5c.8.5.8 1.3 0 1.8l-2.6 1.5-2.9-2.9 2.9-1.9z"/></svg>',
   },
 ];
 
-let species = "gatto";
-let started = false;
-
-function init() {
-  if (started) return;
-  started = true;
-  $("[data-year]").textContent = String(new Date().getFullYear());
-  initNav();
-  initGuide();
-  if (REDUCE) return;
-  initLoader();
-  initScroll();
-}
-
-function initNav() {
-  const btn = $(".nav-toggle");
-  const nav = $(".nav");
-  const setOpen = (open) => {
-    nav.classList.toggle("is-open", open);
-    document.body.classList.toggle("nav-open", open);
-    btn.setAttribute("aria-expanded", String(open));
-    btn.querySelector(".visually-hidden").textContent = open ? "Chiudi il menu" : "Apri il menu";
-  };
-  btn.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
-  $$(".nav a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
-}
-
-function initLoader() {
-  document.body.classList.add("nav-open");
-  const tl = gsap.timeline({
-    defaults: { ease: "power3.out" },
-    onComplete: () => {
-      $(".loader").remove();
-      document.body.classList.remove("nav-open");
-    },
-  });
-  tl.from(".loader__logo", { scale: 0.86, autoAlpha: 0, duration: 0.7 })
-    .to(".loader", { yPercent: -100, duration: 0.75, ease: "power4.inOut", delay: 0.25 })
-    .from(".hero__title span", { y: 36, autoAlpha: 0, stagger: 0.08, duration: 0.7 }, "-=0.45")
-    .from(".hero__copy .kicker, .hero__copy .lead, .hero__actions", {
-      y: 18, autoAlpha: 0, stagger: 0.06, duration: 0.55,
-    }, "-=0.45")
-    .from(".promises li", { y: 24, autoAlpha: 0, stagger: 0.08, duration: 0.6 }, "-=0.4");
-}
-
-function initScroll() {
-  gsap.to(".progress__bar", {
-    scaleX: 1,
-    ease: "none",
-    scrollTrigger: { trigger: document.body, start: "top top", end: "bottom bottom", scrub: 0.3 },
-  });
-
-  $$("[data-reveal]").forEach((el) => {
-    if (el.closest(".hero")) return;
-    gsap.from(el, {
-      y: 28,
-      autoAlpha: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: { trigger: el, start: "top 88%" },
-    });
-  });
-
-  gsap.to(".marquee__track", {
-    xPercent: -50,
-    duration: 16,
-    ease: "none",
-    repeat: -1,
-  });
-}
-
-function initGuide() {
-  const host = $("[data-guide]");
-  const search = $("[data-search]");
-  const count = $("[data-count]");
-  const empty = $("[data-empty]");
-
-  host.innerHTML = GUIDES.map((item, i) => `
-    <article class="guide-card" data-keys="${item.keys} ${item.title.toLowerCase()} ${item.text.toLowerCase()}">
-      <p class="kicker">0${i + 1}</p>
-      <h3>${item.title}</h3>
-      <p>${item.text}</p>
-      <button class="guide-card__open" type="button" aria-expanded="false">Cosa fare</button>
-      <div class="guide-card__more"><div><div class="guide-card__body"></div></div></div>
-    </article>
+function renderStores() {
+  const host = $("[data-stores]");
+  const links = (window.PAWAY_CONFIG && window.PAWAY_CONFIG.stores) || {};
+  const available = STORES.filter((s) => /^https:\/\/\S+$/.test(String(links[s.key] || "").trim()));
+  if (!available.length) return;
+  host.innerHTML = available.map((s) => `
+    <a class="store" href="${links[s.key].trim()}" rel="noopener">
+      ${s.icon}
+      <span><small>${s.small}</small><strong>${s.label}</strong></span>
+    </a>
   `).join("");
-
-  const paint = () => {
-    const who = species === "gatto" ? "un gatto" : "un cane";
-    $$(".guide-card", host).forEach((card, i) => {
-      const body = $(".guide-card__body", card);
-      const item = GUIDES[i];
-      if (item.detail && species === "gatto") {
-        body.innerHTML = `
-          <p>${item.detail.lead}</p>
-          <p class="guide-label">Segnali comuni</p>
-          <ul class="chips">${item.detail.signals.map((s) => `<li>${s}</li>`).join("")}</ul>
-          <p class="guide-label">Cosa fare subito</p>
-          <ul class="steps-list">${item.detail.steps.map((s) => `<li>${s}</li>`).join("")}</ul>
-        `;
-        return;
-      }
-      if (item.detail) {
-        body.innerHTML = `<p>Per ${who} i passaggi cambiano. L’esempio completo di questa guida è quello del gatto abbandonato: solo, senza cure, cibo e riparo.</p>`;
-        return;
-      }
-      body.innerHTML = `<p>Per ${who}: ${item.text.charAt(0).toLowerCase()}${item.text.slice(1)}</p>`;
-    });
-  };
-
-  $$(".guide-card__open", host).forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const more = btn.nextElementSibling;
-      const open = !more.classList.contains("is-open");
-      $$(".guide-card__more", host).forEach((el) => el.classList.remove("is-open"));
-      $$(".guide-card__open", host).forEach((el) => el.setAttribute("aria-expanded", "false"));
-      if (open) {
-        more.classList.add("is-open");
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-
-  search.addEventListener("input", () => {
-    const q = search.value.trim().toLowerCase();
-    let shown = 0;
-    $$(".guide-card", host).forEach((card) => {
-      const ok = !q || card.dataset.keys.includes(q);
-      card.hidden = !ok;
-      if (ok) shown += 1;
-    });
-    count.textContent = shown === 1 ? "1 indicazione" : `${shown} indicazioni`;
-    empty.hidden = shown !== 0;
-  });
-
-  $$("[data-species]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      species = btn.dataset.species;
-      $$("[data-species]").forEach((el) => {
-        const on = el === btn;
-        el.classList.toggle("is-on", on);
-        el.setAttribute("aria-pressed", String(on));
-      });
-      paint();
-    });
-  });
-
-  paint();
 }
 
-if (document.fonts) document.fonts.ready.then(init);
-else init();
-window.addEventListener("load", init, { once: true });
+function initMotion() {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const mm = gsap.matchMedia();
+
+  mm.add(
+    {
+      desktop: "(min-width: 761px) and (prefers-reduced-motion: no-preference)",
+      mobile: "(max-width: 760px) and (prefers-reduced-motion: no-preference)",
+    },
+    (ctx) => {
+      const { desktop } = ctx.conditions;
+      const travel = desktop ? { cat: -28, dog: -16 } : { cat: -10, dog: -6 };
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+        },
+      });
+      tl.to(".hero__cat", { y: travel.cat, ease: "none" }, 0)
+        .to(".hero__dog", { y: travel.dog, ease: "none" }, 0);
+
+      $$("[data-reveal]").forEach((section) => {
+        gsap.from(section.children, {
+          y: 24,
+          autoAlpha: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.08,
+          scrollTrigger: { trigger: section, start: "top 82%", once: true },
+        });
+      });
+    }
+  );
+}
+
+function focusDownloadOnJump() {
+  const target = $("#download");
+  $$('a[href="#download"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      window.setTimeout(() => target.focus({ preventScroll: true }), 0);
+    });
+  });
+}
+
+$("[data-year]").textContent = String(new Date().getFullYear());
+renderStores();
+focusDownloadOnJump();
+initMotion();
