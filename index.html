@@ -4,12 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PAWAY — Il primo gesto, a portata di mano.</title>
-  <meta name="description" content="Hai trovato un cane o un gatto in difficoltà? Con PAWAY puoi capire cosa fare e inviare una segnalazione." />
+  <meta name="description" content="Hai trovato un cane o un gatto in difficoltà? PAWAY ti aiuta a capire cosa fare e a inviare una segnalazione." />
   <meta name="theme-color" content="#F2F5EF" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
+  <script>
+    /* Decide prima del primo disegno se la pagina userà la scena con il telefono fisso */
+    (function () {
+      var q = "(min-width: 900px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)";
+      if (window.matchMedia && window.matchMedia(q).matches) document.documentElement.classList.add("is-stage");
+    })();
+  </script>
 </head>
 <body>
   <a class="skip" href="#contenuto">Vai al contenuto</a>
@@ -22,63 +29,84 @@
   </header>
 
   <main id="contenuto">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero__copy">
+    <div class="stage" data-stage>
+      <section class="hero" id="top" aria-labelledby="hero-title">
         <h1 class="hero__title" id="hero-title"><span class="hero__line">Il primo gesto,</span> <span class="hero__line">a portata di&nbsp;mano.</span></h1>
         <p class="hero__text">Hai trovato un cane o un gatto in difficoltà? Con PAWAY puoi capire cosa fare e inviare una segnalazione.</p>
         <a class="btn" href="#download">
           Scarica l’app
           <svg class="btn__icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M9.5 16h12M17 10.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
         </a>
+      </section>
+
+      <div class="device-col">
+        <svg class="crescent" data-crescent viewBox="0 0 1000 1000" aria-hidden="true" focusable="false">
+          <path d="M497.5 20A480 480 0 1 0 979.3 473.4A350 350 0 0 1 497.5 20Z" />
+        </svg>
+        <div class="device-sticky">
+          <figure class="device" data-device>
+            <img class="device__screen is-active" data-screen="0"
+              src="assets/img/app-home.webp"
+              srcset="assets/img/app-home-sm.webp 402w, assets/img/app-home.webp 804w"
+              sizes="(min-width: 900px) 360px, 280px"
+              width="804" height="1748" fetchpriority="high" decoding="async"
+              alt="La home di PAWAY: il pulsante Invia segnalazione e la scheda Mappa con veterinari, rifugi ed enti vicini." />
+            <img class="device__screen" data-screen="1"
+              src="assets/img/app-guida.webp"
+              srcset="assets/img/app-guida-sm.webp 402w, assets/img/app-guida.webp 804w"
+              sizes="360px" width="804" height="1748" loading="lazy" decoding="async"
+              alt="La guida di PAWAY: un manuale pratico, la ricerca e le schede per cane e gatto." />
+            <img class="device__screen" data-screen="2"
+              src="assets/img/app-segnala.webp"
+              srcset="assets/img/app-segnala-sm.webp 402w, assets/img/app-segnala.webp 804w"
+              sizes="360px" width="804" height="1748" loading="lazy" decoding="async"
+              alt="La segnalazione SOS: scegli tra abbandonato, ferito, maltrattato e randagio." />
+            <img class="device__screen" data-screen="3"
+              src="assets/img/app-aggiornamenti.webp"
+              srcset="assets/img/app-aggiornamenti-sm.webp 402w, assets/img/app-aggiornamenti.webp 804w"
+              sizes="360px" width="804" height="1748" loading="lazy" decoding="async"
+              alt="Gli aggiornamenti: età, salute e stato attuale degli animali segnalati." />
+          </figure>
+        </div>
       </div>
 
-      <div class="hero__art" aria-hidden="true">
-        <img class="hero__dog"
-          src="assets/img/boxer.webp"
-          srcset="assets/img/boxer-sm.webp 371w, assets/img/boxer.webp 743w"
-          sizes="(min-width: 761px) 62vw, 66vw"
-          width="743" height="979" alt="" decoding="async" fetchpriority="high" />
-        <img class="hero__cat"
-          src="assets/img/gatto.webp"
-          srcset="assets/img/gatto-sm.webp 405w, assets/img/gatto.webp 810w"
-          sizes="(min-width: 761px) 34vw, 42vw"
-          width="810" height="1314" alt="" decoding="async" />
-      </div>
-    </section>
-
-    <section class="how" id="come-funziona" aria-labelledby="how-title" data-reveal>
-      <div class="how__copy">
+      <section class="how" id="come-funziona" aria-labelledby="how-title">
         <h2 class="how__title" id="how-title">Come funziona</h2>
         <ol class="steps">
-          <li>
-            <h3 class="steps__name">Esplora</h3>
-            <p>Trova la guida e i contatti utili.</p>
+          <li class="step" data-step="1">
+            <img class="step__thumb" src="assets/img/app-guida-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
+            <div class="step__body">
+              <h3 class="step__name">Esplora</h3>
+              <p>Trova la guida e i contatti utili.</p>
+            </div>
           </li>
-          <li>
-            <h3 class="steps__name">Segnala</h3>
-            <p>Descrivi l’animale, la situazione e il luogo.</p>
+          <li class="step" data-step="2">
+            <img class="step__thumb" src="assets/img/app-segnala-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
+            <div class="step__body">
+              <h3 class="step__name">Segnala</h3>
+              <p>Descrivi l’animale, la situazione e il luogo.</p>
+            </div>
           </li>
-          <li>
-            <h3 class="steps__name">Segui</h3>
-            <p>Ritrova le tue segnalazioni e gli aggiornamenti nell’app.</p>
+          <li class="step" data-step="3">
+            <img class="step__thumb" src="assets/img/app-aggiornamenti-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
+            <div class="step__body">
+              <h3 class="step__name">Segui</h3>
+              <p>Ritrova le tue segnalazioni e gli aggiornamenti nell’app.</p>
+            </div>
           </li>
         </ol>
-      </div>
-      <figure class="how__screen">
-        <img
-          src="assets/img/app-home.webp"
-          srcset="assets/img/app-home-sm.webp 402w, assets/img/app-home.webp 804w"
-          sizes="(min-width: 761px) 320px, 260px"
-          width="804" height="1748" loading="lazy" decoding="async"
-          alt="La home di PAWAY: il pulsante Invia segnalazione e la scheda Mappa per trovare veterinari, rifugi ed enti vicini." />
-      </figure>
-    </section>
+      </section>
+    </div>
 
-    <section class="download" id="download" aria-labelledby="download-title" tabindex="-1" data-reveal>
-      <h2 class="download__title" id="download-title">Scarica PAWAY</h2>
-      <p class="download__text">Tieni la guida e la segnalazione sempre con te.</p>
-      <div class="stores" data-stores>
-        <p class="stores__soon">Disponibile prossimamente</p>
+    <section class="download" id="download" aria-labelledby="download-title" tabindex="-1">
+      <div class="download__card">
+        <div class="download__copy">
+          <h2 class="download__title" id="download-title">Scarica PAWAY</h2>
+          <p class="download__text">La guida e la segnalazione, sempre con te.</p>
+        </div>
+        <div class="stores" data-stores>
+          <p class="stores__soon">Disponibile prossimamente</p>
+        </div>
       </div>
     </section>
   </main>

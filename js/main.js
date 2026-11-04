@@ -1,8 +1,11 @@
-/* PAWAY — parallax di cane e gatto nell’apertura, una dissolvenza per sezione.
-   Senza JavaScript o con movimento ridotto tutto resta visibile e fermo. */
+/* PAWAY — un solo parallax tra apertura e «Come funziona»:
+   la mezzaluna corallo scorre più lenta della schermata, che si ferma accanto ai passaggi.
+   Senza JavaScript, su mobile o con movimento ridotto la pagina resta statica. */
 
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+const STAGE_QUERY = "(min-width: 900px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)";
 
 const STORES = [
   {
@@ -32,46 +35,6 @@ function renderStores() {
   `).join("");
 }
 
-function initMotion() {
-  if (!window.gsap || !window.ScrollTrigger) return;
-  gsap.registerPlugin(ScrollTrigger);
-  const mm = gsap.matchMedia();
-
-  mm.add(
-    {
-      desktop: "(min-width: 761px) and (prefers-reduced-motion: no-preference)",
-      mobile: "(max-width: 760px) and (prefers-reduced-motion: no-preference)",
-    },
-    (ctx) => {
-      const { desktop } = ctx.conditions;
-      const travel = desktop ? { cat: -20, dog: -12 } : { cat: -10, dog: -6 };
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".hero",
-          start: "top top",
-          end: () => `+=${Math.round(window.innerHeight * 0.6)}`,
-          invalidateOnRefresh: true,
-          scrub: 0.6,
-        },
-      });
-      tl.to(".hero__cat", { y: travel.cat, ease: "none" }, 0)
-        .to(".hero__dog", { y: travel.dog, ease: "none" }, 0);
-
-      $$("[data-reveal]").forEach((section) => {
-        gsap.from(section.children, {
-          y: 24,
-          autoAlpha: 0,
-          duration: 0.7,
-          ease: "power2.out",
-          stagger: 0.08,
-          scrollTrigger: { trigger: section, start: "top 82%", once: true },
-        });
-      });
-    }
-  );
-}
-
 function focusDownloadOnJump() {
   const target = $("#download");
   $$('a[href="#download"]').forEach((link) => {
@@ -81,7 +44,66 @@ function focusDownloadOnJump() {
   });
 }
 
+function showScreen(index) {
+  $$("[data-screen]").forEach((img) => {
+    const on = Number(img.dataset.screen) === index;
+    img.classList.toggle("is-active", on);
+    img.setAttribute("aria-hidden", on ? "false" : "true");
+  });
+  $$("[data-step]").forEach((step) => {
+    step.classList.toggle("is-active", Number(step.dataset.step) === index);
+  });
+}
+
+function initStage() {
+  const root = document.documentElement;
+  if (!window.gsap || !window.ScrollTrigger) {
+    root.classList.remove("is-stage");
+    return;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.matchMedia().add(STAGE_QUERY, () => {
+    root.classList.add("is-stage");
+    ScrollTrigger.refresh();
+
+    const device = $("[data-device]");
+    const centerShift = () => {
+      const col = device.parentElement.getBoundingClientRect().width;
+      return -(col - device.offsetWidth) / 2;
+    };
+
+    gsap.timeline({
+      scrollTrigger: {
+        start: 0,
+        end: () => window.innerHeight * 0.9,
+        scrub: 0.5,
+        invalidateOnRefresh: true,
+      },
+    })
+      .to("[data-crescent]", { y: () => window.innerHeight * 0.55, ease: "none" }, 0)
+      .to(device, { x: centerShift, ease: "power1.inOut" }, 0);
+
+    const steps = $$("[data-step]");
+    steps.forEach((step, i) => {
+      ScrollTrigger.create({
+        trigger: step,
+        start: "top 55%",
+        end: "bottom 55%",
+        onEnter: () => showScreen(i + 1),
+        onEnterBack: () => showScreen(i + 1),
+        onLeaveBack: i === 0 ? () => showScreen(0) : undefined,
+      });
+    });
+
+    return () => {
+      root.classList.remove("is-stage");
+      showScreen(0);
+    };
+  });
+}
+
 $("[data-year]").textContent = String(new Date().getFullYear());
 renderStores();
 focusDownloadOnJump();
-initMotion();
+initStage();
