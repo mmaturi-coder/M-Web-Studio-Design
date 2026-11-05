@@ -1,0 +1,33 @@
+PAWAY — come vedere il sito (senza impazzire)
+
+═══════════════════════════════════════════════════
+★ MODO 1 — LINK NEL BROWSER (consigliato)
+═══════════════════════════════════════════════════
+
+Apri questo indirizzo (funziona da iPhone, Mac, ovunque):
+
+  https://mmaturi-coder.github.io/M-Web-Studio-Design/
+
+Se vedi ancora il vecchio sito “M Web Design Studio”, attendi 2–3 minuti
+dopo l’ultimo aggiornamento o prova in navigazione privata.
+
+(La versione PAWAY viene pubblicata sul branch gh-pages del repository.)
+
+═══════════════════════════════════════════════════
+MODO 2 — SUL MAC, cartella in Download
+═══════════════════════════════════════════════════
+
+1. Cartella: PAWAY-presentazione (deve contenere index.html).
+2. Doppio clic: Apri PAWAY.command
+   Blocco macOS? Tasto destro → Apri → Apri.
+3. Non chiudere il Terminale che si apre.
+
+Se non hai Apri PAWAY.command, scarica di nuovo l’archivio
+PAWAY-presentazione-sorgente.tar.gz dall’agent Cursor.
+
+═══════════════════════════════════════════════════
+Perché http://127.0.0.1:4173 “non va” da solo
+═══════════════════════════════════════════════════
+
+Quel link funziona SOLO dopo Apri PAWAY.command sul TUO Mac.
+Aprire 127.0.0.1 dalla chat Cursor non apre il sito sul tuo computer.
