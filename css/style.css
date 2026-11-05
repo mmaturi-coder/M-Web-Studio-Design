@@ -556,6 +556,27 @@ a { color: inherit; }
   pointer-events: none;
 }
 .tile--orb h3, .tile--orb p { position: relative; z-index: 1; }
+/* La mappa è quella della schermata dell’app: entra da destra e sborda in basso, il testo resta sull’inchiostro */
+.tile--map { min-height: clamp(280px, 26vw, 360px); }
+.tile--map h3, .tile--map p { position: relative; z-index: 1; }
+.tile--map p { max-width: 24ch; }
+.tile__map {
+  position: absolute;
+  top: clamp(44px, 14%, 64px);
+  right: 0;
+  bottom: 0;
+  width: 58%;
+  border-radius: clamp(18px, 1.8vw, 24px) 0 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 0 1.5px rgba(242, 245, 239, 0.16), -24px 0 60px -30px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+.tile__map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 100% 50%;
+}
 
 /* ── Download ── */
 .download {
@@ -683,6 +704,18 @@ a { color: inherit; }
   .tile h3 { margin-top: 0; }
   .tile--orb { min-height: 260px; }
   .tile__orb { width: 56%; top: -4%; right: -6%; }
+  .tile--map { min-height: 0; padding-bottom: 0; }
+  .tile--map p { max-width: 38ch; }
+  .tile__map {
+    position: relative;
+    inset: auto;
+    width: calc(100% + 2 * clamp(22px, 2.4vw, 32px));
+    margin: 22px calc(-1 * clamp(22px, 2.4vw, 32px)) 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+    box-shadow: 0 -1.5px 0 rgba(242, 245, 239, 0.16);
+  }
+  .tile__map img { object-position: 62% 50%; }
   .footer__in {
     grid-template-columns: 1fr;
     grid-template-areas: "brand" "tag" "nav" "copy";

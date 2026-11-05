@@ -32,6 +32,7 @@ Esportate a 2× dal file Figma dell’interfaccia, in `assets/img/` (versione `-
 - `app-guida` — Esplora
 - `app-segnala` — Segnala
 - `app-aggiornamenti` — Segui
+- `app-mappa` — la mappa di Roma della schermata Mappa (ritaglio orizzontale con i punti di interesse), nella tile «Mappa» del bento
 - `helpaw-orb.mp4` / `helpaw-orb.webp` — l’animazione della sfera di Helpaw (dalla GIF del brand, composta sul colore della tile) e il suo primo fotogramma come poster; parte solo con movimento consentito e quando è in vista
 
 ## Movimento

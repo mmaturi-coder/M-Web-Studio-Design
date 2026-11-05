@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
   <script>
     /* Decide prima del primo disegno se la pagina userà la scena con il telefono fisso e l’ingresso animato */
     (function () {
@@ -149,10 +149,17 @@
         <h2 id="features-title">Tutto quello che serve, quando serve.</h2>
       </div>
       <div class="bento">
-        <article class="tile tile--ink tile--wide" data-reveal>
+        <article class="tile tile--ink tile--wide tile--map" data-reveal>
           <svg class="tile__ico" aria-hidden="true"><use href="assets/icons.svg#i-pin" /></svg>
           <h3>Mappa</h3>
           <p>Veterinari, rifugi, enti e segnalazioni intorno a te, con le indicazioni per arrivarci.</p>
+          <figure class="tile__map">
+            <img src="assets/img/app-mappa.webp"
+              srcset="assets/img/app-mappa-sm.webp 831w, assets/img/app-mappa.webp 1662w"
+              sizes="(min-width: 1024px) 480px, (min-width: 761px) 56vw, 100vw"
+              width="1662" height="961" loading="lazy" decoding="async"
+              alt="La mappa di PAWAY: veterinari, rifugi ed enti intorno a Roma, dal centro storico a San Giovanni." />
+          </figure>
         </article>
         <article class="tile tile--coral" data-reveal>
           <svg class="tile__ico" aria-hidden="true"><use href="assets/icons.svg#i-alert" /></svg>
@@ -215,7 +222,7 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="vendor/lenis.min.js"></script>
-  <script src="js/config.js?v=5"></script>
-  <script src="js/main.js?v=5"></script>
+  <script src="js/config.js?v=6"></script>
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>
