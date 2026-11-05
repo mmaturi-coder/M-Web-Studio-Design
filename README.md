@@ -6,11 +6,35 @@ Idea: **dal dubbio al primo gesto**. La protagonista è l’interfaccia vera del
 
 ## Avvio
 
+**Modo consigliato (Mac e Linux):** dalla cartella del progetto (dove c’è `index.html`):
+
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+Lo script sceglie la porta `4173` se è libera, altrimenti la successiva disponibile, e stampa l’URL da aprire nel browser.
+
+**Manuale:**
+
 ```bash
 python3 -m http.server 4173
 ```
 
-Apri `http://localhost:4173`.
+Poi apri `http://localhost:4173` (non aprire `index.html` con doppio clic: con `file://` video e animazioni potrebbero non funzionare).
+
+### Risoluzione problemi (Mac)
+
+| Problema | Cosa fare |
+| -------- | --------- |
+| **ERR_CONNECTION_REFUSED** su `localhost` o `127.0.0.1` | Il server non è in esecuzione. Apri Terminale, vai nella cartella del progetto (`cd ~/Downloads/PAWAY-presentazione` se l’hai estratta lì) ed esegui `./start.sh`. L’errore compare anche se hai chiuso il Terminale mentre il server era attivo. |
+| **Pagina bianca o link «non funziona»** | Apri l’URL che stampa `./start.sh`, es. `http://localhost:4173`. Non usare `file:///Users/.../index.html`. |
+| **Cartella sbagliata** | `start.sh` e `index.html` devono stare nella stessa cartella. Se manca `index.html`, sei in una sottocartella o nell’archivio non estratto. |
+| **Porta occupata** | `./start.sh` prova automaticamente la porta successiva e lo indica a schermo. Usa quell’URL, non necessariamente `4173`. |
+| **Terminale chiuso** | Il server vive solo finché la finestra del Terminale resta aperta. Riavvia con `./start.sh`. |
+| **Aprire subito Safari/Chrome** | Con il server avviato: `open http://localhost:4173` (sostituisci la porta se lo script ne ha scelta un’altra). |
+
+**Python mancante:** su Mac, da [python.org](https://www.python.org/downloads/) o `brew install python`, poi riprova `./start.sh`.
 
 ## Teaser cinematico
 
