@@ -24,6 +24,24 @@ const STORES = [
   },
 ];
 
+function initFilm() {
+  const cfg = window.PAWAY_CONFIG && window.PAWAY_CONFIG.video;
+  const wrap = $("[data-film]");
+  const video = $("[data-film-video]");
+  if (!wrap || !video || !cfg || !String(cfg.src || "").trim()) {
+    wrap?.closest(".film")?.remove();
+    $$('a[href="#presentazione"]').forEach((a) => a.remove());
+    return;
+  }
+  const src = String(cfg.src).trim();
+  const poster = String(cfg.poster || "").trim();
+  const source = $("source", video);
+  if (source) source.src = src;
+  else video.src = src;
+  if (poster) video.poster = poster;
+  video.load();
+}
+
 function renderStores() {
   const host = $("[data-stores]");
   const links = (window.PAWAY_CONFIG && window.PAWAY_CONFIG.stores) || {};
@@ -431,6 +449,7 @@ function initMap() {
 }
 
 $("[data-year]").textContent = String(new Date().getFullYear());
+initFilm();
 renderStores();
 focusDownloadOnJump();
 initHeader();

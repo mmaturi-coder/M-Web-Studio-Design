@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/style.css?v=7" />
+  <link rel="stylesheet" href="css/style.css?v=8" />
   <script>
     /* Decide prima del primo disegno se la pagina userà la scena con il telefono fisso e l’ingresso animato */
     (function () {
@@ -30,6 +30,7 @@
       </a>
       <nav class="nav" aria-label="Sezioni">
         <a href="#come-funziona">Come funziona</a>
+        <a href="#presentazione">Video</a>
         <a href="#nell-app">Nell’app</a>
       </nav>
       <a class="btn btn--sm" href="#download">Scarica l’app <span class="btn__dot" aria-hidden="true"></span></a>
@@ -143,6 +144,21 @@
       </div>
     </div>
 
+    <section class="film" id="presentazione" aria-labelledby="film-title">
+      <div class="film__head">
+        <p class="kicker">Presentazione</p>
+        <h2 id="film-title">Il progetto raccontato in video.</h2>
+        <p class="film__lead">La presentazione del servizio e dell’esperienza che hai progettato.</p>
+      </div>
+      <figure class="film__frame" data-reveal data-film>
+        <video class="film__video" data-film-video controls playsinline preload="metadata" width="1440" height="900"
+          poster="assets/img/paway-presentazione-poster.webp">
+          <source src="assets/video/paway-presentazione.mp4" type="video/mp4" />
+        </video>
+        <figcaption class="film__cap">Video di presentazione · Maria Maturi / Web Design Studio.</figcaption>
+      </figure>
+    </section>
+
     <section class="features" id="nell-app" aria-labelledby="features-title">
       <div class="features__head">
         <p class="kicker">Nell’app</p>
@@ -252,6 +268,7 @@
       <p class="footer__tag">Il primo gesto può partire da te.</p>
       <nav class="footer__nav" aria-label="Sezioni, piè di pagina">
         <a href="#come-funziona">Come funziona</a>
+        <a href="#presentazione">Video</a>
         <a href="#nell-app">Nell’app</a>
         <a href="#download">Scarica l’app</a>
       </nav>
@@ -262,7 +279,7 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="vendor/lenis.min.js"></script>
-  <script src="js/config.js?v=7"></script>
-  <script src="js/main.js?v=7"></script>
+  <script src="js/config.js?v=8"></script>
+  <script src="js/main.js?v=8"></script>
 </body>
 </html>

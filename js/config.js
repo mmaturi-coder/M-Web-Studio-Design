@@ -5,4 +5,9 @@ window.PAWAY_CONFIG = {
     appStore: "",
     googlePlay: "",
   },
+  /* Video di presentazione: sostituisci src/poster con i tuoi file in assets/ */
+  video: {
+    src: "assets/video/paway-presentazione.mp4",
+    poster: "assets/img/paway-presentazione-poster.webp",
+  },
 };
