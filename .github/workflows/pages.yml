@@ -2,7 +2,9 @@ name: Deploy static site to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - cursor/paway-presentazione-3f56
   workflow_dispatch:
 
 permissions:

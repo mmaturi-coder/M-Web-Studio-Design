@@ -59,4 +59,8 @@ echo "  Lascia questa finestra aperta finché usi il sito."
 echo "  Per fermare il server: Ctrl+C"
 echo ""
 
+if [[ "$(uname -s)" == "Darwin" ]] && command -v open >/dev/null 2>&1; then
+  (sleep 0.8 && open "http://localhost:${PORT}/") &
+fi
+
 exec python3 -m http.server "$PORT" --bind 127.0.0.1
