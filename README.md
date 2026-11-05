@@ -12,6 +12,8 @@ python3 -m http.server 4173
 
 Apri `http://localhost:4173`.
 
+**Antigravity / IDE:** clona il repo, apri la cartella root e avvia un server statico sulla root (entry `index.html`). Non serve build.
+
 ## Link agli store
 
 I link stanno in `js/config.js`. Un badge compare solo quando il campo contiene un URL `https://`; se sono tutti vuoti la sezione mostra «Disponibile prossimamente».

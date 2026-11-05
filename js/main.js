@@ -109,9 +109,12 @@ function initOrb() {
 
 /* Scorrimento morbido: Lenis interpola la posizione, ScrollTrigger si aggiorna sul suo tick.
    Lo scroll resta nativo (niente wrapper trasformati), quindi il telefono sticky continua a funzionare. */
+let smooth = null;
+
 function initSmoothScroll() {
   if (!window.Lenis) return null;
   const lenis = new Lenis({ lerp: 0.1 });
+  smooth = lenis;
   lenis.on("scroll", ScrollTrigger.update);
   const tick = (time) => lenis.raf(time * 1000);
   gsap.ticker.add(tick);
@@ -136,6 +139,7 @@ function initSmoothScroll() {
     document.removeEventListener("click", onClick);
     gsap.ticker.remove(tick);
     lenis.destroy();
+    smooth = null;
   };
 }
 
@@ -212,9 +216,224 @@ function initMotion() {
   });
 }
 
+
+/* ── Mappa interattiva: la cartografia della schermata «mappa», i tre punti e la scheda del prototipo ── */
+const MAP_W = 830.8;
+const MAP_H = 1150;
+const METERS_PER_PX = 500 / 70.8; // la scala della schermata: 500 m = 70,8 px
+const YOU = { x: 205, y: 488 }; // Campo de’ Fiori
+const PLACES = {
+  enpa: { name: "ENPA Roma", short: "ENPA Roma", kind: "Associazione · Cani e gatti", address: "Via Terni 42", zone: "San Giovanni", x: 792.4, y: 642.8 },
+  vigili: { name: "Vigili del Fuoco", short: "Vigili del Fuoco", kind: "Comando · Roma", address: "Via Genova 3/A", zone: "Monti", x: 444.2, y: 413.2 },
+  polizia: { name: "Polizia Locale", short: "Polizia Locale", kind: "Comando generale · Roma", address: "Via della Consolazione 4", zone: "Campitelli", x: 360.3, y: 545.6 },
+  lndc: { name: "LNDC · Ostia", short: "LNDC", kind: "Associazione · Cani e gatti", address: "Sezione di Ostia · Roma", zone: "Ostia", time: "35 min", distance: "5,0 km · auto", navigate: "LNDC Lega Nazionale per la Difesa del Cane, Ostia, Roma" },
+};
+
+function initMap() {
+  const map = $("[data-map]");
+  if (!map) return;
+  const world = $("[data-map-world]", map);
+  const img = $(".map__img", map);
+  const route = $("[data-map-route] path", map);
+  const routeSvg = $("[data-map-route]", map);
+  const you = $("[data-map-you]", map);
+  const pins = $$("[data-map-pin]", map);
+  const sheet = $("[data-map-sheet]", map);
+  const dir = $("[data-map-dir]", map);
+  const dirBtn = $("[data-map-directions]", map);
+  const navigate = $("[data-map-navigate]", map);
+  const scale = $("[data-map-scale]", map);
+  const expand = $("[data-map-expand]", map);
+  const zoomBtns = $$("[data-map-zoom]", map);
+  const motion = window.matchMedia(MOTION_QUERY).matches && window.gsap;
+
+  const view = { z: 1, tx: 0, ty: 0 };
+  let current = null;
+
+  const size = () => ({ w: map.clientWidth, h: map.clientHeight });
+
+  const clamp = (v) => {
+    const { w, h } = size();
+    const ww = MAP_W * v.z;
+    const wh = MAP_H * v.z;
+    v.tx = ww <= w ? (w - ww) / 2 : Math.min(0, Math.max(w - ww, v.tx));
+    v.ty = wh <= h ? (h - wh) / 2 : Math.min(0, Math.max(h - wh, v.ty));
+    return v;
+  };
+
+  const render = () => {
+    const z = view.z;
+    world.style.transform = `translate3d(${view.tx}px, ${view.ty}px, 0)`;
+    img.style.width = `${MAP_W * z}px`;
+    img.style.height = `${MAP_H * z}px`;
+    routeSvg.style.width = `${MAP_W * z}px`;
+    routeSvg.style.height = `${MAP_H * z}px`;
+    pins.forEach((pin) => {
+      const p = PLACES[pin.dataset.mapPin];
+      if (!p || p.x === undefined) return;
+      pin.style.left = `${p.x * z}px`;
+      pin.style.top = `${p.y * z}px`;
+    });
+    you.style.left = `${YOU.x * z}px`;
+    you.style.top = `${YOU.y * z}px`;
+    const metres = [1000, 500, 250, 100].find((m) => (m / METERS_PER_PX) * z <= 120) || 100;
+    scale.style.width = `${(metres / METERS_PER_PX) * z}px`;
+    scale.firstElementChild.textContent = metres >= 1000 ? `${metres / 1000} km` : `${metres} m`;
+  };
+
+  const goTo = (next, animate = true) => {
+    clamp(next);
+    if (motion && animate) {
+      gsap.to(view, { ...next, duration: 0.5, ease: "power3.out", onUpdate: render, overwrite: true });
+    } else {
+      Object.assign(view, next);
+      render();
+    }
+  };
+
+  const centerOn = (x, y, z = view.z) => {
+    const { w, h } = size();
+    return { z, tx: w / 2 - x * z, ty: h / 2 - y * z };
+  };
+
+  /* Stato iniziale: Centro storico, Monti e San Giovanni in vista */
+  const initial = () => {
+    const { w } = size();
+    return centerOn(w < 600 ? 520 : 585, 500, 1);
+  };
+  goTo(initial(), false);
+  new ResizeObserver(() => goTo({ ...view }, false)).observe(map);
+
+  /* Trascina per esplorare */
+  let drag = null;
+  map.addEventListener("pointerdown", (e) => {
+    if (e.button !== 0 || e.target.closest("button, a, .map__sheet")) return;
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, tx: view.tx, ty: view.ty, moved: false };
+    map.setPointerCapture(e.pointerId);
+    if (motion) gsap.killTweensOf(view);
+  });
+  map.addEventListener("pointermove", (e) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const dx = e.clientX - drag.x;
+    const dy = e.clientY - drag.y;
+    if (!drag.moved && Math.hypot(dx, dy) > 4) {
+      drag.moved = true;
+      map.classList.add("is-dragging", "is-touched");
+    }
+    if (!drag.moved) return;
+    Object.assign(view, clamp({ z: view.z, tx: drag.tx + dx, ty: drag.ty + dy }));
+    render();
+  });
+  const endDrag = (e) => {
+    if (!drag || e.pointerId !== drag.id) return;
+    drag = null;
+    map.classList.remove("is-dragging");
+  };
+  map.addEventListener("pointerup", endDrag);
+  map.addEventListener("pointercancel", endDrag);
+
+  /* Zoom 1× · 2× · 3× attorno al centro della vista */
+  const setZoom = (z) => {
+    const { w, h } = size();
+    const cx = (w / 2 - view.tx) / view.z;
+    const cy = (h / 2 - view.ty) / view.z;
+    zoomBtns.forEach((b) => b.setAttribute("aria-pressed", String(Number(b.dataset.mapZoom) === z)));
+    map.classList.add("is-touched");
+    goTo(centerOn(cx, cy, z));
+  };
+  zoomBtns.forEach((b) => b.addEventListener("click", () => setZoom(Number(b.dataset.mapZoom))));
+
+  /* Scheda del punto */
+  const fill = (place) => {
+    $$("[data-card]", sheet).forEach((el) => {
+      const key = el.dataset.card;
+      if (key in place) el.textContent = place[key];
+    });
+  };
+  const drawRoute = (place) => {
+    if (place.x === undefined) {
+      map.classList.remove("has-route");
+      return;
+    }
+    const mx = (YOU.x + place.x) / 2;
+    const my = (YOU.y + place.y) / 2;
+    const bend = place.y > YOU.y ? -70 : 70;
+    route.setAttribute("d", `M${YOU.x} ${YOU.y} Q${mx + bend} ${my - bend} ${place.x} ${place.y}`);
+    map.classList.add("has-route");
+  };
+  const estimate = (place) => {
+    if (place.time) return { time: place.time, distance: place.distance };
+    const metres = Math.hypot(place.x - YOU.x, place.y - YOU.y) * METERS_PER_PX * 1.35;
+    const km = Math.max(0.5, Math.round(metres / 100) / 10);
+    const minutes = Math.max(5, Math.round((km / 18) * 60 / 5) * 5);
+    return { time: `${minutes} min`, distance: `${km.toFixed(1).replace(".", ",")} km · auto` };
+  };
+  const openCard = (key) => {
+    const place = PLACES[key];
+    if (!place) return;
+    current = key;
+    fill({ ...place, ...estimate(place) });
+    dir.hidden = true;
+    dirBtn.setAttribute("aria-pressed", "false");
+    map.classList.remove("has-route");
+    pins.forEach((p) => p.classList.toggle("is-active", p.dataset.mapPin === key));
+    sheet.hidden = false;
+    map.classList.add("is-touched");
+    if (place.x !== undefined) {
+      const { w, h } = size();
+      const target = centerOn(place.x, place.y);
+      const visibleX = place.x * view.z + view.tx;
+      const visibleY = place.y * view.z + view.ty;
+      if (visibleX < 40 || visibleX > w - 40 || visibleY < 60 || visibleY > h - 40) goTo(target);
+    }
+    dirBtn.focus({ preventScroll: true });
+  };
+  const closeCard = () => {
+    sheet.hidden = true;
+    map.classList.remove("has-route");
+    pins.forEach((p) => p.classList.remove("is-active"));
+    const pin = pins.find((p) => p.dataset.mapPin === current);
+    current = null;
+    if (pin) pin.focus({ preventScroll: true });
+  };
+  pins.forEach((pin) => pin.addEventListener("click", () => openCard(pin.dataset.mapPin)));
+  $("[data-map-close]", map).addEventListener("click", closeCard);
+  dirBtn.addEventListener("click", () => {
+    const place = PLACES[current];
+    const open = dir.hidden;
+    dir.hidden = !open;
+    dirBtn.setAttribute("aria-pressed", String(open));
+    if (open) {
+      drawRoute(place);
+      const dest = place.navigate || `${place.address}, Roma`;
+      navigate.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}`;
+      if (place.x !== undefined) goTo(centerOn((YOU.x + place.x) / 2, (YOU.y + place.y) / 2));
+    } else {
+      map.classList.remove("has-route");
+    }
+  });
+
+  /* Schermo intero, come il tasto «espandi» del prototipo */
+  const setExpanded = (on) => {
+    map.classList.toggle("is-expanded", on);
+    root.classList.toggle("map-open", on);
+    expand.setAttribute("aria-pressed", String(on));
+    expand.setAttribute("aria-label", on ? "Chiudi la mappa a schermo intero" : "Apri la mappa a schermo intero");
+    if (smooth) on ? smooth.stop() : smooth.start();
+    goTo({ ...view }, false);
+  };
+  expand.addEventListener("click", () => setExpanded(!map.classList.contains("is-expanded")));
+  map.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!sheet.hidden) closeCard();
+    else if (map.classList.contains("is-expanded")) setExpanded(false);
+  });
+}
+
 $("[data-year]").textContent = String(new Date().getFullYear());
 renderStores();
 focusDownloadOnJump();
 initHeader();
 initOrb();
+initMap();
 initMotion();

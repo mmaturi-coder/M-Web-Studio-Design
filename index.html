@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
   <script>
     /* Decide prima del primo disegno se la pagina userà la scena con il telefono fisso e l’ingresso animato */
     (function () {
@@ -150,16 +150,56 @@
       </div>
       <div class="bento">
         <article class="tile tile--ink tile--wide tile--map" data-reveal>
-          <svg class="tile__ico" aria-hidden="true"><use href="assets/icons.svg#i-pin" /></svg>
-          <h3>Mappa</h3>
-          <p>Veterinari, rifugi, enti e segnalazioni intorno a te, con le indicazioni per arrivarci.</p>
-          <figure class="tile__map">
-            <img src="assets/img/app-mappa.webp"
-              srcset="assets/img/app-mappa-sm.webp 831w, assets/img/app-mappa.webp 1662w"
-              sizes="(min-width: 1024px) 480px, (min-width: 761px) 56vw, 100vw"
-              width="1662" height="961" loading="lazy" decoding="async"
-              alt="La mappa di PAWAY: veterinari, rifugi ed enti intorno a Roma, dal centro storico a San Giovanni." />
-          </figure>
+          <div class="map" data-map aria-label="Mappa interattiva di Roma con i punti PAWAY. Trascina per esplorare, scegli un segnaposto per i dettagli.">
+            <div class="map__world" data-map-world>
+              <img class="map__img" src="assets/img/app-mappa.webp" width="1662" height="2300" loading="lazy" decoding="async" draggable="false"
+                alt="La mappa di PAWAY: Roma dal centro storico a San Giovanni." />
+              <svg class="map__route" data-map-route viewBox="0 0 830.8 1150" preserveAspectRatio="none" aria-hidden="true"><path d="" /></svg>
+              <span class="map__you" data-map-you aria-hidden="true"></span>
+              <button class="map__pin" type="button" data-map-pin="enpa" aria-label="ENPA Roma, Associazione · Cani e gatti"><svg viewBox="0 0 25 34" aria-hidden="true"><path d="M12.5 33.5C12.5 33.5 25 20.4 25 12.5A12.5 12.5 0 0 0 0 12.5C0 20.4 12.5 33.5 12.5 33.5Z"/><circle class="map__pin-dot" cx="12.5" cy="12.5" r="4.6"/></svg></button>
+              <button class="map__pin" type="button" data-map-pin="vigili" aria-label="Vigili del Fuoco, Comando · Roma"><svg viewBox="0 0 25 34" aria-hidden="true"><path d="M12.5 33.5C12.5 33.5 25 20.4 25 12.5A12.5 12.5 0 0 0 0 12.5C0 20.4 12.5 33.5 12.5 33.5Z"/><circle class="map__pin-dot" cx="12.5" cy="12.5" r="4.6"/></svg></button>
+              <button class="map__pin" type="button" data-map-pin="polizia" aria-label="Polizia Locale, Comando generale · Roma"><svg viewBox="0 0 25 34" aria-hidden="true"><path d="M12.5 33.5C12.5 33.5 25 20.4 25 12.5A12.5 12.5 0 0 0 0 12.5C0 20.4 12.5 33.5 12.5 33.5Z"/><circle class="map__pin-dot" cx="12.5" cy="12.5" r="4.6"/></svg></button>
+            </div>
+
+            <button class="map__edge" type="button" data-map-pin="lndc" aria-label="LNDC · Ostia, fuori dalla mappa, a sud-ovest">
+              <svg viewBox="0 0 25 34" aria-hidden="true"><path d="M12.5 33.5C12.5 33.5 25 20.4 25 12.5A12.5 12.5 0 0 0 0 12.5C0 20.4 12.5 33.5 12.5 33.5Z"/><circle class="map__pin-dot" cx="12.5" cy="12.5" r="4.6"/></svg>
+              <span>LNDC</span>
+            </button>
+
+            <h3 class="map__title"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-pin" /></svg>Mappa</h3>
+            <p class="map__hint" data-map-hint>Trascina per esplorare · tocca un segnaposto</p>
+
+            <div class="map__scale" data-map-scale aria-hidden="true"><span>500 m</span></div>
+            <div class="map__zoom" role="group" aria-label="Zoom">
+              <button type="button" data-map-zoom="1" aria-pressed="true">1×</button>
+              <button type="button" data-map-zoom="2" aria-pressed="false">2×</button>
+              <button type="button" data-map-zoom="3" aria-pressed="false">3×</button>
+            </div>
+            <button class="map__expand" type="button" data-map-expand aria-label="Apri la mappa a schermo intero" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <div class="map__sheet" data-map-sheet hidden>
+              <button class="map__sheet-close" type="button" data-map-close aria-label="Chiudi la scheda"></button>
+              <div class="map__card" role="dialog" aria-modal="false" aria-labelledby="map-card-title">
+                <h4 class="map__card-title" id="map-card-title" data-card="name"></h4>
+                <p class="map__card-kind" data-card="kind"></p>
+                <p class="map__card-addr" data-card="address"></p>
+                <div class="map__card-foot">
+                  <p class="map__card-zone"><span data-card="zone"></span><small>Zona di Roma</small></p>
+                  <button class="map__card-btn" type="button" data-map-directions>Indicazioni
+                    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 16h12M17 10.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+                <div class="map__dir" data-map-dir hidden>
+                  <p class="map__dir-row"><i class="map__dir-dot map__dir-dot--you"></i>Tua posizione<strong data-card="time"></strong></p>
+                  <p class="map__dir-row"><i class="map__dir-dot"></i><span data-card="short"></span><small data-card="distance"></small></p>
+                  <p class="map__dir-note">Punti sulla mappa · traffico non incluso</p>
+                  <a class="map__dir-go" data-map-navigate href="#" target="_blank" rel="noopener">Naviga</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </article>
         <article class="tile tile--coral" data-reveal>
           <svg class="tile__ico" aria-hidden="true"><use href="assets/icons.svg#i-alert" /></svg>
@@ -222,7 +262,7 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="vendor/lenis.min.js"></script>
-  <script src="js/config.js?v=6"></script>
-  <script src="js/main.js?v=6"></script>
+  <script src="js/config.js?v=7"></script>
+  <script src="js/main.js?v=7"></script>
 </body>
 </html>
