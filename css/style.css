@@ -35,18 +35,22 @@
   --radius-pill: 100px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* telefono: la schermata è 402 × 874, la cornice 10 px */
-  --bezel: 10px;
+  /* telefono: la schermata è 402 × 874; cornice, raggio e Dynamic Island in proporzione a un iPhone 16 */
+  --bezel: calc(var(--dev-w) * 0.03);
   --dev-w: min(360px, calc((100svh - var(--head-h) - 56px) / 2.174));
   --dev-h: calc(var(--dev-w) * 2.174 + var(--bezel) * 2);
   --dev-top: 12px;
-  --cw: var(--dev-h);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 }
+/* Con Lenis attivo lo scorrimento morbido lo fa lui */
+html.lenis, html.lenis body { height: auto; }
+html.lenis { scroll-behavior: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
 html { scroll-padding-top: calc(var(--head-h) + 8px); }
 body {
   margin: 0;
@@ -255,17 +259,6 @@ a { color: inherit; }
   padding-top: var(--dev-top);
   padding-bottom: clamp(48px, 8svh, 96px);
 }
-/* L’unico elemento grafico di sfondo: la mezzaluna del marchio, in corallo pieno */
-.crescent {
-  position: absolute;
-  z-index: 0;
-  top: calc(var(--dev-top) + var(--dev-h) * 0.19 - var(--cw) * 0.33);
-  right: calc(var(--dev-w) / 2 + var(--bezel) - var(--cw) * 0.34);
-  width: var(--cw);
-  height: var(--cw);
-  fill: var(--coral);
-  will-change: transform;
-}
 .device-sticky {
   position: relative;
   z-index: 1;
@@ -273,19 +266,48 @@ a { color: inherit; }
   justify-content: flex-end;
   perspective: 1400px;
 }
+/* iPhone 16: scocca nera, bordo in alluminio, Dynamic Island, tasto Azione, volume e tasto laterale */
 .device {
   position: relative;
   width: calc(var(--dev-w) + var(--bezel) * 2);
   padding: var(--bezel);
-  border-radius: calc(var(--dev-w) * 0.14);
-  background: var(--ink);
-  box-shadow: 0 50px 90px -30px rgba(23, 23, 23, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  border-radius: calc(var(--dev-w) * 0.165);
+  background: #0a0a0b;
+  box-shadow:
+    0 0 0 2px #3b3b3e,
+    0 0 0 3px #1a1a1c,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 50px 90px -30px rgba(23, 23, 23, 0.55);
   transform-style: preserve-3d;
   will-change: transform;
 }
+.device::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--bezel) + var(--dev-w) * 0.012);
+  left: 50%;
+  width: calc(var(--dev-w) * 0.3);
+  height: calc(var(--dev-w) * 0.07);
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: radial-gradient(circle at 82% 50%, #141b2c 0 8%, #000 10%);
+}
+.device__btn {
+  position: absolute;
+  width: 3px;
+  background: linear-gradient(90deg, #2a2a2d, #4a4a4e 50%, #2a2a2d);
+  border-radius: 2px 0 0 2px;
+  left: -5px;
+}
+.device__btn--action { top: 17.5%; height: 3.4%; }
+.device__btn--up { top: 23.5%; height: 6%; }
+.device__btn--down { top: 30.8%; height: 6%; }
+.device__btn--side { top: 26%; height: 9.5%; left: auto; right: -5px; border-radius: 0 2px 2px 0; }
 .device__screen {
   width: 100%;
-  border-radius: calc(var(--dev-w) * 0.14 - var(--bezel));
+  border-radius: calc(var(--dev-w) * 0.165 - var(--bezel));
+  background: var(--bg);
 }
 .device__screen:not([data-screen="0"]) { display: none; }
 
@@ -345,9 +367,10 @@ a { color: inherit; }
 }
 .step__thumb {
   width: 100%;
-  border: 6px solid var(--ink);
+  border: 6px solid #0a0a0b;
   border-radius: 22px;
-  background: var(--ink);
+  background: #0a0a0b;
+  box-shadow: 0 0 0 1.5px #3b3b3e;
 }
 .step__num {
   display: block;
@@ -373,7 +396,7 @@ a { color: inherit; }
 @media (min-width: 761px) {
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); }
   .step { grid-template-columns: minmax(0, 1fr); align-items: start; align-content: start; gap: 24px; }
-  .step__thumb { width: min(100%, 220px); border-width: 8px; border-radius: 30px; }
+  .step__thumb { width: min(100%, 220px); border-width: 7px; border-radius: 34px; }
 }
 
 /* ── Scena attiva (desktop, movimento consentito, JavaScript) ── */
@@ -429,11 +452,9 @@ a { color: inherit; }
 
 /* Ingresso: con movimento consentito gli elementi dell’apertura partono invisibili e GSAP li porta dentro */
 .has-motion [data-intro],
-.has-motion .crescent,
 .has-motion .device,
 .has-motion .chip { opacity: 0; }
 .has-motion.is-ready [data-intro],
-.has-motion.is-ready .crescent,
 .has-motion.is-ready .device,
 .has-motion.is-ready .chip { opacity: 1; }
 
@@ -630,9 +651,7 @@ a { color: inherit; }
 .has-motion [data-reveal] { opacity: 0; transform: translateY(22px); }
 .has-motion [data-reveal].is-in { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.8s var(--ease); }
 
-/* Con colonne più strette la mezzaluna si riduce per non toccare il titolo */
 @media (max-width: 1279px) {
-  :root { --cw: calc(var(--dev-h) * 0.88); }
   .chip--sent { right: calc(var(--dev-w) + var(--bezel) * 2 - 60px); }
 }
 @media (max-width: 1023px) {
@@ -655,7 +674,6 @@ a { color: inherit; }
   .hero__actions { margin-top: 22px; }
   .facts, .hero__actions .link { display: none; }
   .device-col { padding-bottom: 0; }
-  .crescent { top: 0; }
   .how { padding-top: 72px; }
   .band { margin-top: 64px; }
   .bento { grid-template-columns: minmax(0, 1fr); }

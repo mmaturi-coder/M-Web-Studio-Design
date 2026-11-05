@@ -2,7 +2,7 @@
 
 Landing page di **PAWAY**, l’app che aiuta chi incontra un cane o un gatto in difficoltà a orientarsi e a inviare una segnalazione.
 
-Idea: **dal dubbio al primo gesto**. La protagonista è l’interfaccia vera dell’app, dentro una cornice da iPhone, che emerge dalla mezzaluna corallo del marchio. Fondo `#F2F5EF`, inchiostro `#171717`, corallo `#DB766B` (per i testi `#C6695F`). Bagel Fat One solo per il titolo d’apertura, Nunito Sans per tutto il resto.
+Idea: **dal dubbio al primo gesto**. La protagonista è l’interfaccia vera dell’app, dentro una cornice da iPhone. Fondo `#F2F5EF`, inchiostro `#171717`, corallo `#DB766B` (per i testi `#C6695F`). Bagel Fat One solo per il titolo d’apertura, Nunito Sans per tutto il resto.
 
 ## Avvio
 
@@ -18,7 +18,7 @@ I link stanno in `js/config.js`. Un badge compare solo quando il campo contiene 
 
 ## Sezioni
 
-1. **Apertura** — eyebrow «Segnala. Aiuta. Proteggi.», titolo, testo, pulsante, tre fatti; a destra la home nel telefono con due chip dell’interfaccia e la mezzaluna.
+1. **Apertura** — eyebrow «Segnala. Aiuta. Proteggi.», titolo, testo, pulsante, tre fatti; a destra la home nel telefono con due chip dell’interfaccia.
 2. **Come funziona** — Esplora, Segnala, Segui con la schermata corrispondente.
 3. **Nastro** — «Il primo gesto può partire da te».
 4. **Nell’app** — bento con Mappa, SOS, Guida, Helpaw AI, Numeri utili. Le icone sono quelle del sistema dell’app (`assets/icons.svg`).
@@ -36,8 +36,8 @@ Esportate a 2× dal file Figma dell’interfaccia, in `assets/img/` (versione `-
 
 ## Movimento
 
-Da 900 px di larghezza (e 620 px di altezza) con movimento consentito, apertura e «Come funziona» condividono un solo telefono, fisso nella sua colonna. Nel primo tratto di scroll la mezzaluna scorre più lenta della pagina e il telefono si sposta al centro della colonna; poi la schermata cambia con una breve dissolvenza a ogni passaggio. Il testo scorre normalmente e lo scroll non viene bloccato.
+Da 900 px di larghezza (e 620 px di altezza) con movimento consentito, apertura e «Come funziona» condividono un solo telefono, fisso nella sua colonna. Nel primo tratto di scroll le chip scorrono più lente della pagina e svaniscono mentre il telefono si sposta al centro della colonna; poi la schermata cambia con una breve dissolvenza a ogni passaggio. Il testo scorre normalmente e lo scroll non viene bloccato.
 
-All’apertura gli elementi entrano in sequenza; il telefono segue appena il puntatore; l’intestazione diventa di vetro quando si scorre; le sezioni in basso compaiono una volta sola.
+Lo scorrimento è ammorbidito da Lenis (`vendor/lenis.min.js`), che interpola la posizione senza toccare lo scroll nativo; ScrollTrigger si aggiorna sul suo tick. All’apertura gli elementi entrano in sequenza; il telefono segue appena il puntatore; l’intestazione diventa di vetro quando si scorre; le sezioni in basso compaiono una volta sola.
 
 Su mobile, con `prefers-reduced-motion` o senza JavaScript la pagina è statica: ogni passaggio mostra la sua schermata, il nastro è fermo e tutto è visibile da subito.

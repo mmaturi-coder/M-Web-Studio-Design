@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
   <script>
     /* Decide prima del primo disegno se la pagina userà la scena con il telefono fisso e l’ingresso animato */
     (function () {
@@ -62,10 +62,6 @@
       </section>
 
       <div class="device-col">
-        <svg class="crescent" data-crescent viewBox="0 0 1000 1000" aria-hidden="true" focusable="false">
-          <path d="M497.5 20A480 480 0 1 0 979.3 473.4A350 350 0 0 1 497.5 20Z" />
-        </svg>
-
         <div class="chip chip--sent" data-chip aria-hidden="true">
           <span class="chip__ico chip__ico--ok"><svg><use href="assets/icons.svg#i-check" /></svg></span>
           <span><strong>Segnalazione inviata</strong><small>Ferito · Roma, Trastevere</small></span>
@@ -77,6 +73,10 @@
 
         <div class="device-sticky">
           <figure class="device" data-device>
+            <span class="device__btn device__btn--action" aria-hidden="true"></span>
+            <span class="device__btn device__btn--up" aria-hidden="true"></span>
+            <span class="device__btn device__btn--down" aria-hidden="true"></span>
+            <span class="device__btn device__btn--side" aria-hidden="true"></span>
             <img class="device__screen is-active" data-screen="0"
               src="assets/img/app-home.webp"
               srcset="assets/img/app-home-sm.webp 402w, assets/img/app-home.webp 804w"
@@ -214,7 +214,8 @@
 
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+  <script src="vendor/lenis.min.js"></script>
+  <script src="js/config.js?v=5"></script>
+  <script src="js/main.js?v=5"></script>
 </body>
 </html>

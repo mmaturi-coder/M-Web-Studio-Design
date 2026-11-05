@@ -64,12 +64,11 @@ function showScreen(index) {
   });
 }
 
-/* Ingresso dell’apertura: testo dall’alto verso il basso, poi mezzaluna, telefono e chip */
+/* Ingresso dell’apertura: testo dall’alto verso il basso, poi telefono e chip */
 function playIntro() {
   root.classList.add("is-ready");
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
   tl.from("[data-intro]", { y: 26, autoAlpha: 0, duration: 0.9, stagger: 0.09 }, 0)
-    .from("[data-crescent]", { scale: 0.86, autoAlpha: 0, duration: 1.2, transformOrigin: "66% 33%", ease: "power2.out" }, 0.1)
     .from("[data-device]", { y: 70, autoAlpha: 0, duration: 1.1 }, 0.3)
     .from("[data-chip]", { y: 18, scale: 0.94, autoAlpha: 0, duration: 0.7, stagger: 0.12, ease: "back.out(1.6)" }, 0.9);
   return tl;
@@ -108,6 +107,38 @@ function initOrb() {
   io.observe(orb);
 }
 
+/* Scorrimento morbido: Lenis interpola la posizione, ScrollTrigger si aggiorna sul suo tick.
+   Lo scroll resta nativo (niente wrapper trasformati), quindi il telefono sticky continua a funzionare. */
+function initSmoothScroll() {
+  if (!window.Lenis) return null;
+  const lenis = new Lenis({ lerp: 0.1 });
+  lenis.on("scroll", ScrollTrigger.update);
+  const tick = (time) => lenis.raf(time * 1000);
+  gsap.ticker.add(tick);
+  gsap.ticker.lagSmoothing(0);
+
+  /* I link interni passano da Lenis: niente salto nativo, stesso margine della scroll-padding */
+  const onClick = (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey) return;
+    const hash = link.getAttribute("href");
+    const target = hash === "#top" ? 0 : $(hash);
+    if (target === null) return;
+    e.preventDefault();
+    history.pushState(null, "", hash);
+    const headH = $("[data-head]").offsetHeight + 8;
+    const y = target === 0 ? 0 : target.getBoundingClientRect().top + window.scrollY - headH;
+    lenis.scrollTo(Math.max(0, y));
+  };
+  document.addEventListener("click", onClick);
+
+  return () => {
+    document.removeEventListener("click", onClick);
+    gsap.ticker.remove(tick);
+    lenis.destroy();
+  };
+}
+
 function initMotion() {
   if (!window.gsap || !window.ScrollTrigger) {
     root.classList.remove("is-stage", "has-motion");
@@ -118,6 +149,7 @@ function initMotion() {
 
   mm.add(MOTION_QUERY, () => {
     root.classList.add("has-motion");
+    const stopSmooth = initSmoothScroll();
     playIntro();
 
     $$("[data-reveal]").forEach((el) => {
@@ -129,7 +161,10 @@ function initMotion() {
       });
     });
 
-    return () => root.classList.remove("has-motion", "is-ready");
+    return () => {
+      if (stopSmooth) stopSmooth();
+      root.classList.remove("has-motion", "is-ready");
+    };
   });
 
   mm.add(STAGE_QUERY, () => {
@@ -142,8 +177,8 @@ function initMotion() {
       return -(col - device.offsetWidth) / 2;
     };
 
-    /* Un solo parallax: la mezzaluna scorre più lenta della pagina mentre il telefono
-       si assesta al centro della colonna; le chip escono con lei. */
+    /* Un solo parallax: le chip scorrono più lente della pagina e svaniscono
+       mentre il telefono si assesta al centro della colonna. */
     gsap.timeline({
       scrollTrigger: {
         start: 0,
@@ -152,7 +187,6 @@ function initMotion() {
         invalidateOnRefresh: true,
       },
     })
-      .to("[data-crescent]", { y: () => window.innerHeight * 0.55, ease: "none" }, 0)
       .to(".chip--map", { y: () => window.innerHeight * 0.4, autoAlpha: 0, ease: "none" }, 0)
       .to(".chip--sent", { y: () => window.innerHeight * 0.3, autoAlpha: 0, ease: "none" }, 0)
       .to(device, { x: centerShift, ease: "power1.inOut" }, 0);
