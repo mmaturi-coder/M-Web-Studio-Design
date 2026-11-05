@@ -5,9 +5,10 @@ window.PAWAY_CONFIG = {
     appStore: "",
     googlePlay: "",
   },
-  /* Video di presentazione: sostituisci src/poster con i tuoi file in assets/ */
+  /* Teaser: copia «PAWAY | Teaser cinematico.MP4» in assets/video/paway-teaser-cinematico.mp4 */
   video: {
-    src: "assets/video/paway-presentazione.mp4",
-    poster: "assets/img/paway-presentazione-poster.webp",
+    src: "assets/video/paway-teaser-cinematico.mp4",
+    poster: "assets/img/paway-teaser-poster.webp",
+    title: "PAWAY · teaser cinematico",
   },
 };

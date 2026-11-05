@@ -39,6 +39,7 @@ function initFilm() {
   if (source) source.src = src;
   else video.src = src;
   if (poster) video.poster = poster;
+  if (cfg.title) video.setAttribute("aria-label", String(cfg.title));
   video.load();
 }
 
