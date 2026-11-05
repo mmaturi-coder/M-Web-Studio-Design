@@ -38,6 +38,7 @@ function initFilm() {
   const source = $("source", video);
   if (source) source.src = src;
   else video.src = src;
+  if (/^https?:\/\//i.test(src)) video.crossOrigin = "anonymous";
   if (poster) video.poster = poster;
   if (cfg.title) video.setAttribute("aria-label", String(cfg.title));
   video.load();

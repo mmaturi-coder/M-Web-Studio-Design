@@ -5,7 +5,7 @@ window.PAWAY_CONFIG = {
     appStore: "",
     googlePlay: "",
   },
-  /* Teaser: copia «PAWAY | Teaser cinematico.MP4» in assets/video/paway-teaser-cinematico.mp4 */
+  /* Teaser: file in assets/video/ OPPURE link https (es. Google Drive uc?export=download&id=...) */
   video: {
     src: "assets/video/paway-teaser-cinematico.mp4",
     poster: "assets/img/paway-teaser-poster.webp",
