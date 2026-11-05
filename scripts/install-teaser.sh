@@ -4,14 +4,16 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-SOURCE="${SOURCE:-${1:-}}"
+DEFAULT_MAC="$HOME/Downloads/PAWAY | Teaser cinematico.mp4"
+SOURCE="${SOURCE:-${1:-$DEFAULT_MAC}}"
 DEST="$ROOT/assets/video/paway-teaser-cinematico.mp4"
 POSTER="$ROOT/assets/img/paway-teaser-poster.webp"
 
 if [[ -z "$SOURCE" || ! -f "$SOURCE" ]]; then
   echo "File sorgente non trovato." >&2
   echo "Imposta SOURCE o passa il percorso come primo argomento, es.:" >&2
-  echo '  SOURCE="$HOME/Downloads/PAWAY | Teaser cinematico.mp4" ./scripts/install-teaser.sh' >&2
+  echo '  Doppio clic su METTI-TEASER.command nella cartella del progetto' >&2
+  echo '  oppure: SOURCE="/Users/mariamaturi/Downloads/PAWAY | Teaser cinematico.mp4" ./scripts/install-teaser.sh' >&2
   exit 1
 fi
 
