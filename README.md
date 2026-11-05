@@ -16,6 +16,14 @@ Apri `http://localhost:4173`.
 
 I link stanno in `js/config.js`. Un badge compare solo quando il campo contiene un URL `https://`; se sono tutti vuoti la sezione mostra «Disponibile prossimamente».
 
+## Sezioni
+
+1. **Apertura** — eyebrow «Segnala. Aiuta. Proteggi.», titolo, testo, pulsante, tre fatti; a destra la home nel telefono con due chip dell’interfaccia e la mezzaluna.
+2. **Come funziona** — Esplora, Segnala, Segui con la schermata corrispondente.
+3. **Nastro** — «Il primo gesto può partire da te».
+4. **Nell’app** — bento con Mappa, SOS, Guida, Helpaw AI, Numeri utili. Le icone sono quelle del sistema dell’app (`assets/icons.svg`).
+5. **Download** e piè di pagina.
+
 ## Schermate
 
 Esportate a 2× dal file Figma dell’interfaccia, in `assets/img/` (versione `-sm` a 1×):
@@ -24,9 +32,12 @@ Esportate a 2× dal file Figma dell’interfaccia, in `assets/img/` (versione `-
 - `app-guida` — Esplora
 - `app-segnala` — Segnala
 - `app-aggiornamenti` — Segui
+- `helpaw-orb` — la sfera dell’assistente AI
 
 ## Movimento
 
 Da 900 px di larghezza (e 620 px di altezza) con movimento consentito, apertura e «Come funziona» condividono un solo telefono, fisso nella sua colonna. Nel primo tratto di scroll la mezzaluna scorre più lenta della pagina e il telefono si sposta al centro della colonna; poi la schermata cambia con una breve dissolvenza a ogni passaggio. Il testo scorre normalmente e lo scroll non viene bloccato.
 
-Su mobile, con `prefers-reduced-motion` o senza JavaScript la pagina è statica: ogni passaggio mostra la sua schermata.
+All’apertura gli elementi entrano in sequenza; il telefono segue appena il puntatore; l’intestazione diventa di vetro quando si scorre; le sezioni in basso compaiono una volta sola.
+
+Su mobile, con `prefers-reduced-motion` o senza JavaScript la pagina è statica: ogni passaggio mostra la sua schermata, il nastro è fermo e tutto è visibile da subito.

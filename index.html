@@ -4,45 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PAWAY — Il primo gesto, a portata di mano.</title>
-  <meta name="description" content="Hai trovato un cane o un gatto in difficoltà? PAWAY ti aiuta a capire cosa fare e a inviare una segnalazione." />
+  <meta name="description" content="Hai trovato un cane o un gatto in difficoltà? Con PAWAY puoi capire cosa fare e inviare una segnalazione." />
   <meta name="theme-color" content="#F2F5EF" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
   <script>
-    /* Decide prima del primo disegno se la pagina userà la scena con il telefono fisso */
+    /* Decide prima del primo disegno se la pagina userà la scena con il telefono fisso e l’ingresso animato */
     (function () {
-      var q = "(min-width: 900px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)";
-      if (window.matchMedia && window.matchMedia(q).matches) document.documentElement.classList.add("is-stage");
+      var ok = window.matchMedia && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+      if (!ok) return;
+      document.documentElement.classList.add("has-motion");
+      if (window.matchMedia("(min-width: 900px) and (min-height: 620px)").matches) document.documentElement.classList.add("is-stage");
     })();
   </script>
 </head>
 <body>
   <a class="skip" href="#contenuto">Vai al contenuto</a>
 
-  <header class="site-head">
-    <a class="brand" href="#top" aria-label="PAWAY, torna all’inizio">
-      <img src="assets/paway-logo.svg" alt="PAWAY" width="159" height="198" />
-    </a>
-    <a class="head-link" href="#download">Scarica l’app</a>
+  <header class="site-head" data-head>
+    <div class="site-head__in">
+      <a class="brand" href="#top" aria-label="PAWAY, torna all’inizio">
+        <img src="assets/paway-logo.svg" alt="PAWAY" width="159" height="198" />
+      </a>
+      <nav class="nav" aria-label="Sezioni">
+        <a href="#come-funziona">Come funziona</a>
+        <a href="#nell-app">Nell’app</a>
+      </nav>
+      <a class="btn btn--sm" href="#download">Scarica l’app <span class="btn__dot" aria-hidden="true"></span></a>
+    </div>
   </header>
 
   <main id="contenuto">
     <div class="stage" data-stage>
       <section class="hero" id="top" aria-labelledby="hero-title">
-        <h1 class="hero__title" id="hero-title"><span class="hero__line">Il primo gesto,</span> <span class="hero__line">a portata di&nbsp;mano.</span></h1>
-        <p class="hero__text">Hai trovato un cane o un gatto in difficoltà? Con PAWAY puoi capire cosa fare e inviare una segnalazione.</p>
-        <a class="btn" href="#download">
-          Scarica l’app
-          <svg class="btn__icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M9.5 16h12M17 10.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-        </a>
+        <p class="eyebrow" data-intro>
+          <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-bolt" /></svg>
+          Segnala. Aiuta. Proteggi.
+        </p>
+        <h1 class="hero__title" id="hero-title" data-intro><span class="hero__line">Il primo gesto,</span> <span class="hero__line">a portata di&nbsp;mano.</span></h1>
+        <p class="hero__text" data-intro>Hai trovato un cane o un gatto in difficoltà? Con PAWAY puoi capire cosa fare e inviare una segnalazione.</p>
+        <div class="hero__actions" data-intro>
+          <a class="btn" href="#download">
+            Scarica l’app
+            <svg class="btn__icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M9.5 16h12M17 10.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </a>
+          <a class="link" href="#come-funziona">Come funziona
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v11M3.5 9 8 13.5 12.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </a>
+        </div>
+        <ul class="facts" data-intro>
+          <li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-search" /></svg>Guida pratica</li>
+          <li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-pin" /></svg>Enti e veterinari vicini</li>
+          <li><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#i-alert" /></svg>Segnalazione SOS</li>
+        </ul>
       </section>
 
       <div class="device-col">
         <svg class="crescent" data-crescent viewBox="0 0 1000 1000" aria-hidden="true" focusable="false">
           <path d="M497.5 20A480 480 0 1 0 979.3 473.4A350 350 0 0 1 497.5 20Z" />
         </svg>
+
+        <div class="chip chip--sent" data-chip aria-hidden="true">
+          <span class="chip__ico chip__ico--ok"><svg><use href="assets/icons.svg#i-check" /></svg></span>
+          <span><strong>Segnalazione inviata</strong><small>Ferito · Roma, Trastevere</small></span>
+        </div>
+        <div class="chip chip--map" data-chip aria-hidden="true">
+          <span class="chip__ico"><svg><use href="assets/icons.svg#i-pin" /></svg></span>
+          <span><strong>Mappa</strong><small>Veterinari, rifugi, enti</small></span>
+        </div>
+
         <div class="device-sticky">
           <figure class="device" data-device>
             <img class="device__screen is-active" data-screen="0"
@@ -71,11 +103,13 @@
       </div>
 
       <section class="how" id="come-funziona" aria-labelledby="how-title">
-        <h2 class="how__title" id="how-title">Come funziona</h2>
+        <p class="kicker">Come funziona</p>
+        <h2 class="how__title" id="how-title">Dal dubbio al primo gesto, in tre passaggi.</h2>
         <ol class="steps">
           <li class="step" data-step="1">
             <img class="step__thumb" src="assets/img/app-guida-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
             <div class="step__body">
+              <span class="step__num" aria-hidden="true">01</span>
               <h3 class="step__name">Esplora</h3>
               <p>Trova la guida e i contatti utili.</p>
             </div>
@@ -83,6 +117,7 @@
           <li class="step" data-step="2">
             <img class="step__thumb" src="assets/img/app-segnala-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
             <div class="step__body">
+              <span class="step__num" aria-hidden="true">02</span>
               <h3 class="step__name">Segnala</h3>
               <p>Descrivi l’animale, la situazione e il luogo.</p>
             </div>
@@ -90,6 +125,7 @@
           <li class="step" data-step="3">
             <img class="step__thumb" src="assets/img/app-aggiornamenti-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
             <div class="step__body">
+              <span class="step__num" aria-hidden="true">03</span>
               <h3 class="step__name">Segui</h3>
               <p>Ritrova le tue segnalazioni e gli aggiornamenti nell’app.</p>
             </div>
@@ -98,8 +134,56 @@
       </section>
     </div>
 
+    <div class="band" aria-hidden="true">
+      <div class="band__track">
+        <span>Il primo gesto può partire da te</span><i></i>
+        <span>Segnala.</span><i></i><span>Aiuta.</span><i></i><span>Proteggi.</span><i></i>
+        <span>Il primo gesto può partire da te</span><i></i>
+        <span>Segnala.</span><i></i><span>Aiuta.</span><i></i><span>Proteggi.</span><i></i>
+      </div>
+    </div>
+
+    <section class="features" id="nell-app" aria-labelledby="features-title">
+      <div class="features__head">
+        <p class="kicker">Nell’app</p>
+        <h2 id="features-title">Tutto quello che serve, quando serve.</h2>
+      </div>
+      <div class="bento">
+        <article class="tile tile--ink tile--wide" data-reveal>
+          <svg class="tile__ico" aria-hidden="true"><use href="assets/icons.svg#i-pin" /></svg>
+          <h3>Mappa</h3>
+          <p>Veterinari, rifugi, enti e segnalazioni intorno a te, con le indicazioni per arrivarci.</p>
+        </article>
+        <article class="tile tile--coral" data-reveal>
+          <svg class="tile__ico" aria-hidden="true"><use href="assets/icons.svg#i-alert" /></svg>
+          <h3>SOS</h3>
+          <p>Quattro situazioni da cui partire.</p>
+          <ul class="pills">
+            <li>Abbandonato</li><li class="is-on">Ferito</li><li>Maltrattato</li><li>Randagio</li>
+          </ul>
+        </article>
+        <article class="tile" data-reveal>
+          <svg class="tile__ico" aria-hidden="true"><use href="assets/icons.svg#i-search" /></svg>
+          <h3>Guida</h3>
+          <p>Prima di agire, capisci come aiutare. Una scheda per ogni esigenza.</p>
+          <div class="toggle" aria-hidden="true"><span class="is-on">Cane</span><span>Gatto</span></div>
+        </article>
+        <article class="tile tile--ink tile--orb" data-reveal>
+          <img class="tile__orb" src="assets/img/helpaw-orb.webp" width="640" height="633" alt="" loading="lazy" decoding="async" />
+          <h3>Helpaw AI</h3>
+          <p>L’assistente che ti accompagna nella segnalazione.</p>
+        </article>
+        <article class="tile" data-reveal>
+          <svg class="tile__ico" aria-hidden="true"><use href="assets/icons.svg#i-phone" /></svg>
+          <h3>Numeri utili</h3>
+          <p>Enti e forze dell’ordine, pronti da chiamare anche offline.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="download" id="download" aria-labelledby="download-title" tabindex="-1">
-      <div class="download__card">
+      <div class="download__card" data-reveal>
+        <svg class="download__mark" viewBox="41 13 80 113" aria-hidden="true" focusable="false"><use href="assets/paway-logo.svg#mark" /></svg>
         <div class="download__copy">
           <h2 class="download__title" id="download-title">Scarica PAWAY</h2>
           <p class="download__text">La guida e la segnalazione, sempre con te.</p>
@@ -112,7 +196,18 @@
   </main>
 
   <footer class="footer">
-    <p>© <span data-year>2026</span> PAWAY</p>
+    <div class="footer__in">
+      <a class="brand brand--foot" href="#top" aria-label="PAWAY, torna all’inizio">
+        <img src="assets/paway-logo.svg" alt="PAWAY" width="159" height="198" />
+      </a>
+      <p class="footer__tag">Il primo gesto può partire da te.</p>
+      <nav class="footer__nav" aria-label="Sezioni, piè di pagina">
+        <a href="#come-funziona">Come funziona</a>
+        <a href="#nell-app">Nell’app</a>
+        <a href="#download">Scarica l’app</a>
+      </nav>
+      <p class="footer__copy">© <span data-year>2026</span> PAWAY</p>
+    </div>
   </footer>
 
   <script src="vendor/gsap.min.js"></script>

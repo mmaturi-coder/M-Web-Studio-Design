@@ -1,10 +1,12 @@
-/* PAWAY — un solo parallax tra apertura e «Come funziona»:
-   la mezzaluna corallo scorre più lenta della schermata, che si ferma accanto ai passaggi.
-   Senza JavaScript, su mobile o con movimento ridotto la pagina resta statica. */
+/* PAWAY — ingresso dell’apertura, un solo parallax tra apertura e «Come funziona»,
+   schermata che cambia a ogni passaggio, reveal una tantum delle sezioni in basso.
+   Senza JavaScript, su mobile o con movimento ridotto la pagina resta statica e visibile. */
 
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const root = document.documentElement;
 
+const MOTION_QUERY = "(prefers-reduced-motion: no-preference)";
 const STAGE_QUERY = "(min-width: 900px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)";
 
 const STORES = [
@@ -44,6 +46,13 @@ function focusDownloadOnJump() {
   });
 }
 
+function initHeader() {
+  const head = $("[data-head]");
+  const update = () => head.classList.toggle("is-scrolled", window.scrollY > 12);
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+}
+
 function showScreen(index) {
   $$("[data-screen]").forEach((img) => {
     const on = Number(img.dataset.screen) === index;
@@ -55,15 +64,62 @@ function showScreen(index) {
   });
 }
 
-function initStage() {
-  const root = document.documentElement;
+/* Ingresso dell’apertura: testo dall’alto verso il basso, poi mezzaluna, telefono e chip */
+function playIntro() {
+  root.classList.add("is-ready");
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  tl.from("[data-intro]", { y: 26, autoAlpha: 0, duration: 0.9, stagger: 0.09 }, 0)
+    .from("[data-crescent]", { scale: 0.86, autoAlpha: 0, duration: 1.2, transformOrigin: "66% 33%", ease: "power2.out" }, 0.1)
+    .from("[data-device]", { y: 70, autoAlpha: 0, duration: 1.1 }, 0.3)
+    .from("[data-chip]", { y: 18, scale: 0.94, autoAlpha: 0, duration: 0.7, stagger: 0.12, ease: "back.out(1.6)" }, 0.9);
+  return tl;
+}
+
+/* Il telefono segue appena il puntatore (solo desktop) */
+function initTilt(device) {
+  const rx = gsap.quickTo(device, "rotationX", { duration: 0.8, ease: "power3.out" });
+  const ry = gsap.quickTo(device, "rotationY", { duration: 0.8, ease: "power3.out" });
+  const onMove = (e) => {
+    const nx = e.clientX / window.innerWidth - 0.5;
+    const ny = e.clientY / window.innerHeight - 0.5;
+    ry(nx * 6);
+    rx(-ny * 4);
+  };
+  const onLeave = () => { rx(0); ry(0); };
+  window.addEventListener("pointermove", onMove, { passive: true });
+  document.addEventListener("pointerleave", onLeave);
+  return () => {
+    window.removeEventListener("pointermove", onMove);
+    document.removeEventListener("pointerleave", onLeave);
+    gsap.set(device, { rotationX: 0, rotationY: 0 });
+  };
+}
+
+function initMotion() {
   if (!window.gsap || !window.ScrollTrigger) {
-    root.classList.remove("is-stage");
+    root.classList.remove("is-stage", "has-motion");
     return;
   }
   gsap.registerPlugin(ScrollTrigger);
+  const mm = gsap.matchMedia();
 
-  gsap.matchMedia().add(STAGE_QUERY, () => {
+  mm.add(MOTION_QUERY, () => {
+    root.classList.add("has-motion");
+    playIntro();
+
+    $$("[data-reveal]").forEach((el) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 88%",
+        once: true,
+        onEnter: () => el.classList.add("is-in"),
+      });
+    });
+
+    return () => root.classList.remove("has-motion", "is-ready");
+  });
+
+  mm.add(STAGE_QUERY, () => {
     root.classList.add("is-stage");
     ScrollTrigger.refresh();
 
@@ -73,6 +129,8 @@ function initStage() {
       return -(col - device.offsetWidth) / 2;
     };
 
+    /* Un solo parallax: la mezzaluna scorre più lenta della pagina mentre il telefono
+       si assesta al centro della colonna; le chip escono con lei. */
     gsap.timeline({
       scrollTrigger: {
         start: 0,
@@ -82,10 +140,11 @@ function initStage() {
       },
     })
       .to("[data-crescent]", { y: () => window.innerHeight * 0.55, ease: "none" }, 0)
+      .to(".chip--map", { y: () => window.innerHeight * 0.4, autoAlpha: 0, ease: "none" }, 0)
+      .to(".chip--sent", { y: () => window.innerHeight * 0.3, autoAlpha: 0, ease: "none" }, 0)
       .to(device, { x: centerShift, ease: "power1.inOut" }, 0);
 
-    const steps = $$("[data-step]");
-    steps.forEach((step, i) => {
+    $$("[data-step]").forEach((step, i) => {
       ScrollTrigger.create({
         trigger: step,
         start: "top 55%",
@@ -96,9 +155,12 @@ function initStage() {
       });
     });
 
+    const stopTilt = window.matchMedia("(hover: hover) and (pointer: fine)").matches ? initTilt(device) : null;
+
     return () => {
       root.classList.remove("is-stage");
       showScreen(0);
+      if (stopTilt) stopTilt();
     };
   });
 }
@@ -106,4 +168,5 @@ function initStage() {
 $("[data-year]").textContent = String(new Date().getFullYear());
 renderStores();
 focusDownloadOnJump();
-initStage();
+initHeader();
+initMotion();
