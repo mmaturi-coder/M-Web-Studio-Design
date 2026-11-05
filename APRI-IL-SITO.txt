@@ -1,28 +1,33 @@
-PAWAY — come aprire il sito sul Mac (2 modi)
+PAWAY — come vedere il sito (senza impazzire)
 
 ═══════════════════════════════════════════════════
-MODO 1 — LINK ONLINE (niente Terminale)
+★ MODO 1 — LINK NEL BROWSER (consigliato)
 ═══════════════════════════════════════════════════
 
-Apri nel browser:
+Apri questo indirizzo (funziona da iPhone, Mac, ovunque):
 
   https://mmaturi-coder.github.io/M-Web-Studio-Design/
 
-(Dopo ogni aggiornamento sul branch del progetto, attendi 1–2 minuti che GitHub Pages si aggiorni.)
+Se vedi ancora il vecchio sito “M Web Design Studio”, attendi 2–3 minuti
+dopo l’ultimo aggiornamento o prova in navigazione privata.
+
+(La versione PAWAY viene pubblicata sul branch gh-pages del repository.)
 
 ═══════════════════════════════════════════════════
-MODO 2 — IN LOCALE (cartella sul Mac)
+MODO 2 — SUL MAC, cartella in Download
 ═══════════════════════════════════════════════════
 
-1. Vai nella cartella dove c’è index.html (es. PAWAY-presentazione).
-2. Doppio clic su:  Apri PAWAY.command
-   (Se macOS blocca: tasto destro → Apri → Apri.)
-3. Si apre il Terminale e poi Safari/Chrome da soli.
-4. NON chiudere il Terminale finché usi il sito.
+1. Cartella: PAWAY-presentazione (deve contenere index.html).
+2. Doppio clic: Apri PAWAY.command
+   Blocco macOS? Tasto destro → Apri → Apri.
+3. Non chiudere il Terminale che si apre.
 
-Se non hai Apri PAWAY.command, nel Terminale:
+Se non hai Apri PAWAY.command, scarica di nuovo l’archivio
+PAWAY-presentazione-sorgente.tar.gz dall’agent Cursor.
 
-  cd ~/Downloads/PAWAY-presentazione
-  chmod +x start.sh && ./start.sh
+═══════════════════════════════════════════════════
+Perché http://127.0.0.1:4173 “non va” da solo
+═══════════════════════════════════════════════════
 
-Attenzione: http://127.0.0.1:4173 funziona SOLO dopo aver avviato start.sh o Apri PAWAY.command.
+Quel link funziona SOLO dopo Apri PAWAY.command sul TUO Mac.
+Aprire 127.0.0.1 dalla chat Cursor non apre il sito sul tuo computer.
