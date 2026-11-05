@@ -516,16 +516,25 @@ a { color: inherit; }
 .toggle .is-on { background: var(--blue); color: var(--ink); border-color: var(--blue); }
 .tile--orb { justify-content: flex-end; }
 .tile--orb h3 { margin-top: 0; }
+/* La sfera di Helpaw è il video del brand, già composto sul colore della tile */
 .tile__orb {
   position: absolute;
-  top: -14%;
-  right: -12%;
-  width: 62%;
+  top: -6%;
+  right: -8%;
+  width: 66%;
   height: auto;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
-  transition: transform 0.7s var(--ease);
+  aspect-ratio: 720 / 640;
+  object-fit: cover;
+  pointer-events: none;
 }
-.tile--orb:hover .tile__orb { transform: translateY(-6px) rotate(6deg); }
+.tile--orb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--ink) 28%, transparent 62%);
+  pointer-events: none;
+}
+.tile--orb h3, .tile--orb p { position: relative; z-index: 1; }
 
 /* ── Download ── */
 .download {
@@ -654,8 +663,8 @@ a { color: inherit; }
   .tile { min-height: 0; }
   .tile__ico { margin-bottom: 18px; }
   .tile h3 { margin-top: 0; }
-  .tile--orb { min-height: 240px; }
-  .tile__orb { width: 48%; top: -6%; right: -8%; }
+  .tile--orb { min-height: 260px; }
+  .tile__orb { width: 56%; top: -4%; right: -6%; }
   .footer__in {
     grid-template-columns: 1fr;
     grid-template-areas: "brand" "tag" "nav" "copy";

@@ -95,6 +95,19 @@ function initTilt(device) {
   };
 }
 
+/* La sfera di Helpaw si muove solo con movimento consentito e solo quando è in vista */
+function initOrb() {
+  const orb = $("[data-orb]");
+  if (!orb || !window.matchMedia(MOTION_QUERY).matches) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(({ isIntersecting }) => {
+      if (isIntersecting) orb.play().catch(() => {});
+      else orb.pause();
+    });
+  }, { rootMargin: "120px" });
+  io.observe(orb);
+}
+
 function initMotion() {
   if (!window.gsap || !window.ScrollTrigger) {
     root.classList.remove("is-stage", "has-motion");
@@ -169,4 +182,5 @@ $("[data-year]").textContent = String(new Date().getFullYear());
 renderStores();
 focusDownloadOnJump();
 initHeader();
+initOrb();
 initMotion();
