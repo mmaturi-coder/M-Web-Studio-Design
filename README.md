@@ -12,7 +12,27 @@ python3 -m http.server 4173
 
 Apri `http://localhost:4173`.
 
-**Antigravity / IDE:** clona il repo, apri la cartella root e avvia un server statico sulla root (entry `index.html`). Non serve build.
+## Teaser cinematico
+
+La sezione **Teaser** del sito usa `assets/video/paway-teaser-cinematico.mp4` e il poster `assets/img/paway-teaser-poster.webp`. Nel repository c’è ancora un **segnaposto** (lo stesso file della presentazione/showreel, ~15 MB, ~63 s): non è il file «PAWAY | Teaser cinematico» dal Mac.
+
+**Sorgente sul Mac (non accessibile dall’ambiente cloud):**
+
+`/Users/mariamaturi/Downloads/PAWAY | Teaser cinematico.mp4`
+
+**Destinazione nel progetto:**
+
+`assets/video/paway-teaser-cinematico.mp4`
+
+Per sostituirlo in locale, dopo aver copiato il file sul Mac nel clone del repo:
+
+```bash
+SOURCE="/Users/mariamaturi/Downloads/PAWAY | Teaser cinematico.mp4" ./scripts/install-teaser.sh
+```
+
+Oppure trascina il file `.mp4` nella chat di Cursor sull’agente, così può copiarlo nel repo e rigenerare il poster. Poi committa video e poster.
+
+I riferimenti in `index.html` e `js/config.js` puntano già a `paway-teaser-cinematico.mp4`.
 
 ## Link agli store
 
