@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/style.css?v=16" />
+  <link rel="stylesheet" href="css/style.css?v=17" />
   <script>
     (function () {
       var ok = window.matchMedia && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
@@ -36,227 +36,120 @@
     </div>
   </header>
 
-  <main id="contenuto" class="case">
-    <header class="case-hero">
-      <div class="case-wrap">
-        <p class="kicker">Portfolio</p>
-        <h1>PAWAY</h1>
-        <p class="case-hero__lead">Dal dubbio al primo gesto: ricerca, persone, marchio e i prototipi dell’app, in movimento.</p>
-        <nav class="case-nav" aria-label="Capitoli del progetto">
-          <a href="#problema">Problema</a>
-          <a href="#ricerca">Ricerca</a>
-          <a href="#soluzione">Soluzione</a>
-          <a href="#persone">Persone</a>
-          <a href="#prototipo">Prototipo</a>
-          <a href="#sistema">Sistema</a>
-          <a href="#visual">Visual</a>
-        </nav>
-      </div>
-    </header>
+  <main id="contenuto" class="reel">
+    <nav class="reel__nav" aria-label="Slide del progetto">
+      <a href="#problema">Problema</a>
+      <a href="#ricerca">Ricerca</a>
+      <a href="#sfida">Sfida</a>
+      <a href="#competitor">Competitor</a>
+      <a href="#soluzione">Soluzione</a>
+      <a href="#persone">Persone</a>
+      <a href="#prototipo">Prototipo</a>
+      <a href="#sistema">Sistema</a>
+      <a href="#visual">Visual</a>
+    </nav>
 
-    <section class="case-statement" id="problema" aria-labelledby="problema-title">
-      <div class="case-wrap">
-        <h2 id="problema-title">Come facilitare la richiesta di aiuto per un animale in difficoltà?</h2>
-        <p class="case-mark">Problema</p>
-      </div>
+    <section class="slide" id="problema">
+      <h1 class="visually-hidden">Problema</h1>
+      <img src="assets/progetto/problema.webp" width="1920" height="1080" alt="Come facilitare la richiesta di aiuto per un animale in difficoltà?" />
     </section>
 
-    <section class="case-block" id="ricerca" aria-labelledby="ricerca-title">
-      <div class="case-wrap">
-        <h2 id="ricerca-title">Tre ostacoli al soccorso</h2>
-        <p class="case-lead">I bisogni emersi dal questionario e dalle interviste sul campo.</p>
-        <ul class="case-stats">
-          <li>
-            <p class="case-stats__n" style="color:#db766b">38%</p>
-            <h3>Fatica a trovare il contatto giusto</h3>
-            <p>Non trova il referente o impiega oltre 10 minuti. Le interviste raccontano rimpalli e attese di 2–4 ore.</p>
-            <blockquote>
-              <span>Dalle interviste</span>
-              «Quando richiami la Polizia Municipale ti dicono “non è di nostra competenza”…»
-            </blockquote>
-          </li>
-          <li>
-            <p class="case-stats__n" style="color:#679fd4">38%</p>
-            <h3>Soccorre l’animale da solo, a proprie spese</h3>
-            <p>Senza una guida si improvvisa: le manovre scorrette possono aggravare le lesioni dell’animale.</p>
-            <blockquote>
-              <span>Dalle interviste</span>
-              «Mai sollevare un gatto o un cane ferito piegandolo […]»
-            </blockquote>
-          </li>
-          <li>
-            <p class="case-stats__n" style="color:#94ccad">28,5%</p>
-            <h3>Non conosce l’esito del soccorso</h3>
-            <p>Dopo la segnalazione manca un riscontro. Le interviste evidenziano il bisogno di prove documentate.</p>
-            <blockquote>
-              <span>Dalle interviste</span>
-              «Le segnalazioni anonime non portano a nulla.»
-            </blockquote>
-          </li>
-        </ul>
-        <p class="case-mark">Analisi del problema</p>
-      </div>
+    <section class="slide" id="ricerca">
+      <h2 class="visually-hidden">Analisi del problema</h2>
+      <img src="assets/progetto/ricerca.webp" width="1920" height="1080" alt="Tre ostacoli al soccorso: 38% non trova il contatto giusto, 38% soccorre da solo, 28,5% non conosce l’esito." />
     </section>
 
-    <section class="case-statement" id="sfida" aria-labelledby="sfida-title">
-      <div class="case-wrap">
-        <h2 id="sfida-title">Accompagnare il cittadino dall’osservazione alla richiesta di aiuto, con passaggi comprensibili e informazioni utili.</h2>
-        <p class="case-mark">La sfida</p>
-      </div>
+    <section class="slide" id="sfida">
+      <h2 class="visually-hidden">La sfida</h2>
+      <img src="assets/progetto/sfida.webp" width="1920" height="1080" alt="Accompagnare il cittadino dall’osservazione alla richiesta di aiuto, con passaggi comprensibili e informazioni utili." />
     </section>
 
-    <section class="case-block" id="competitor" aria-labelledby="competitor-title">
-      <div class="case-wrap">
-        <h2 id="competitor-title">Semplicità di accesso × supporto al soccorso</h2>
-        <p class="case-lead">Posizionamento qualitativo dal benchmark. PAWAY è l’obiettivo progettuale da validare: semplice e guidato.</p>
-        <figure class="case-board">
-          <img src="assets/progetto/competitor.webp" width="960" height="540" alt="Matrice dei competitor: Orma, LAV, Ecosportello animali, AnimaliSOS e l’obiettivo progettuale di PAWAY." />
-        </figure>
-        <p class="case-mark">Competitor</p>
-      </div>
+    <section class="slide" id="competitor">
+      <h2 class="visually-hidden">Competitor</h2>
+      <img src="assets/progetto/competitor.webp" width="1920" height="1080" alt="Matrice di posizionamento: semplicità di accesso per supporto al soccorso. PAWAY sta nel quadrante semplice e guidato." />
     </section>
 
-    <section class="case-motion" id="soluzione" aria-labelledby="soluzione-title">
-      <div class="case-wrap case-motion__logo">
-        <h2 id="soluzione-title" class="case-mark">La soluzione</h2>
-        <video muted loop playsinline poster="assets/progetto/poster-logo.webp" data-motion>
-          <source src="assets/progetto/logo.mp4" type="video/mp4" />
-        </video>
-      </div>
+    <section class="slide" id="soluzione">
+      <h2 class="visually-hidden">La soluzione</h2>
+      <video muted loop playsinline poster="assets/progetto/soluzione-poster.webp" data-motion aria-label="Animazione del logo PAWAY, il cane e il gatto che si disegnano.">
+        <source src="assets/progetto/soluzione.mp4" type="video/mp4" />
+      </video>
     </section>
 
-    <section class="case-block" id="persone" aria-labelledby="persone-title">
-      <div class="case-wrap">
-        <h2 id="persone-title">Due persone, due modi di fermarsi.</h2>
-        <figure class="case-board">
-          <img src="assets/progetto/persona-chiara.webp" width="1100" height="619" alt="Persona Chiara, 29 anni, Roma. Ha bisogno di un contatto giusto, subito, mentre è per strada." />
-        </figure>
-        <figure class="case-board">
-          <img src="assets/progetto/persona-andrea.webp" width="1100" height="619" alt="Persona Andrea, 24 anni, Montemonaco. Deve spiegare dove si trova quando il luogo è isolato." />
-        </figure>
-        <p class="case-mark">Personas</p>
-      </div>
+    <section class="slide" id="persone">
+      <h2 class="visually-hidden">Persona Chiara</h2>
+      <img src="assets/progetto/chiara.webp" width="1920" height="1080" alt="Chiara, 29 anni, Roma. Mi fermo per aiutare, ma non voglio perdere tempo a cercare il contatto giusto." />
     </section>
 
-    <section class="case-block" id="animali" aria-labelledby="animali-title">
-      <div class="case-wrap">
-        <h2 id="animali-title" class="visually-hidden">Cani e gatti</h2>
-        <figure class="case-board">
-          <img src="assets/progetto/cani-gatti.webp" width="1100" height="619" alt="Quattro situazioni da cui partire: abbandonati, maltrattati, feriti, randagi. Focus su cani e gatti." />
-        </figure>
-      </div>
+    <section class="slide">
+      <h2 class="visually-hidden">Persona Andrea</h2>
+      <img src="assets/progetto/andrea.webp" width="1920" height="1080" alt="Andrea, 24 anni, Montemonaco. Vuole aiutare anche in un luogo isolato, spiegando dove si trova." />
     </section>
 
-    <section class="case-flows" id="prototipo" aria-labelledby="proto-title">
-      <div class="case-wrap">
-        <h2 id="proto-title">Il prototipo, in movimento.</h2>
-        <p class="case-lead">Le registrazioni dei flussi: logo e onboarding, home con mappa e guida, segnalazione e account.</p>
-      </div>
-      <article class="flow">
-        <div class="flow__copy">
-          <p class="flow__name">Logo animation<br />Onboarding</p>
-          <p class="case-mark">Flusso 1/2</p>
-        </div>
-        <video muted loop playsinline poster="assets/progetto/poster-flusso-1.webp" data-motion>
-          <source src="assets/progetto/flusso-1.mp4" type="video/mp4" />
-        </video>
-      </article>
-      <article class="flow">
-        <div class="flow__copy">
-          <p class="flow__name">Homepage<br />Mappa<br />Contatti<br />Guida</p>
-          <p class="case-mark">Flusso 3</p>
-        </div>
-        <video muted loop playsinline poster="assets/progetto/poster-flusso-3.webp" data-motion>
-          <source src="assets/progetto/flusso-3.mp4" type="video/mp4" />
-        </video>
-      </article>
-      <article class="flow">
-        <div class="flow__copy">
-          <p class="flow__name">Segnalazioni<br />Account</p>
-          <p class="case-mark">Flusso 4/5</p>
-        </div>
-        <video muted loop playsinline poster="assets/progetto/poster-flusso-45.webp" data-motion>
-          <source src="assets/progetto/flusso-45.mp4" type="video/mp4" />
-        </video>
-      </article>
+    <section class="slide" id="animali">
+      <h2 class="visually-hidden">Cani e gatti</h2>
+      <img src="assets/progetto/cani.webp" width="1920" height="1080" alt="Abbandonati, maltrattati, feriti, randagi. Focus sui cani e sui gatti." />
     </section>
 
-    <section class="case-motion" id="ai" aria-labelledby="ai-title">
-      <div class="case-wrap case-motion__ai">
-        <h2 id="ai-title" class="case-mark">Assistente AI</h2>
-        <video muted loop playsinline poster="assets/progetto/poster-ai.webp" data-motion>
-          <source src="assets/progetto/ai.mp4" type="video/mp4" />
-        </video>
-      </div>
+    <section class="slide" id="sistema">
+      <h2 class="visually-hidden">Marchio</h2>
+      <img src="assets/progetto/brand.webp" width="1920" height="1080" alt="Bento del marchio: costruzione del logo, colori, caratteri, icone, schermata e gli animali." />
     </section>
 
-    <section class="case-block" id="sistema" aria-labelledby="sistema-title">
-      <div class="case-wrap">
-        <h2 id="sistema-title">Il sistema visivo.</h2>
-        <figure class="case-board">
-          <img src="assets/progetto/brand.webp" width="1100" height="619" alt="Bento del marchio: costruzione del logo, palette, caratteri, icone, schermata e gli animali." />
-        </figure>
-        <ul class="case-colors">
-          <li style="--c:#db766b">
-            <strong>Corallo</strong>
-            <span>#DB766B</span>
-            <small>Segnalazione</small>
-          </li>
-          <li style="--c:#679fd4;color:#171717">
-            <strong>Azzurro</strong>
-            <span>#679FD4</span>
-            <small>Protezione</small>
-          </li>
-          <li style="--c:#94ccad;color:#171717">
-            <strong>Salvia</strong>
-            <span>#94CCAD</span>
-            <small>Cura</small>
-          </li>
-          <li style="--c:#f2f5ef;color:#171717">
-            <strong>Bianco</strong>
-            <span>#F2F5EF</span>
-            <small>Fondo</small>
-          </li>
-          <li style="--c:#171717">
-            <strong>Nero</strong>
-            <span>#171717</span>
-            <small>Inchiostro</small>
-          </li>
-          <li class="is-grad">
-            <strong>Gradiente</strong>
-            <span>#679FD4 → #DB766B</span>
-            <small>Con il salvia</small>
-          </li>
-        </ul>
-        <div class="case-type">
-          <article>
-            <p class="case-type__face case-type__face--display">Aa</p>
-            <h3>Bagel Fat One</h3>
-            <p>Il carattere dei titoli di capitolo.</p>
-          </article>
-          <article>
-            <p class="case-type__face">Aa</p>
-            <h3>Nunito Sans</h3>
-            <p>Regular, medium, semibold, bold, extrabold, black, extralight, light e light italic. Tutto il resto dell’interfaccia.</p>
-          </article>
-        </div>
-        <figure class="case-board">
-          <img src="assets/progetto/loghi.webp" width="1400" height="788" alt="Sistema di logo PAWAY: simbolo, logotipo e versioni su fondo chiaro, nero, corallo, salvia, azzurro e gradiente." />
-        </figure>
-        <p class="case-mark">Design system</p>
-      </div>
+    <section class="slide" id="ai">
+      <h2 class="visually-hidden">Assistente AI</h2>
+      <video muted loop playsinline poster="assets/progetto/ai-poster.webp" data-motion aria-label="Sfera dell’assistente AI di PAWAY.">
+        <source src="assets/progetto/ai.mp4" type="video/mp4" />
+      </video>
     </section>
 
-    <section class="case-block" id="visual" aria-labelledby="visual-title">
-      <div class="case-wrap">
-        <h2 id="visual-title" class="visually-hidden">Visual</h2>
-        <figure class="case-board">
-          <img src="assets/progetto/campagna.webp" width="1400" height="788" alt="Campagna visiva: affissioni, mockup dell’app, sito e profilo social. Claim: Segnala. Aiuta. Proteggi." />
-        </figure>
-        <p class="case-mark">Visual</p>
-      </div>
+    <section class="slide" id="prototipo">
+      <h2 class="visually-hidden">Flusso 1 e 2, logo animation e onboarding</h2>
+      <video muted loop playsinline poster="assets/progetto/flusso-1-poster.webp" data-motion aria-label="Prototipo: animazione del logo e onboarding.">
+        <source src="assets/progetto/flusso-1.mp4" type="video/mp4" />
+      </video>
+    </section>
+
+    <section class="slide">
+      <h2 class="visually-hidden">Flusso 3, homepage, mappa, contatti e guida</h2>
+      <video muted loop playsinline poster="assets/progetto/flusso-3-poster.webp" data-motion aria-label="Prototipo: homepage, mappa, contatti e guida.">
+        <source src="assets/progetto/flusso-3.mp4" type="video/mp4" />
+      </video>
+    </section>
+
+    <section class="slide">
+      <h2 class="visually-hidden">Flusso 4 e 5, segnalazioni e account</h2>
+      <video muted loop playsinline poster="assets/progetto/flusso-45-poster.webp" data-motion aria-label="Prototipo: segnalazioni e account.">
+        <source src="assets/progetto/flusso-45.mp4" type="video/mp4" />
+      </video>
+    </section>
+
+    <section class="slide" id="caratteri">
+      <h2 class="visually-hidden">Nunito Sans</h2>
+      <img src="assets/progetto/nunito.webp" width="1920" height="1080" alt="Nunito Sans, regular, con pesi da extralight a black e light italic." />
+    </section>
+
+    <section class="slide">
+      <h2 class="visually-hidden">Bagel Fat One</h2>
+      <img src="assets/progetto/bagel.webp" width="1920" height="1080" alt="Bagel Fat One, regular, il carattere dei titoli." />
+    </section>
+
+    <section class="slide" id="colori">
+      <h2 class="visually-hidden">Colori</h2>
+      <img src="assets/progetto/colori.webp" width="1920" height="1080" alt="Corallo segnalazione, azzurro protezione, salvia cura, bianco, nero e gradiente." />
+    </section>
+
+    <section class="slide">
+      <h2 class="visually-hidden">Loghi</h2>
+      <img src="assets/progetto/loghi.webp" width="1920" height="1080" alt="Sistema di logo PAWAY su fondi chiari, neri e colorati." />
+    </section>
+
+    <section class="slide" id="visual">
+      <h2 class="visually-hidden">Visual</h2>
+      <img src="assets/progetto/visual.webp" width="1920" height="1080" alt="Campagna: affissioni, mockup dell’app, sito e profilo. Segnala. Aiuta. Proteggi." />
     </section>
   </main>
+
 
   <footer class="footer">
     <div class="footer__in">
@@ -278,8 +171,8 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="vendor/lenis.min.js"></script>
-  <script src="js/config.js?v=16"></script>
-  <script src="js/main.js?v=16"></script>
+  <script src="js/config.js?v=17"></script>
+  <script src="js/main.js?v=17"></script>
   <script>
     (function () {
       if (!document.documentElement.classList.contains("has-motion")) return;
