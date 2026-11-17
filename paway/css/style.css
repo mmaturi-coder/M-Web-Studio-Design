@@ -481,6 +481,75 @@ a { color: inherit; }
 .has-motion .band__track { animation: band 34s linear infinite; }
 @keyframes band { to { transform: translateX(-50%); } }
 
+/* ── Progetto: tutto il processo, visibile insieme ── */
+.process {
+  padding-block: clamp(80px, 10vw, 140px) clamp(24px, 4vw, 48px);
+}
+.process__head,
+.process__list {
+  width: 100%;
+  max-width: calc(var(--max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.process__head h2 {
+  margin-top: 14px;
+  max-width: 14ch;
+  font-weight: 900;
+  font-size: clamp(34px, 4vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.process__lead {
+  margin-top: 14px;
+  max-width: 42ch;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.4;
+  color: #2a2f2c;
+}
+.process__list {
+  margin-top: clamp(36px, 5vw, 64px);
+  display: grid;
+  gap: 0;
+}
+.process__item {
+  display: grid;
+  grid-template-columns: clamp(92px, 9vw, 128px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
+  padding-block: clamp(22px, 3vw, 36px);
+  border-top: 1.5px solid var(--line);
+}
+.process__item:last-child { border-bottom: 1.5px solid var(--line); }
+.process__shot {
+  width: 100%;
+  border: 5px solid #0a0a0b;
+  border-radius: 22px;
+  background: #0a0a0b;
+  box-shadow: 0 0 0 1.5px #3b3b3e;
+}
+.process__num {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--coral-text);
+}
+.process__item h3 {
+  font-weight: 800;
+  font-size: clamp(28px, 2.8vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.process__item p {
+  margin-top: 8px;
+  max-width: 36ch;
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.4;
+  color: #2a2f2c;
+}
+
 /* ── Video di presentazione ── */
 .film {
   padding-block: clamp(72px, 9vw, 120px) clamp(24px, 4vw, 40px);
@@ -1041,7 +1110,17 @@ html.map-open, html.map-open body { overflow: hidden; }
 /* ── Mobile: apertura compatta, poi la schermata ── */
 @media (max-width: 760px) {
   :root { --dev-w: min(260px, 64vw); --dev-top: 28px; }
-  .nav { display: none; }
+  .site-head { height: auto; }
+  .site-head__in { flex-wrap: wrap; height: auto; padding-block: 10px 12px; }
+  .nav {
+    display: flex;
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    gap: 18px;
+    overflow-x: auto;
+    font-size: 15px;
+  }
   .stage {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "hero" "device" "how";
