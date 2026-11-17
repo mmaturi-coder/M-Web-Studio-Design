@@ -1,0 +1,34 @@
+PAWAY | Teaser cinematico — come metterlo nel sito
+==================================================
+
+Il player del sito usa già questo file nel progetto:
+
+  assets/video/paway-teaser-cinematico.mp4
+
+Sul tuo Mac il video è qui:
+
+  /Users/mariamaturi/Downloads/PAWAY | Teaser cinematico.mp4
+
+──────────────────────────────────────────────────
+A) Sul Mac (cartella del progetto clonata o PAWAY-presentazione)
+──────────────────────────────────────────────────
+
+1. Doppio clic su:  METTI-TEASER.command
+   (tasto destro → Apri se macOS chiede conferma)
+
+2. Poi, per vederlo online su GitHub Pages, carica il video aggiornato:
+   - trascina assets/video/paway-teaser-cinematico.mp4 su GitHub nel repo, oppure
+   - allega il file MP4 in chat a Cursor e chiedi di pubblicarlo.
+
+──────────────────────────────────────────────────
+B) In chat Cursor (consigliato per il sito online)
+──────────────────────────────────────────────────
+
+Trascina in chat il file:
+
+  PAWAY | Teaser cinematico.mp4
+
+Scrivi: «metti questo teaser nel sito». L’agente lo copia in assets/video/
+e aggiorna GitHub Pages.
+
+Senza il file in chat, l’agente cloud NON può leggere il tuo Download.

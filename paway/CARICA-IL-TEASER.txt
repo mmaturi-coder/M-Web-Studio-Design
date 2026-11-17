@@ -1,0 +1,49 @@
+Il video NON si allega in chat se è troppo grande (limite ~20–50 MB).
+Usa GitHub dal browser — senza Terminale.
+
+═══════════════════════════════════════════════════════════
+METODO 1 — Carica su GitHub (consigliato)
+═══════════════════════════════════════════════════════════
+
+1. Apri Safari e vai a (accedi con il tuo account GitHub):
+
+   https://github.com/mmaturi-coder/M-Web-Studio-Design/upload/main/assets/video
+
+2. Trascina il file dal Finder:
+   Downloads →  PAWAY | Teaser cinematico.mp4
+
+3. IMPORTANTE — prima di confermare, rinomina il file in basso in:
+   paway-teaser-cinematico.mp4
+   (tutto minuscolo, senza spazi)
+
+4. Clicca «Commit changes» in verde.
+
+5. Attendi 2–3 minuti, poi apri il sito:
+   https://mmaturi-coder.github.io/M-Web-Studio-Design/#presentazione
+   e premi play sul video.
+
+Se GitHub dice «file too large» (oltre ~100 MB):
+   • Comprimi il video con QuickTime: File → Esporta → 1080p
+   • oppure HandBrake, fino a restare sotto 95 MB, poi ripeti i passi sopra.
+
+═══════════════════════════════════════════════════════════
+METODO 2 — Link Google Drive (senza caricare su GitHub)
+═══════════════════════════════════════════════════════════
+
+1. Carica il video su Google Drive.
+2. Condividi → «Chiunque abbia il link».
+3. Copia il link e incollalo in chat a Cursor, scrivendo:
+   «usa questo link per il teaser».
+   L’agente lo mette in js/config.js.
+
+═══════════════════════════════════════════════════════════
+METODO 3 — Sul Mac, cartella del sito
+═══════════════════════════════════════════════════════════
+
+Solo per vedere il video in locale (non aggiorna il sito online):
+
+   Doppio clic → METTI-TEASER.command
+   (tasto destro → Apri se macOS blocca)
+
+Il file deve restare in Download con il nome:
+   PAWAY | Teaser cinematico.mp4
