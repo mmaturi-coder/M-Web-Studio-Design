@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progetto — PAWAY</title>
+  <meta name="description" content="Tutto il processo di PAWAY, dal dubbio al primo gesto: esplora, segnala, segui e resta nell’app." />
+  <meta name="theme-color" content="#F2F5EF" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/style.css?v=13" />
+  <script>
+    (function () {
+      var ok = window.matchMedia && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+      if (!ok) return;
+      document.documentElement.classList.add("has-motion");
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#contenuto">Vai al contenuto</a>
+
+  <header class="site-head" data-head>
+    <div class="site-head__in">
+      <a class="brand" href="index.html" aria-label="PAWAY, torna alla home">
+        <img src="assets/paway-logo.svg" alt="PAWAY" width="159" height="198" />
+      </a>
+      <nav class="nav" aria-label="Sezioni">
+        <a href="index.html#come-funziona">Come funziona</a>
+        <a href="progetto.html" aria-current="page">Progetto</a>
+        <a href="index.html#presentazione">Video</a>
+        <a href="index.html#nell-app">Nell’app</a>
+      </nav>
+      <a class="btn btn--sm" href="index.html#download">Scarica l’app <span class="btn__dot" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <main id="contenuto">
+    <section class="process" aria-labelledby="process-title">
+      <div class="process__head">
+        <p class="kicker">Progetto</p>
+        <h2 id="process-title">Tutto il processo, visibile insieme.</h2>
+        <p class="process__lead">Dal dubbio al primo gesto, senza perdere un passaggio: guida, segnalazione, aggiornamenti e ciò che resta nell’app.</p>
+      </div>
+      <ol class="process__list">
+        <li class="process__item" data-reveal>
+          <img class="process__shot" src="assets/img/app-home-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
+          <div>
+            <span class="process__num">01</span>
+            <h3>Il dubbio</h3>
+            <p>Hai trovato un cane o un gatto in difficoltà e non sai da dove partire.</p>
+          </div>
+        </li>
+        <li class="process__item" data-reveal>
+          <img class="process__shot" src="assets/img/app-guida-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
+          <div>
+            <span class="process__num">02</span>
+            <h3>Esplora</h3>
+            <p>Apri la guida e i contatti utili prima di agire.</p>
+          </div>
+        </li>
+        <li class="process__item" data-reveal>
+          <img class="process__shot" src="assets/img/app-segnala-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
+          <div>
+            <span class="process__num">03</span>
+            <h3>Segnala</h3>
+            <p>Descrivi l’animale, la situazione e il luogo. Quattro punti di partenza: abbandonato, ferito, maltrattato, randagio.</p>
+          </div>
+        </li>
+        <li class="process__item" data-reveal>
+          <img class="process__shot" src="assets/img/app-aggiornamenti-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="" />
+          <div>
+            <span class="process__num">04</span>
+            <h3>Segui</h3>
+            <p>Ritrova la segnalazione e gli aggiornamenti su età, salute e stato.</p>
+          </div>
+        </li>
+        <li class="process__item" data-reveal>
+          <img class="process__shot" src="assets/img/app-mappa.webp" width="1662" height="2300" loading="lazy" decoding="async" alt="" />
+          <div>
+            <span class="process__num">05</span>
+            <h3>Resta nell’app</h3>
+            <p>Mappa, SOS, Helpaw e numeri utili restano a portata di mano, anche dopo il primo gesto.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__in">
+      <a class="brand brand--foot" href="index.html" aria-label="PAWAY, torna alla home">
+        <img src="assets/paway-logo.svg" alt="PAWAY" width="159" height="198" />
+      </a>
+      <p class="footer__tag">Il primo gesto può partire da te.</p>
+      <nav class="footer__nav" aria-label="Sezioni, piè di pagina">
+        <a href="index.html#come-funziona">Come funziona</a>
+        <a href="progetto.html" aria-current="page">Progetto</a>
+        <a href="index.html#presentazione">Video</a>
+        <a href="index.html#nell-app">Nell’app</a>
+        <a href="index.html#download">Scarica l’app</a>
+      </nav>
+      <p class="footer__copy">© <span data-year>2026</span> PAWAY</p>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
+  <script src="js/config.js?v=13"></script>
+  <script src="js/main.js?v=13"></script>
+</body>
+</html>

@@ -125,7 +125,9 @@ a { color: inherit; }
   transition: background-size 0.35s var(--ease);
 }
 .nav a:hover, .nav a:focus-visible,
-.footer__nav a:hover, .footer__nav a:focus-visible { background-size: 100% 2px; }
+.footer__nav a:hover, .footer__nav a:focus-visible,
+.nav a[aria-current="page"],
+.footer__nav a[aria-current="page"] { background-size: 100% 2px; }
 
 .kicker {
   display: inline-flex;
@@ -483,7 +485,7 @@ a { color: inherit; }
 
 /* ── Progetto: tutto il processo, visibile insieme ── */
 .process {
-  padding-block: clamp(80px, 10vw, 140px) clamp(24px, 4vw, 48px);
+  padding-block: clamp(28px, 5vw, 64px) clamp(72px, 9vw, 120px);
 }
 .process__head,
 .process__list {
