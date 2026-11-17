@@ -1139,7 +1139,10 @@ html.map-open, html.map-open body { overflow: hidden; }
 .case-statement,
 .case-block,
 .case-motion,
-.case-flows { padding-top: clamp(72px, 10vw, 128px); }
+.case-flows {
+  padding-top: clamp(72px, 10vw, 128px);
+  scroll-margin-top: calc(var(--head-h) + 16px);
+}
 .case-statement h2,
 .case-block > .case-wrap > h2,
 .case-flows > .case-wrap > h2 {
