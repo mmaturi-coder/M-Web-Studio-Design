@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Progetto — PAWAY</title>
-  <meta name="description" content="Tutto il processo di PAWAY, dal dubbio al primo gesto: esplora, segnala, segui e resta nell’app." />
+  <meta name="description" content="Design system di PAWAY e il resto del progetto: colori, caratteri, icone, componenti, schermate e percorso." />
   <meta name="theme-color" content="#F2F5EF" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/bagel-fat-one-latin-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/nunito-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/style.css?v=13" />
+  <link rel="stylesheet" href="css/style.css?v=14" />
   <script>
     (function () {
       var ok = window.matchMedia && window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
@@ -37,9 +37,118 @@
   </header>
 
   <main id="contenuto">
-    <section class="process" aria-labelledby="process-title">
-      <div class="process__head">
+    <header class="deck">
+      <div class="deck__in">
         <p class="kicker">Progetto</p>
+        <h1>Il sistema, poi il resto.</h1>
+        <p class="deck__lead">Prima le regole visive di PAWAY. Poi le schermate e il percorso, dallo stesso sistema.</p>
+        <nav class="deck__nav" aria-label="Dentro il progetto">
+          <a href="#sistema">Design system</a>
+          <a href="#schermate">Schermate</a>
+          <a href="#percorso">Percorso</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="system" id="sistema" aria-labelledby="system-title">
+      <div class="system__in">
+        <p class="kicker">01 · Design system</p>
+        <h2 id="system-title">Colori, caratteri, icone, componenti.</h2>
+
+        <h3 class="system__label">Colore</h3>
+        <ul class="swatches">
+          <li style="--swatch:#f2f5ef"><span>Fondo</span><small>#F2F5EF</small></li>
+          <li style="--swatch:#fbfcf8"><span>Carta</span><small>#FBFCF8</small></li>
+          <li class="is-ink" style="--swatch:#171717"><span>Inchiostro</span><small>#171717</small></li>
+          <li style="--swatch:#db766b"><span>Corallo</span><small>#DB766B</small></li>
+          <li style="--swatch:#c6695f"><span>Corallo testo</span><small>#C6695F</small></li>
+          <li style="--swatch:#679fd4"><span>Blu</span><small>#679FD4</small></li>
+          <li style="--swatch:#94ccad"><span>Verde</span><small>#94CCAD</small></li>
+        </ul>
+
+        <h3 class="system__label">Carattere</h3>
+        <div class="types">
+          <article>
+            <p class="types__face types__face--display">Il primo gesto</p>
+            <p class="types__meta">Bagel Fat One · solo il titolo d’apertura</p>
+          </article>
+          <article>
+            <p class="types__face">Tutto il resto del progetto.</p>
+            <p class="types__meta">Nunito Sans · titoli, testi, pulsanti</p>
+          </article>
+        </div>
+
+        <h3 class="system__label">Icone</h3>
+        <ul class="glyphs">
+          <li><svg class="glyphs__ico" aria-hidden="true"><use href="assets/icons.svg#i-bolt" /></svg><span>Fulmine</span></li>
+          <li><svg class="glyphs__ico" aria-hidden="true"><use href="assets/icons.svg#i-search" /></svg><span>Guida</span></li>
+          <li><svg class="glyphs__ico" aria-hidden="true"><use href="assets/icons.svg#i-pin" /></svg><span>Mappa</span></li>
+          <li><svg class="glyphs__ico" aria-hidden="true"><use href="assets/icons.svg#i-alert" /></svg><span>SOS</span></li>
+          <li><svg class="glyphs__ico" aria-hidden="true"><use href="assets/icons.svg#i-check" /></svg><span>Fatto</span></li>
+          <li><svg class="glyphs__ico" aria-hidden="true"><use href="assets/icons.svg#i-phone" /></svg><span>Chiama</span></li>
+          <li><svg class="glyphs__ico" aria-hidden="true"><use href="assets/icons.svg#i-home" /></svg><span>Home</span></li>
+          <li><svg class="glyphs__ico" aria-hidden="true"><use href="assets/icons.svg#i-user" /></svg><span>Account</span></li>
+        </ul>
+
+        <h3 class="system__label">Componenti</h3>
+        <div class="parts">
+          <article class="parts__card">
+            <a class="btn" href="index.html#download">Scarica l’app
+              <svg class="btn__icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M9.5 16h12M17 10.5l5.5 5.5-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <p>Pillola scura, freccia in cerchio.</p>
+          </article>
+          <article class="parts__card parts__card--coral">
+            <ul class="pills">
+              <li>Abbandonato</li><li class="is-on">Ferito</li><li>Maltrattato</li><li>Randagio</li>
+            </ul>
+            <p>Stati SOS. Uno solo è attivo.</p>
+          </article>
+          <article class="parts__card">
+            <div class="toggle" aria-hidden="true"><span class="is-on">Cane</span><span>Gatto</span></div>
+            <p>Scelta binaria, blu quando è attiva.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="screens" id="schermate" aria-labelledby="screens-title">
+      <div class="screens__in">
+        <p class="kicker">02 · Il resto</p>
+        <h2 id="screens-title">Le schermate costruite con lo stesso sistema.</h2>
+        <ul class="screens__grid">
+          <li>
+            <img src="assets/img/app-home-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="Home di PAWAY" />
+            <h3>Home</h3>
+            <p>Il primo gesto: invia una segnalazione.</p>
+          </li>
+          <li>
+            <img src="assets/img/app-guida-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="Guida di PAWAY" />
+            <h3>Guida</h3>
+            <p>Cane o gatto, prima di agire.</p>
+          </li>
+          <li>
+            <img src="assets/img/app-segnala-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="Segnalazione SOS" />
+            <h3>Segnala</h3>
+            <p>Quattro situazioni da cui partire.</p>
+          </li>
+          <li>
+            <img src="assets/img/app-aggiornamenti-sm.webp" width="402" height="874" loading="lazy" decoding="async" alt="Aggiornamenti" />
+            <h3>Aggiornamenti</h3>
+            <p>Età, salute e stato dopo la segnalazione.</p>
+          </li>
+          <li>
+            <img src="assets/img/app-mappa.webp" width="1662" height="2300" loading="lazy" decoding="async" alt="Mappa di Roma" />
+            <h3>Mappa</h3>
+            <p>Enti e veterinari, sulla stessa città.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="process" id="percorso" aria-labelledby="process-title">
+      <div class="process__head">
+        <p class="kicker">03 · Percorso</p>
         <h2 id="process-title">Tutto il processo, visibile insieme.</h2>
         <p class="process__lead">Dal dubbio al primo gesto, senza perdere un passaggio: guida, segnalazione, aggiornamenti e ciò che resta nell’app.</p>
       </div>
@@ -108,7 +217,7 @@
   <script src="vendor/gsap.min.js"></script>
   <script src="vendor/ScrollTrigger.min.js"></script>
   <script src="vendor/lenis.min.js"></script>
-  <script src="js/config.js?v=13"></script>
-  <script src="js/main.js?v=13"></script>
+  <script src="js/config.js?v=14"></script>
+  <script src="js/main.js?v=14"></script>
 </body>
 </html>
