@@ -77,14 +77,15 @@
   <div class="menu" aria-hidden="true">
     <nav class="menu__nav" aria-label="Main navigation">
       <a class="menu__link" href="#top"><span class="menu__index">01</span><span class="menu__word">Home</span></a>
-      <a class="menu__link" href="#work"><span class="menu__index">02</span><span
+      <a class="menu__link" href="#projects"><span class="menu__index">02</span><span
           class="menu__word">Portfolio</span></a>
       <a class="menu__link" href="#studio"><span class="menu__index">03</span><span class="menu__word">Studio</span></a>
-      <a class="menu__link" href="#contact"><span class="menu__index">04</span><span
+      <a class="menu__link" href="#cv"><span class="menu__index">04</span><span class="menu__word">CV</span></a>
+      <a class="menu__link" href="#contact"><span class="menu__index">05</span><span
           class="menu__word">Contact</span></a>
     </nav>
     <div class="menu__foot">
-      <a class="menu__mail" href="mailto:Mstudio_web@gmail.com">Mstudio_web@gmail.com</a>
+      <a class="menu__mail" href="mailto:webstudiodesign.m@gmail.com">webstudiodesign.m@gmail.com</a>
       <p class="menu__loc">Italy — working worldwide</p>
     </div>
   </div>
@@ -191,6 +192,64 @@
               </button>
             </div>
           </div>
+
+          <div class="projects" id="projects">
+            <div class="projects__head">
+              <div>
+                <p class="projects__eyebrow">Portfolio — Selected projects</p>
+                <h2 class="projects__title">Selected <span>projects</span></h2>
+              </div>
+              <div class="projects__controls">
+                <span class="projects__count" aria-live="polite"><b data-project-current>01</b> / 03</span>
+                <button class="projects__control projects__prev" type="button" aria-label="Previous project"
+                  aria-controls="projects-track">
+                  <span aria-hidden="true">←</span>
+                </button>
+                <button class="projects__control projects__next" type="button" aria-label="Next project"
+                  aria-controls="projects-track">
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="projects__track" id="projects-track" role="region" aria-label="Selected projects" tabindex="0">
+              <article class="project-card">
+                <a class="project-card__cover" href="paway.html" aria-label="Apri la presentazione PAWAY">
+                  <span class="project-card__cover-art" aria-hidden="true">PAWAY</span>
+                  <span class="project-card__cover-label">01 — Project / Presentation</span>
+                  <span class="project-card__cover-title">PAWAY <span aria-hidden="true">↗</span></span>
+                </a>
+              </article>
+              <article class="project-card project-card--roma">
+                <a class="project-card__cover project-card__cover--roma" href="roma.html"
+                  aria-label="Open Roma città eterna, second place in IGPDecaux Graphic Award 2026">
+                  <span class="project-card__cover-art" aria-hidden="true">ROMA</span>
+                  <span class="project-card__cover-label">Seconda classificata · IGPDecaux Graphic Award 2026</span>
+                  <h3 class="project-card__cover-title">Roma città eterna <span>2026</span></h3>
+                </a>
+              </article>
+              <article class="project-card project-card--video">
+                <button class="project-card__cover project-card__cover--video" id="vodka-project-open" type="button"
+                  aria-haspopup="dialog" aria-controls="vodka-video-preview"
+                  aria-label="Riproduci il video di Absolut Vodka Festival">
+                  <img class="project-card__video-poster" src="assets/vodka-festival/poster.jpg" alt=""
+                    aria-hidden="true" loading="lazy" />
+                  <span class="project-card__cover-label">03 — Project film</span>
+                  <span class="project-card__cover-art" aria-hidden="true">VODKA</span>
+                  <span class="project-card__cover-title">Absolut Vodka Festival <span aria-hidden="true">▶</span></span>
+                </button>
+              </article>
+            </div>
+
+            <div class="projects__pagination" role="group" aria-label="Choose a project">
+              <button class="projects__dot" type="button" aria-label="Go to project 01" aria-current="true"
+                data-project-dot></button>
+              <button class="projects__dot" type="button" aria-label="Go to project 02" aria-current="false"
+                data-project-dot></button>
+              <button class="projects__dot" type="button" aria-label="Go to project 03" aria-current="false"
+                data-project-dot></button>
+            </div>
+          </div>
         </section>
 
         <!-- ══════════════════════════════════════
@@ -236,14 +295,38 @@
         </section>
 
         <!-- ══════════════════════════════════════
-         04 · CONTACT (dark, interactive)
+         04 · CV
+    ═══════════════════════════════════════ -->
+        <section class="cv" id="cv" data-section>
+          <header class="section-head">
+            <span class="section-head__num">04</span>
+            <span class="section-head__rule" data-rule></span>
+            <span class="section-head__name">Curriculum</span>
+          </header>
+
+          <div class="cv__body">
+            <p class="cv__eyebrow">Maria Maturi — Profile &amp; experience</p>
+            <h2 class="cv__title">A little more<br /><span>about my work.</span></h2>
+            <div class="cv__bottom">
+              <p class="cv__text">Discover my background, skills and selected experience in my CV.</p>
+              <a class="cv__download magnetic" href="assets/cv-maria-maturi.pdf" download data-cursor="link">
+                <span>Download CV <small>PDF</small></span>
+                <span class="cv__arrow" aria-hidden="true">↓</span>
+              </a>
+            </div>
+          </div>
+          <span class="cv__watermark" aria-hidden="true">CV</span>
+        </section>
+
+        <!-- ══════════════════════════════════════
+         05 · CONTACT (dark, interactive)
     ═══════════════════════════════════════ -->
         <section class="cta" id="contact" data-section>
           <!-- parallax electric halo behind the headline -->
           <div class="cta__glow" data-speed="0.55" aria-hidden="true"></div>
 
           <header class="section-head section-head--dark">
-            <span class="section-head__num">04</span>
+            <span class="section-head__num">05</span>
             <span class="section-head__rule" data-rule></span>
             <span class="section-head__name">Contact</span>
           </header>
@@ -258,10 +341,10 @@
             </h2>
 
             <div class="cta__panel">
-              <a class="cta__mail magnetic" href="mailto:Mstudio_web@gmail.com" data-cursor="link">
+              <a class="cta__mail magnetic" href="mailto:webstudiodesign.m@gmail.com" data-cursor="link">
                 <span class="cta__mail-top">Start a project</span>
                 <span class="cta__mail-addr">
-                  <span class="cta__mail-text">Mstudio_web@gmail.com</span>
+                  <span class="cta__mail-text">webstudiodesign.m@gmail.com</span>
                   <span class="cta__mail-arrow" aria-hidden="true">→</span>
                 </span>
               </a>
@@ -277,7 +360,7 @@
             <img src="assets/logo.png" alt="" width="333" height="155" />
           </div>
 
-          <a class="footer__lead" href="mailto:Mstudio_web@gmail.com" data-fill data-cursor="link">
+          <a class="footer__lead" href="mailto:webstudiodesign.m@gmail.com" data-fill data-cursor="link">
             <span class="footer__lead-line">Let’s talk</span>
           </a>
 
@@ -293,9 +376,10 @@
             <nav class="footer__col" aria-label="Sitemap">
               <span class="footer__label">Sitemap</span>
               <a class="footer__link u-line" href="#top">Home</a>
-              <a class="footer__link u-line" href="#work">Portfolio</a>
+              <a class="footer__link u-line" href="#projects">Portfolio</a>
               <a class="footer__link u-line" href="#studio">Studio</a>
               <a class="footer__link u-line" href="#process">Process</a>
+              <a class="footer__link u-line" href="#cv">CV</a>
               <a class="footer__link u-line" href="#contact">Contact</a>
             </nav>
 
@@ -304,12 +388,12 @@
               <a class="footer__link u-line" href="#" rel="noopener">Instagram</a>
               <a class="footer__link u-line" href="#" rel="noopener">LinkedIn</a>
               <a class="footer__link u-line" href="#" rel="noopener">Behance</a>
-              <a class="footer__link u-line" href="mailto:Mstudio_web@gmail.com">Email</a>
+              <a class="footer__link u-line" href="mailto:webstudiodesign.m@gmail.com">Email</a>
             </nav>
 
             <div class="footer__col footer__col--say">
               <span class="footer__label">Say hello</span>
-              <a class="footer__mail u-line" href="mailto:Mstudio_web@gmail.com">Mstudio_web@gmail.com</a>
+              <a class="footer__mail u-line" href="mailto:webstudiodesign.m@gmail.com" aria-label="Send an email to webstudiodesign.m@gmail.com" data-cursor="link">webstudiodesign.m@gmail.com</a>
               <button class="footer__top magnetic" type="button" data-top>
                 <span>Back to top</span>
                 <span class="footer__top-arrow" aria-hidden="true">↑</span>
@@ -326,6 +410,41 @@
       </main>
     </div><!-- /smooth-content -->
   </div><!-- /smooth-wrapper -->
+
+  <dialog class="cv-preview" id="cv-preview" aria-labelledby="cv-preview-title">
+    <header class="cv-preview__head">
+      <div>
+        <p class="cv-preview__eyebrow">Maria Maturi — Curriculum vitae</p>
+        <h2 class="cv-preview__title" id="cv-preview-title">CV <span>/</span> PDF</h2>
+      </div>
+      <div class="cv-preview__actions">
+        <a class="cv-preview__download" href="assets/cv-maria-maturi.pdf" download data-cursor="link">
+          Download PDF <span aria-hidden="true">↓</span>
+        </a>
+        <button class="cv-preview__close" type="button" aria-label="Close preview">×</button>
+      </div>
+    </header>
+    <div class="cv-preview__frame">
+      <img src="assets/cv-maria-maturi-preview.png" alt="CV of Maria Maturi — full-page preview" />
+    </div>
+  </dialog>
+
+  <dialog class="cv-preview project-video-preview" id="vodka-video-preview"
+    aria-labelledby="vodka-video-title">
+    <header class="cv-preview__head">
+      <div>
+        <p class="cv-preview__eyebrow">Project film</p>
+        <h2 class="cv-preview__title" id="vodka-video-title">Absolut Vodka Festival <span>/</span> Video</h2>
+      </div>
+      <button class="cv-preview__close project-video-preview__close" type="button" aria-label="Chiudi video">×</button>
+    </header>
+    <p class="project-video-preview__status" role="status" aria-live="polite"></p>
+    <div class="cv-preview__frame">
+      <video controls playsinline preload="none" aria-label="Video del progetto Absolut Vodka Festival">
+        <source src="assets/vodka-festival/vodka-festival.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </dialog>
 
   <!-- GSAP core + plugins (local, no CDN) -->
   <script src="vendor/gsap.min.js"></script>

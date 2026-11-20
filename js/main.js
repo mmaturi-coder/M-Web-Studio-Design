@@ -36,6 +36,9 @@ function initApp() {
   if (initialized) return;
   initialized = true;
 
+  initCvPreview();
+  initProjectVideoPreview();
+  initProjects();
   if (REDUCE) { initReducedMotion(); return; }
 
   initSmoother();      // inertial scroll: the whole page becomes fluid
@@ -57,6 +60,130 @@ function initApp() {
   initHeroScrollCue();
   initClocks();        // live local time + current year
   initBackToTop();
+}
+
+function initCvPreview() {
+  const download = $('.cv__download');
+  const preview = $('#cv-preview');
+  if (!download || !preview || typeof preview.showModal !== 'function') return;
+
+  const close = $('.cv-preview__close', preview);
+  if (!close) return;
+
+  download.addEventListener('click', () => {
+    window.setTimeout(() => {
+      preview.showModal();
+      close.focus({ preventScroll: true });
+    }, 0);
+  });
+  close.addEventListener('click', () => preview.close());
+  preview.addEventListener('click', (event) => {
+    if (event.target === preview) preview.close();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && preview.open) preview.close();
+  });
+}
+
+function initProjectVideoPreview() {
+  const trigger = $('#vodka-project-open');
+  const preview = $('#vodka-video-preview');
+  if (!trigger || !preview || typeof preview.showModal !== 'function') return;
+
+  const close = $('.project-video-preview__close', preview);
+  const video = $('video', preview);
+  const status = $('.project-video-preview__status', preview);
+  if (!close || !video || !status) return;
+
+  trigger.addEventListener('click', () => {
+    status.textContent = '';
+    preview.showModal();
+    close.focus({ preventScroll: true });
+
+    video.play().catch(() => {
+      if (preview.open) status.textContent = 'Avvio automatico non riuscito. Premi Play per avviare il video.';
+    });
+  });
+  close.addEventListener('click', () => preview.close());
+  preview.addEventListener('click', (event) => {
+    if (event.target === preview) preview.close();
+  });
+  preview.addEventListener('close', () => {
+    video.pause();
+    video.currentTime = 0;
+    status.textContent = '';
+  });
+  video.addEventListener('error', () => {
+    status.textContent = 'Il video non è disponibile o non può essere riprodotto.';
+  });
+}
+
+function initProjects() {
+  const track = $('.projects__track');
+  if (!track) return;
+
+  const cards = $$('.project-card', track);
+  const previous = $('.projects__prev');
+  const next = $('.projects__next');
+  const dots = $$('.projects__dot');
+  const current = $('[data-project-current]');
+  if (!cards.length || !previous || !next || !current) return;
+
+  let activeIndex = 0;
+  let scrollTimer = 0;
+  let navigationIndex = null;
+  const setActive = (index) => {
+    activeIndex = index;
+    current.textContent = String(index + 1).padStart(2, '0');
+    previous.disabled = index === 0;
+    next.disabled = index === cards.length - 1;
+    dots.forEach((dot, dotIndex) => dot.setAttribute('aria-current', String(dotIndex === index)));
+  };
+  const update = () => {
+    if (navigationIndex !== null) {
+      setActive(navigationIndex);
+      return;
+    }
+
+    const trackRect = track.getBoundingClientRect();
+    const trackCenter = trackRect.left + track.clientWidth / 2;
+    activeIndex = cards.reduce((closest, card, index) => {
+      const closestRect = cards[closest].getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      const closestCenter = closestRect.left + closestRect.width / 2;
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      return Math.abs(cardCenter - trackCenter) < Math.abs(closestCenter - trackCenter) ? index : closest;
+    }, 0);
+    setActive(activeIndex);
+  };
+  const finishScroll = () => {
+    window.clearTimeout(scrollTimer);
+    navigationIndex = null;
+    update();
+  };
+  const goTo = (index, immediate = false) => {
+    const card = cards[index];
+    if (!card) return;
+    window.clearTimeout(scrollTimer);
+    setActive(index);
+    navigationIndex = immediate || REDUCE ? null : index;
+    const trackRect = track.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const left = track.scrollLeft + cardRect.left - trackRect.left - (track.clientWidth - cardRect.width) / 2;
+    track.scrollTo({ left, behavior: immediate || REDUCE ? 'auto' : 'smooth' });
+  };
+
+  previous.addEventListener('click', () => goTo(activeIndex - 1));
+  next.addEventListener('click', () => goTo(activeIndex + 1));
+  dots.forEach((dot, index) => dot.addEventListener('click', () => goTo(index)));
+  track.addEventListener('scroll', () => {
+    window.clearTimeout(scrollTimer);
+    scrollTimer = window.setTimeout(navigationIndex === null ? update : finishScroll, navigationIndex === null ? 120 : 300);
+  }, { passive: true });
+  track.addEventListener('scrollend', finishScroll);
+  window.addEventListener('resize', () => goTo(activeIndex, true));
+  update();
+  goTo(0, true);
 }
 
 if (document.fonts) {
